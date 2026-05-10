@@ -27,10 +27,15 @@
 - [x] Signal Builder fully built: `MetricSelector`, `ConditionRow`, `SignalEditor`, `MasterSignalList`, `BuilderContent`.
 - [x] `/builder` page updated — Server Component shell wrapping client `BuilderContent`.
 
-## Phase 4: Dashboard, Intel Hub & Congress Tracker UI
-- [ ] Build the `/dashboard` grid displaying active Master Signals (progress meters) and current T212 holdings.
-- [ ] Build the `/intel` feed UI, styled as a raw terminal log that filters news by active holdings/signals.
-- [ ] Build the `/congress` tracker table with politician and ticker filters.
+## Phase 4: Dashboard, Intel Hub & Congress Tracker UI ✅ COMPLETE
+- [x] `MacroPillarsBar.tsx` — 4-pillar strip (TNX, VIX, SPX vs 200MA, Warsh toggle).
+- [x] `MasterSignalCard.tsx` — Signal card with progress meter, condition list, edit link.
+- [x] `HoldingsTable.tsx` — Dense portfolio table with colour-coded P&L.
+- [x] `DashboardContent.tsx` — Full dashboard layout: pillars + signal grid + holdings.
+- [x] `IntelItemRow.tsx`, `IntelContent.tsx` — Filterable terminal news feed + FedWatch panel.
+- [x] `CongressContent.tsx` — Client-side filtered congressional disclosures table.
+- [x] Mock data: `intelFeed.mock.ts`, `congress.mock.ts`.
+- [x] All 4 pages (`/dashboard`, `/intel`, `/congress`, `/builder`) fully functional with mock data.
 
 ## Phase 5: API Integration & Real Data Layer
 - [ ] Integrate `yahoo-finance2` for live Market Pillars (TNX, VIX, S&P 500, Gold, EMAs 9/21/50/200).

@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.4.0] — Phase 4: Dashboard, Intel Hub & Congress Tracker UI — 2026-05-10
+### Added
+- `src/lib/mock/intelFeed.mock.ts` — 8 intel items (Fed/Warsh, holdings-specific, macro).
+- `src/lib/mock/congress.mock.ts` — 8 congressional trades including LUNR, RKLB, ASTS, PLTR, NVDA.
+- `src/components/dashboard/MacroPillarsBar.tsx` — 4-pillar strip with interactive Warsh toggle.
+- `src/components/dashboard/MasterSignalCard.tsx` — Signal card with live progress meter and condition list.
+- `src/components/dashboard/HoldingsTable.tsx` — Dense portfolio table with colour-coded P&L.
+- `src/components/dashboard/DashboardContent.tsx` — Full dashboard: pillars + 2-col signal grid + portfolio.
+- `src/components/intel/IntelItemRow.tsx` — Terminal-style log row with sentiment and ticker tags.
+- `src/components/intel/IntelContent.tsx` — Filterable feed + FedWatch panel with Warsh cycle.
+- `src/components/congress/CongressContent.tsx` — Client-filtered congressional disclosures table.
+- All 4 pages updated from stubs to full implementations.
+
 ## [0.3.0] — Phase 3: State Management & Mock Prototype Logic — 2026-05-10
 ### Added
 - `src/types/` — All TypeScript interfaces: `signals`, `holdings`, `market`, `intel`, `congress`.
