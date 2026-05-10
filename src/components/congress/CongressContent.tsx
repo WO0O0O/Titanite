@@ -12,7 +12,7 @@
  */
 
 import { useState, useMemo } from 'react';
-import { MOCK_CONGRESS_TRADES } from '@/lib/mock/congress.mock';
+import { useCongressTrades } from '@/hooks/useCongressTrades';
 import TerminalWindow from '@/components/layout/TerminalWindow';
 import type { CongressTrade } from '@/types/congress';
 
@@ -40,9 +40,11 @@ export default function CongressContent() {
   const [chamberFilter, setChamberFilter] = useState<'ALL' | 'SENATE' | 'HOUSE'>('ALL');
   const [typeFilter, setTypeFilter] = useState<'ALL' | 'BUY' | 'SELL'>('ALL');
 
+  const { data: allTrades = [] } = useCongressTrades();
+
   // Client-side filtering — pure derived state from filters
   const filtered = useMemo(() => {
-    return MOCK_CONGRESS_TRADES.filter((t: CongressTrade) => {
+    return allTrades.filter((t: CongressTrade) => {
       if (politicianFilter && !t.politician.toLowerCase().includes(politicianFilter.toLowerCase())) return false;
       if (tickerFilter && !t.ticker.toLowerCase().includes(tickerFilter.toLowerCase())) return false;
       if (chamberFilter !== 'ALL' && t.chamber !== chamberFilter) return false;

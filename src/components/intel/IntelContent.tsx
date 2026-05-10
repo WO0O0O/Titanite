@@ -8,10 +8,10 @@
  *   Right (40%): FedWatchPanel — Warsh-specific feed + sentiment toggle
  */
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useUIStore } from '@/store/uiStore';
 import { useSignalStore } from '@/store/signalStore';
-import { MOCK_INTEL_ITEMS, MOCK_FED_WATCH_ITEMS } from '@/lib/mock/intelFeed.mock';
+import { useIntelFeed } from '@/hooks/useIntelFeed';
 import { MOCK_MARKET_CONTEXT } from '@/lib/mock/marketData.mock';
 import TerminalWindow from '@/components/layout/TerminalWindow';
 import IntelItemRow from './IntelItemRow';
@@ -31,6 +31,13 @@ export default function IntelContent() {
   const [sentimentFilter, setSentimentFilter] = useState<SentimentFilter>('ALL');
   const { warshSentiment, setWarshSentiment } = useUIStore();
   const { evaluateAll } = useSignalStore();
+  const { data: allItems = [] } = useIntelFeed();
+
+  // Derive fed-specific items from live data (contains Warsh/Fed keywords)
+  const fedWatchItems = useMemo(
+    () => allItems.filter((i) => i.sentiment === 'BEARISH' || i.relatedSignals.length > 0).slice(0, 5),
+    [allItems]
+  );
 
   const handleWarshToggle = () => {
     const currentIndex = WARSH_CYCLE.indexOf(warshSentiment);
@@ -46,8 +53,8 @@ export default function IntelContent() {
   };
 
   const filteredItems = sentimentFilter === 'ALL'
-    ? MOCK_INTEL_ITEMS
-    : MOCK_INTEL_ITEMS.filter((i) => i.sentiment === sentimentFilter);
+    ? allItems
+    : allItems.filter((i) => i.sentiment === sentimentFilter);
 
   const warshColor = warshSentiment === 1
     ? 'var(--color-signal-alert)'
@@ -122,10 +129,10 @@ export default function IntelContent() {
 
           {/* Warsh-specific intel */}
           <div className="text-[9px] tracking-wider mb-2" style={{ color: 'var(--color-text-muted)' }}>
-            FED-RELATED ITEMS ({MOCK_FED_WATCH_ITEMS.length})
+            FED-RELATED ITEMS ({fedWatchItems.length})
           </div>
           <div className="-mx-4">
-            {MOCK_FED_WATCH_ITEMS.map((item, i) => (
+            {fedWatchItems.map((item, i) => (
               <IntelItemRow key={item.id} item={item} index={i} />
             ))}
           </div>

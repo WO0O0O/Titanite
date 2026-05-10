@@ -3,21 +3,22 @@
 /**
  * DashboardContent — the interactive content of the /dashboard page.
  *
- * Layout (all panels fill the viewport height — terminal style):
- *   ┌─────────────────── Macro Pillars (strip) ───────────────────┐
- *   │  P1: TNX  │  P2: VIX  │  P3: SPX vs MA  │  P4: Warsh       │
- *   ├───────────────────────────────────┬─────────────────────────┤
- *   │  Active Master Signals (grid)     │  Holdings Table         │
- *   │  2-column grid of signal cards    │  Dense portfolio table  │
- *   └───────────────────────────────────┴─────────────────────────┘
+ * Now wired to real data via TanStack Query hooks:
+ *   useMarketData() → feeds MacroPillarsBar + triggers evaluateAll()
+ *   useHoldings()   → feeds HoldingsTable + PortfolioSummary
+ *
+ * When NEXT_PUBLIC_USE_MOCK_DATA=true, hooks return mock data instantly.
+ * When false, they fetch from /api/market and /api/portfolio.
  */
 
+import { useEffect } from 'react';
 import { useSignalStore } from '@/store/signalStore';
+import { useMarketData } from '@/hooks/useMarketData';
+import { useHoldings } from '@/hooks/useHoldings';
 import MacroPillarsBar from './MacroPillarsBar';
 import MasterSignalCard from './MasterSignalCard';
 import HoldingsTable from './HoldingsTable';
 import TerminalWindow from '@/components/layout/TerminalWindow';
-import { MOCK_HOLDINGS, MOCK_PORTFOLIO_SUMMARY } from '@/lib/mock/holdings.mock';
 
 const fmt = {
   value: (v: number) => `$${v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
@@ -26,8 +27,21 @@ const fmt = {
 
 export default function DashboardContent() {
   const masterSignals = useSignalStore((s) => s.masterSignals);
+  const { evaluateAll } = useSignalStore();
   const triggeredCount = masterSignals.filter((ms) => ms.isTriggered).length;
-  const portfolio = MOCK_PORTFOLIO_SUMMARY;
+
+  const { data: marketData } = useMarketData();
+  const { data: portfolioData } = useHoldings();
+
+  // When real market data loads, re-evaluate all signals against live context
+  useEffect(() => {
+    if (marketData?.context) {
+      evaluateAll(marketData.context);
+    }
+  }, [marketData, evaluateAll]);
+
+  const holdings  = portfolioData?.holdings  ?? [];
+  const portfolio = portfolioData?.summary   ?? { totalInvested: 0, totalValue: 0, totalPnlValue: 0, totalPnlPercent: 0, cashBalance: 0 };
 
   return (
     <div
@@ -96,9 +110,9 @@ export default function DashboardContent() {
 
           {/* Holdings table */}
           <div className="flex-1 overflow-hidden">
-            <TerminalWindow title="Holdings" code="DSH-2" rightSlot="T212 — MOCK DATA">
+            <TerminalWindow title="Holdings" code="DSH-2" rightSlot={process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true' ? 'T212 — MOCK DATA' : 'T212 — LIVE'}>
               <div className="-m-4">
-                <HoldingsTable holdings={MOCK_HOLDINGS} />
+                <HoldingsTable holdings={holdings} />
               </div>
             </TerminalWindow>
           </div>

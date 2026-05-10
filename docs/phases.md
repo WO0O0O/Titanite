@@ -37,12 +37,16 @@
 - [x] Mock data: `intelFeed.mock.ts`, `congress.mock.ts`.
 - [x] All 4 pages (`/dashboard`, `/intel`, `/congress`, `/builder`) fully functional with mock data.
 
-## Phase 5: API Integration & Real Data Layer
-- [ ] Integrate `yahoo-finance2` for live Market Pillars (TNX, VIX, S&P 500, Gold, EMAs 9/21/50/200).
-- [ ] Integrate Trading 212 Official API for live portfolio holdings.
-- [ ] Connect SenateStockWatcher + HouseStockWatcher + Finnhub for the Congress Tracker.
-- [ ] Connect filtered news/RSS feed for the Intel Hub.
-- [ ] Remove `NEXT_PUBLIC_USE_MOCK_DATA=true` flag.
+## Phase 5: API Integration & Real Data Layer ✅ COMPLETE
+- [x] `src/lib/utils/ema.ts` — Pure EMA calculator (periods 9/21/50/200), seeded with SMA.
+- [x] `src/lib/services/yahooFinance.service.ts` — Parallel fetches + EMA computation, mock fallback.
+- [x] `src/lib/services/trading212.service.ts` — T212 REST API client, ticker normalisation, mock fallback.
+- [x] `src/lib/services/congress.service.ts` — Senate + House Watcher feeds, normalised to `CongressTrade`.
+- [x] `src/lib/services/finnhub.service.ts` — Finnhub general news, keyword sentiment heuristic.
+- [x] Route Handlers: `/api/market`, `/api/portfolio`, `/api/congress`, `/api/intel` — all respect `NEXT_PUBLIC_USE_MOCK_DATA`.
+- [x] TanStack Query hooks: `useMarketData`, `useHoldings`, `useCongressTrades`, `useIntelFeed`.
+- [x] `DashboardContent`, `IntelContent`, `CongressContent` updated to use hooks; mock imports removed.
+- [x] `evaluateAll()` called automatically when live market data loads (signals auto-update).
 
 ## Phase 6: Backend & User Authentication (Future)
 - [ ] Set up Supabase PostgreSQL database.

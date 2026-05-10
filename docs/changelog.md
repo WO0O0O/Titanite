@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.5.0] — Phase 5: API Integration & Real Data Layer — 2026-05-10
+### Added
+- `src/lib/utils/ema.ts` — Pure EMA calculation (periods 9/21/50/200), seeded with SMA.
+- `src/lib/services/yahooFinance.service.ts` — Parallel symbol fetches, EMA computation, graceful mock fallback.
+- `src/lib/services/trading212.service.ts` — T212 REST API client with ticker normalisation.
+- `src/lib/services/congress.service.ts` — Senate + House Watcher normaliser (most recent 100 each).
+- `src/lib/services/finnhub.service.ts` — Finnhub news with keyword-based sentiment heuristic.
+- `src/app/api/` — Route handlers for `/api/market`, `/api/portfolio`, `/api/congress`, `/api/intel`.
+- `src/hooks/` — TanStack Query hooks: `useMarketData`, `useHoldings`, `useCongressTrades`, `useIntelFeed`.
+### Changed
+- `DashboardContent`, `IntelContent`, `CongressContent` — replaced direct mock imports with data hooks.
+- `DashboardContent` — `evaluateAll()` fires automatically when live market data resolves.
+
 ## [0.4.0] — Phase 4: Dashboard, Intel Hub & Congress Tracker UI — 2026-05-10
 ### Added
 - `src/lib/mock/intelFeed.mock.ts` — 8 intel items (Fed/Warsh, holdings-specific, macro).
