@@ -1,17 +1,20 @@
 # Market Sentinel - Development Phases
 
-## Phase 1: Planning and Setup
+## Phase 1: Planning and Setup ✅ COMPLETE
 - [x] Create project documentation (`docs/` folder).
 - [x] Initialize Next.js (App Router) project with Tailwind CSS.
 - [x] Install core dependencies (Zustand, TanStack Query, Lucide Icons, Recharts).
 - [x] Finalize architecture, API strategy, and data models.
-- [ ] Install `yahoo-finance2` package.
-- [ ] Create `.env.local` with T212 and Finnhub key placeholders.
+- [x] Install `yahoo-finance2` package.
+- [x] Create `.env.local` with T212 and Finnhub key placeholders.
 
-## Phase 2: Core UI Scaffold & Theming (High-Fidelity Prototype)
-- [ ] Define the strict "Bloomberg Terminal" dark theme in Tailwind config (true blacks, neon accents, monospaced fonts).
-- [ ] Create base layout: Sidebar navigation, Header, and Main terminal-style window.
-- [ ] Implement foundational UI elements (Dense Data Tables, Progress Meters, Status Badges).
+## Phase 2: Core UI Scaffold & Theming ✅ COMPLETE
+- [x] Define the strict "Bloomberg Terminal" dark theme via Tailwind v4 `@theme` in `globals.css`.
+- [x] Create base layout: fixed `Header`, fixed `Sidebar`, `TerminalWindow` content wrapper.
+- [x] `providers.tsx` — client-side `QueryClientProvider` keeping root layout a Server Component.
+- [x] `HeaderClock.tsx` — isolated client component (smallest client boundary pattern).
+- [x] Stub pages for all 4 routes: `/dashboard`, `/builder`, `/intel`, `/congress`.
+- [ ] *(Deferred to Phase 3/4)* Foundational UI primitives: `Badge`, `ProgressMeter`, `DataTable`, `StatusDot`, `Sparkline`.
 
 ## Phase 3: State Management & Mock Prototype Logic
 - [ ] Configure Zustand for ephemeral state (storing the prototype Master Signals and Holdings without a database).
