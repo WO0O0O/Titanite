@@ -10,7 +10,7 @@ A single-tenant, Bloomberg-terminal-style Next.js dashboard for tracking high-vo
 ---
 
 ## Current Phase
-just completed phase 5
+Phase 5.1 complete (API bug fixes & data accuracy). Next: Phase 6 (Supabase / Auth).
 
 ---
 
@@ -21,7 +21,7 @@ just completed phase 5
 - **Charts**: Recharts — minimal sparklines only. Primary display is dense HTML tables.
 - **Market Data**: `yahoo-finance2` npm package. No API key. ⚠️ 15-min delayed equity quotes — must show "as of" timestamp in UI.
 - **Portfolio**: Trading 212 Official API (read-only: portfolio, account, history, pies. No trade execution.)
-- **Congress Data**: SenateStockWatcher + HouseStockWatcher (free, no key) + Finnhub (API key, enrichment only)
+- **Congress Data**: SenateStockWatcher + HouseStockWatcher — data hosted on **S3** (not raw GitHub). No API key. `User-Agent` header required. `cache: 'no-store'` required (files are ~4MB, exceed Next.js fetch-cache limit). ⚠️ T212 retains legacy internal tickers for rebranded stocks — use `TICKER_DISPLAY_OVERRIDES` in `trading212.service.ts` to correct.
 - **Future**: Supabase (PostgreSQL + Auth) — not in scope yet
 
 ---

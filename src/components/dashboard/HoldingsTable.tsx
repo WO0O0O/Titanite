@@ -16,14 +16,19 @@ interface HoldingsTableProps {
   holdings: Holding[];
 }
 
-const COL_HEADERS = ['TICKER', 'COMPANY', 'QTY', 'AVG', 'LAST', 'P&L', 'P&L%', 'VALUE', '24H%'];
+// P&L (£) → from T212 ppl field (FX-adjusted by T212, already in GBP)
+// P&L%     → pure price ratio (currency-neutral)
+// VALUE    → GBP (server-side FX conversion via live GBPUSD=X rate)
+// AVG/LAST → native instrument currency (USD for US stocks)
+const COL_HEADERS = ['TICKER', 'COMPANY', 'QTY', 'AVG $', 'LAST $', 'P&L (£)', 'P&L%', 'VALUE (£)', '24H%'];
 
 export default function HoldingsTable({ holdings }: HoldingsTableProps) {
   const fmt = {
-    price: (v: number) => `$${v.toFixed(2)}`,
+    // GBP — user is UK-based; T212 account is denominated in £
+    price: (v: number) => `£${v.toFixed(2)}`,
     pct: (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`,
     qty: (v: number) => v.toLocaleString(),
-    value: (v: number) => `$${v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+    value: (v: number) => `£${v.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
   };
 
   const pnlColor = (v: number) =>
@@ -78,8 +83,8 @@ export default function HoldingsTable({ holdings }: HoldingsTableProps) {
               <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
                 {fmt.value(h.totalValue)}
               </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: pnlColor(h.percentageChange24h) }}>
-                {fmt.pct(h.percentageChange24h)}
+              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: h.percentageChange24h === 0 ? 'var(--color-text-muted)' : pnlColor(h.percentageChange24h) }}>
+                {h.percentageChange24h === 0 ? 'N/A' : fmt.pct(h.percentageChange24h)}
               </td>
             </tr>
           ))}

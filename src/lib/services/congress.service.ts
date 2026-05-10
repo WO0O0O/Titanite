@@ -1,7 +1,7 @@
 /**
  * Congress data service — SERVER ONLY.
  *
- * Fetches from two public S3 JSON feeds:
+ * Fetches from the community-maintained GitHub raw JSON feeds:
  *   - SenateStockWatcher (senate transactions)
  *   - HouseStockWatcher (house transactions)
  *
@@ -16,12 +16,14 @@
 import type { CongressTrade } from '@/types/congress';
 import { MOCK_CONGRESS_TRADES } from '@/lib/mock/congress.mock';
 
+// Both feeds are hosted on S3, not raw GitHub — raw GitHub URLs return 404 for large files.
+// Senate JSON is ~4MB so we skip the Next.js fetch cache entirely (it rejects items >2MB).
 const SENATE_URL =
   'https://senate-stock-watcher-data.s3-us-west-2.amazonaws.com/aggregate/all_transactions.json';
 const HOUSE_URL =
   'https://house-stock-watcher-data.s3-us-west-2.amazonaws.com/data/all_transactions.json';
 
-// Raw shapes from the two feeds (abbreviated to relevant fields)
+// Raw shapes from the two feeds
 interface RawSenateTrade {
   transaction_date: string;
   disclosure_date: string;
@@ -44,7 +46,7 @@ interface RawHouseTrade {
 }
 
 function mapTradeType(raw: string): 'BUY' | 'SELL' {
-  const lower = raw.toLowerCase();
+  const lower = raw?.toLowerCase() || '';
   if (lower.includes('purchase') || lower.includes('buy')) return 'BUY';
   return 'SELL';
 }
@@ -86,20 +88,30 @@ function normaliseHouse(raw: RawHouseTrade, index: number): CongressTrade {
 }
 
 export async function fetchCongressTrades(): Promise<CongressTrade[]> {
+  if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
+    return MOCK_CONGRESS_TRADES;
+  }
+
   try {
+    // Use cache: 'no-store' — both files are >2MB and Next.js silently refuses to cache them,
+    // which caused every request to re-fetch anyway. Explicit no-store avoids the error spam.
+    // User-Agent is required — S3 returns 403 for requests without one (bot-filtering).
+    const congressHeaders = {
+      'User-Agent': 'Mozilla/5.0 (compatible; MarketSentinel/1.0)',
+      'Accept': 'application/json',
+    };
     const [senateRes, houseRes] = await Promise.all([
-      fetch(SENATE_URL, { next: { revalidate: 3600 } }), // Cache for 1 hour
-      fetch(HOUSE_URL,  { next: { revalidate: 3600 } }),
+      fetch(SENATE_URL, { cache: 'no-store', headers: congressHeaders }),
+      fetch(HOUSE_URL,  { cache: 'no-store', headers: congressHeaders }),
     ]);
 
     if (!senateRes.ok || !houseRes.ok) {
-      throw new Error(`Congress feed error: ${senateRes.status} / ${houseRes.status}`);
+      throw new Error(`Congress feed error: Senate(${senateRes.status}) / House(${houseRes.status})`);
     }
 
     const senateTrades: RawSenateTrade[] = await senateRes.json();
     const houseTrades:  RawHouseTrade[]  = await houseRes.json();
 
-    // Take the 100 most recent from each and merge — filter out non-stock entries
     const senate = senateTrades
       .slice(-100)
       .map(normaliseSenate)
@@ -110,7 +122,6 @@ export async function fetchCongressTrades(): Promise<CongressTrade[]> {
       .map(normaliseHouse)
       .filter((t) => t.ticker && t.ticker !== 'N/A' && t.ticker.length <= 5);
 
-    // Sort by disclosure date descending (most recent first)
     return [...senate, ...house].sort(
       (a, b) => new Date(b.disclosureDate).getTime() - new Date(a.disclosureDate).getTime()
     );

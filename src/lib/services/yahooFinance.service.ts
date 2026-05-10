@@ -11,13 +11,13 @@
  * is accurate. Falls back gracefully to mock data on any error.
  */
 
-import defaultYahooFinance from 'yahoo-finance2';
+// yahoo-finance2 v3 breaking change: default export is now the class, not a singleton instance.
+// Must instantiate once at module level.
+import YahooFinance from 'yahoo-finance2';
+const yahooFinance = new YahooFinance();
 import { computeEMA } from '@/lib/utils/ema';
 import type { MarketContext, MarketSnapshot } from '@/types/market';
 import { MOCK_MARKET_CONTEXT, MOCK_MARKET_SNAPSHOTS } from '@/lib/mock/marketData.mock';
-
-// Ensure we are using the v2 instance correctly
-const yahooFinance = defaultYahooFinance;
 
 // Symbol definitions — map our metric IDs to Yahoo Finance symbols
 const SYMBOLS = {

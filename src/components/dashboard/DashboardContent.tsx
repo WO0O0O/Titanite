@@ -23,7 +23,8 @@ import TerminalWindow from '@/components/layout/TerminalWindow';
 import { ArrowLeftRight } from 'lucide-react';
 
 const fmt = {
-  value: (v: number) => `$${v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+  // GBP — user is UK-based; T212 account is denominated in £
+  value: (v: number) => `£${v.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
   pct: (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`,
 };
 

@@ -4,7 +4,30 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.5.1] — Phase 5 Bug Fixes & Data Accuracy — 2026-05-10
+
+### Fixed
+- **Congress API 403** — Switched Senate/House Watcher URLs from dead raw GitHub paths to the correct S3 endpoints (`senate-stock-watcher-data.s3-us-west-2.amazonaws.com` / `house-stock-watcher-data.s3-us-west-2.amazonaws.com`). Added `User-Agent` header to prevent S3 bot-filtering (403). Replaced `{ next: { revalidate: 3600 } }` with `{ cache: 'no-store' }` to eliminate Next.js 2MB fetch-cache overflow errors.
+- **Yahoo Finance 500** — `yahoo-finance2` v3 breaking change: default export is now the class, not a singleton instance. Fixed with `import YahooFinance from 'yahoo-finance2'; const yahooFinance = new YahooFinance();` in both `yahooFinance.service.ts` and `trading212.service.ts`.
+- **VALUE column showing USD** — Per-position value was `currentPrice x qty` in native instrument currency (USD). Now fetches live `USDGBP=X` FX rate via yahoo-finance2 in parallel with T212 calls and multiplies to get GBP value. Falls back to `0.79` on FX fetch failure.
+- **FX direction bug** — Initial FX fix incorrectly used `GBPUSD=X` (~1.27, USD-per-GBP) as a multiplier, inflating USD values by ~27%. Corrected to `USDGBP=X` (~0.79, GBP-per-USD).
+- **P&L% mixed currencies** — Was computing `ppl (GBP) / (avgPrice x qty) (USD)` — a cross-currency ratio giving a meaningless number. Fixed to pure price ratio: `(currentPrice - avgPrice) / avgPrice x 100` (currency-neutral).
+- **24H% showing all-time gain** — Was computing `(currentPrice - avgPrice) / avgPrice` which is all-time P&L%, not daily change. T212 `/equity/portfolio` has no `previousClose` field. Now set to `0`; UI renders `N/A` in muted colour instead of a misleading number.
+- **Currency symbols** — All `$` / `en-US` locale formatting replaced with `£` / `en-GB` in `HoldingsTable` and `DashboardContent` (portfolio summary strip). Column headers updated to `AVG $`, `LAST $`, `P&L (£)`, `VALUE (£)`.
+
+### Added
+- **`TICKER_DISPLAY_OVERRIDES` map** in `trading212.service.ts` — T212 retains legacy internal instrument identifiers after corporate actions (SPAC mergers, rebrands). Map corrects display tickers to current market symbols:
+  - `YNDX` → `NBIS` (Yandex NV → Nebius Group N.V., Aug 2024)
+  - `VACQ` → `RKLB` (Vector Acquisition Corp → Rocket Lab USA, Aug 2021)
+  - `SGH`  → `PENG` (SMART Global Holdings → Penguin Solutions, Oct 2024)
+  - `IPAX` → `LUNR` (Inflection Point Acquisition → Intuitive Machines, Feb 2023)
+  - `NPA`  → `ASTS` (New Providence Acquisition → AST SpaceMobile, Apr 2021)
+  - `ACIC` → `ACHR` (Atlas Crest Investment Corp → Archer Aviation, Sep 2021)
+
+---
+
 ## [0.5.0] — Phase 5: API Integration & Real Data Layer — 2026-05-10
+
 ### Added
 - `src/lib/utils/ema.ts` — Pure EMA calculation (periods 9/21/50/200), seeded with SMA.
 - `src/lib/services/yahooFinance.service.ts` — Parallel symbol fetches, EMA computation, graceful mock fallback.
@@ -13,11 +36,15 @@ All notable changes to this project will be documented in this file.
 - `src/lib/services/finnhub.service.ts` — Finnhub news with keyword-based sentiment heuristic.
 - `src/app/api/` — Route handlers for `/api/market`, `/api/portfolio`, `/api/congress`, `/api/intel`.
 - `src/hooks/` — TanStack Query hooks: `useMarketData`, `useHoldings`, `useCongressTrades`, `useIntelFeed`.
+
 ### Changed
 - `DashboardContent`, `IntelContent`, `CongressContent` — replaced direct mock imports with data hooks.
 - `DashboardContent` — `evaluateAll()` fires automatically when live market data resolves.
 
+---
+
 ## [0.4.0] — Phase 4: Dashboard, Intel Hub & Congress Tracker UI — 2026-05-10
+
 ### Added
 - `src/lib/mock/intelFeed.mock.ts` — 8 intel items (Fed/Warsh, holdings-specific, macro).
 - `src/lib/mock/congress.mock.ts` — 8 congressional trades including LUNR, RKLB, ASTS, PLTR, NVDA.
@@ -30,11 +57,14 @@ All notable changes to this project will be documented in this file.
 - `src/components/congress/CongressContent.tsx` — Client-filtered congressional disclosures table.
 - All 4 pages updated from stubs to full implementations.
 
+---
+
 ## [0.3.0] — Phase 3: State Management & Mock Prototype Logic — 2026-05-10
+
 ### Added
 - `src/types/` — All TypeScript interfaces: `signals`, `holdings`, `market`, `intel`, `congress`.
 - `src/lib/metrics/registry.ts` — `METRIC_REGISTRY` with 8 metrics across 6 categories. Fully extensible.
-- `src/lib/mock/` — Mock data for market context, holdings (LUNR/RKLB/ASTS/PLTR/NVDA), Master Signals, intel feed, congress trades.
+- `src/lib/mock/` — Mock data for market context, holdings, Master Signals, intel feed, congress trades.
 - `src/lib/evaluator/signalEvaluator.ts` — Pure evaluator: static thresholds, static crossovers, metric-vs-metric crossovers.
 - `src/store/signalStore.ts` — Zustand: CRUD for Master Signals, `evaluateAll`, derived selectors.
 - `src/store/uiStore.ts` — Zustand: selected signal ID, Warsh Sentiment toggle.
@@ -42,25 +72,31 @@ All notable changes to this project will be documented in this file.
 - `src/components/builder/` — Full Signal Builder: `MetricSelector`, `ConditionRow`, `SignalEditor`, `MasterSignalList`, `BuilderContent`.
 - `/builder` page rebuilt as a proper Server Component shell with a `BuilderContent` client boundary.
 
+---
+
 ## [0.2.0] — Phase 2: Core UI Scaffold & Theming — 2026-05-10
+
 ### Added
-- `src/app/globals.css` — Full Bloomberg terminal design system via Tailwind v4 `@theme` block (colour tokens, typography, custom scrollbars).
+- `src/app/globals.css` — Full Bloomberg terminal design system via Tailwind v4 `@theme` block.
 - `src/lib/utils/cn.ts` — `clsx` + `tailwind-merge` utility.
-- `src/app/providers.tsx` — Client-side `QueryClientProvider` wrapper, keeping root layout a Server Component.
+- `src/app/providers.tsx` — Client-side `QueryClientProvider` wrapper.
 - `src/components/layout/Header.tsx` — Fixed top bar with app identity, system status pills, and live clock.
-- `src/components/layout/HeaderClock.tsx` — Isolated client component for the live ticking clock (smallest client boundary pattern).
-- `src/components/layout/Sidebar.tsx` — Fixed left navigation with active route highlighting via `usePathname`.
-- `src/components/layout/TerminalWindow.tsx` — Reusable Bloomberg-style content pane wrapper with chrome bar.
+- `src/components/layout/HeaderClock.tsx` — Isolated client component for the live ticking clock.
+- `src/components/layout/Sidebar.tsx` — Fixed left navigation with active route highlighting.
+- `src/components/layout/TerminalWindow.tsx` — Reusable Bloomberg-style content pane wrapper.
 - `src/app/page.tsx` — Root redirect to `/dashboard`.
 - Stub pages for all 4 routes: `/dashboard`, `/builder`, `/intel`, `/congress`.
 
+---
+
 ## [0.1.0] — Phase 1: Planning & Setup — 2026-05-10
+
 ### Added
 - Initial project documentation (`overview.md`, `changelog.md`, `testplan.md`, `prompt.md`, `phases.md`, `architecture.md`, `data_models.md`, `file_structure.md`, `api_contracts.md`, `AI_CONTEXT.md`).
 - Next.js 16 (App Router) project initialised with Tailwind CSS v4, TypeScript.
 - Dependencies installed: `zustand`, `@tanstack/react-query`, `lucide-react`, `recharts`, `clsx`, `tailwind-merge`, `yahoo-finance2`.
 
 ### Changed
-- Updated documentation with Master Signals (MS) capabilities (scalable builder for hundreds of signals including EMA, volatility, gold).
-- Refined UI/UX requirements: Bloomberg terminal look but simplified and not overly complicated.
+- Updated documentation with Master Signals (MS) capabilities.
+- Refined UI/UX requirements: Bloomberg terminal look, simplified.
 - Finalised API stack: `yahoo-finance2`, Trading 212 Official API, SenateStockWatcher, HouseStockWatcher, Finnhub.
