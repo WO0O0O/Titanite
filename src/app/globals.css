@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─────────────────────────────────────────────────────────────
+   MARKET SENTINEL — Bloomberg Terminal Design System
+   All design tokens are defined here via Tailwind v4's @theme
+   block. This replaces tailwind.config.ts entirely in v4.
+───────────────────────────────────────────────────────────── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Fonts — inherit Geist from layout.tsx font variables */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* ── Colour Palette ──────────────────────────────────────── */
+
+  /* True terminal blacks — not #000 (too harsh), not greys */
+  --color-terminal-black:   #090b0e;
+  --color-terminal-900:     #0e1117;
+  --color-terminal-800:     #141921;
+  --color-terminal-700:     #1c2333;
+  --color-terminal-600:     #252f42;
+  --color-terminal-500:     #2e3a52;
+
+  /* Borders — subtle, keeping the dense terminal feel */
+  --color-border:           #1e2a3a;
+  --color-border-subtle:    #162030;
+
+  /* Text hierarchy */
+  --color-text-primary:     #e8edf5;   /* main readable text */
+  --color-text-secondary:   #7a8aa0;   /* labels, metadata */
+  --color-text-muted:       #3d5068;   /* very secondary, timestamps */
+
+  /* Status — Bloomberg-style signal colours */
+  --color-signal-ok:        #00d4aa;   /* neon teal: active / positive */
+  --color-signal-alert:     #ff4d4d;   /* hot red: triggered / danger */
+  --color-signal-warning:   #f5a623;   /* amber: elevated / caution */
+  --color-signal-neutral:   #7a8aa0;   /* grey: inactive / neutral */
+
+  /* Accent — used sparingly for interactive elements */
+  --color-accent:           #1e90ff;   /* Bloomberg blue */
+  --color-accent-dim:       #0f4a80;
+
+  /* ── Spacing (tighter than Tailwind defaults for density) ── */
+  --spacing-px:     1px;
+  --spacing-0:      0px;
+  --spacing-0-5:    2px;
+  --spacing-1:      4px;
+  --spacing-1-5:    6px;
+  --spacing-2:      8px;
+  --spacing-3:      12px;
+  --spacing-4:      16px;
+  --spacing-5:      20px;
+  --spacing-6:      24px;
+  --spacing-8:      32px;
+  --spacing-10:     40px;
+  --spacing-12:     48px;
+  --spacing-16:     64px;
+  --spacing-sidebar: 224px;  /* fixed sidebar width */
+  --spacing-header:  48px;   /* fixed header height */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Global Base Styles ─────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  /* Force dark at OS level — this app is always dark */
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-terminal-black);
+  color: var(--color-text-primary);
+  /* Mono everywhere by default — Bloomberg uses mono for data density */
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar — custom dark terminal style ───────────────────  */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-terminal-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-terminal-600);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-terminal-500);
+}
+
+/* ── Selection colour ─────────────────────────────────────────  */
+::selection {
+  background: var(--color-accent-dim);
+  color: var(--color-text-primary);
 }
