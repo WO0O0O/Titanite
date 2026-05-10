@@ -21,6 +21,10 @@ interface UIStore {
    */
   warshSentiment: 1 | 0 | -1;
   setWarshSentiment: (value: 1 | 0 | -1) => void;
+
+  /** Dashboard layout toggle */
+  dashboardLayout: 'SIGNALS_PRIMARY' | 'HOLDINGS_PRIMARY';
+  setDashboardLayout: (layout: 'SIGNALS_PRIMARY' | 'HOLDINGS_PRIMARY') => void;
 }
 
 export const useUIStore = create<UIStore>((set) => ({
@@ -29,4 +33,7 @@ export const useUIStore = create<UIStore>((set) => ({
 
   warshSentiment: 0, // Default: NEUTRAL
   setWarshSentiment: (value) => set({ warshSentiment: value }),
+
+  dashboardLayout: 'SIGNALS_PRIMARY',
+  setDashboardLayout: (layout) => set({ dashboardLayout: layout }),
 }));

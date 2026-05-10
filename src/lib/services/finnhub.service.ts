@@ -63,6 +63,7 @@ export async function fetchIntelFeed(): Promise<IntelItem[]> {
     return MOCK_INTEL_ITEMS;
   }
 
+  try {
     const res = await fetch(
       `${FINNHUB_BASE}/news?category=general&token=${apiKey}`,
       { next: { revalidate: 900 } } // 15-minute cache — matches Yahoo Finance data delay
@@ -76,4 +77,8 @@ export async function fetchIntelFeed(): Promise<IntelItem[]> {
 
     // Limit to 20 most recent items to keep the feed scannable
     return items.slice(0, 20).map(mapFinnhubItem);
+  } catch (error) {
+    console.error('[Finnhub] Fetch intel feed failed, falling back to mock data.', error);
+    return MOCK_INTEL_ITEMS;
+  }
 }

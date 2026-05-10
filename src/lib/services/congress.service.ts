@@ -86,6 +86,7 @@ function normaliseHouse(raw: RawHouseTrade, index: number): CongressTrade {
 }
 
 export async function fetchCongressTrades(): Promise<CongressTrade[]> {
+  try {
     const [senateRes, houseRes] = await Promise.all([
       fetch(SENATE_URL, { next: { revalidate: 3600 } }), // Cache for 1 hour
       fetch(HOUSE_URL,  { next: { revalidate: 3600 } }),
@@ -113,4 +114,8 @@ export async function fetchCongressTrades(): Promise<CongressTrade[]> {
     return [...senate, ...house].sort(
       (a, b) => new Date(b.disclosureDate).getTime() - new Date(a.disclosureDate).getTime()
     );
+  } catch (error) {
+    console.error('[Congress] Fetch trades failed, falling back to mock data.', error);
+    return MOCK_CONGRESS_TRADES;
+  }
 }

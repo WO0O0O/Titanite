@@ -70,39 +70,45 @@ export interface PortfolioServiceResponse {
 
 export async function fetchPortfolio(): Promise<PortfolioServiceResponse> {
   const apiKey = process.env.T212_API_KEY;
+  const apiSecret = process.env.T212_API_SECRET;
 
-  if (!apiKey) {
-    console.warn('[T212] T212_API_KEY not set — returning mock portfolio data.');
+  if (!apiKey || !apiSecret) {
+    console.warn('[T212] T212_API_KEY or T212_API_SECRET not set — returning mock portfolio data.');
     return { holdings: MOCK_HOLDINGS, summary: MOCK_PORTFOLIO_SUMMARY };
   }
 
-    const headers = { Authorization: apiKey };
+  const credentials = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
+  const headers = { Authorization: `Basic ${credentials}` };
 
+  const baseUrl = process.env.T212_BASE_URL || T212_BASE;
+
+  try {
     const [positionsRes, cashRes] = await Promise.all([
-      fetch(`${T212_BASE}/equity/portfolio`, { headers }),
-      fetch(`${T212_BASE}/equity/account/cash`, { headers }),
+      fetch(`${baseUrl}/equity/portfolio`, { headers }),
+      fetch(`${baseUrl}/equity/account/cash`, { headers }),
     ]);
 
-    if (!positionsRes.ok || !cashRes.ok) {
-      throw new Error(`T212 API error: ${positionsRes.status} / ${cashRes.status}`);
+      if (!positionsRes.ok || !cashRes.ok) {
+        throw new Error(`T212 API error: ${positionsRes.status} / ${cashRes.status}`);
+      }
+
+      const positions: T212Position[] = await positionsRes.json();
+      const cash: T212Cash = await cashRes.json();
+
+      const holdings = positions.map(mapPosition);
+
+      // We use the official T212 Cash endpoint payload for portfolio totals as it is the exact truth
+      const summary: PortfolioSummary = {
+        totalInvested: cash.invested ?? 0,
+        totalValue: cash.total ?? 0,
+        totalPnlValue: cash.ppl ?? 0,
+        totalPnlPercent: cash.invested && cash.invested > 0 ? (cash.ppl / cash.invested) * 100 : 0,
+        cashBalance: cash.free ?? 0,
+      };
+
+      return { holdings, summary };
+    } catch (error) {
+      console.error('[T212] Fetch portfolio failed, falling back to mock data.', error);
+      return { holdings: MOCK_HOLDINGS, summary: MOCK_PORTFOLIO_SUMMARY };
     }
-
-    const positions: T212Position[] = await positionsRes.json();
-    const cash: T212Cash = await cashRes.json();
-
-    const holdings = positions.map(mapPosition);
-
-    const totalValue = holdings.reduce((s, h) => s + h.totalValue, 0);
-    const totalInvested = holdings.reduce((s, h) => s + h.averagePrice * h.quantity, 0);
-    const totalPnlValue = holdings.reduce((s, h) => s + h.pnlValue, 0);
-
-    const summary: PortfolioSummary = {
-      totalInvested,
-      totalValue,
-      totalPnlValue,
-      totalPnlPercent: totalInvested > 0 ? (totalPnlValue / totalInvested) * 100 : 0,
-      cashBalance: cash.free ?? 0,
-    };
-
-    return { holdings, summary };
 }

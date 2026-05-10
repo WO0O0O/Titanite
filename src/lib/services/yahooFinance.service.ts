@@ -11,10 +11,13 @@
  * is accurate. Falls back gracefully to mock data on any error.
  */
 
-import yahooFinance from 'yahoo-finance2';
+import defaultYahooFinance from 'yahoo-finance2';
 import { computeEMA } from '@/lib/utils/ema';
 import type { MarketContext, MarketSnapshot } from '@/types/market';
 import { MOCK_MARKET_CONTEXT, MOCK_MARKET_SNAPSHOTS } from '@/lib/mock/marketData.mock';
+
+// Ensure we are using the v2 instance correctly
+const yahooFinance = defaultYahooFinance;
 
 // Symbol definitions — map our metric IDs to Yahoo Finance symbols
 const SYMBOLS = {

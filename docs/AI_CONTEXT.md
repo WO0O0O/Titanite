@@ -10,11 +10,7 @@ A single-tenant, Bloomberg-terminal-style Next.js dashboard for tracking high-vo
 ---
 
 ## Current Phase
-**Phase 1 complete. Starting Phase 2: Core UI Scaffold & Theming.**
-- Next.js App Router project is initialised with Tailwind CSS.
-- Dependencies installed: `zustand`, `@tanstack/react-query`, `lucide-react`, `recharts`, `clsx`, `tailwind-merge`.
-- `yahoo-finance2` still needs installing.
-- `.env.local` still needs creating (see Key Environment Variables below).
+just completed phase 5
 
 ---
 
