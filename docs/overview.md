@@ -8,8 +8,11 @@ Market Sentinel is a Next.js application designed to track high-volatility tech 
 
 - **Frontend**: Next.js (App Router), React, Tailwind CSS, Lucide Icons
 - **State Management**: TanStack Query (data fetching), Zustand (signal state)
-- **Charts**: Recharts or Tremor.so
-- **Data Sources**: Trading 212 API (placeholder), Alpha Vantage/Yahoo Finance/Polygon.io for TNX, VIX, S&P 500
+- **Charts**: Recharts (minimal sparklines only — primary display is dense data tables)
+- **Market Data**: `yahoo-finance2` npm package (TNX, VIX, S&P 500, Gold, EMAs — free, 15-min delayed equity quotes)
+- **Portfolio Data**: Trading 212 Official API (full read access, no trade execution)
+- **Congress Data**: SenateStockWatcher + HouseStockWatcher (free, no key) + Finnhub (enrichment)
+- **Future Backend**: Supabase (PostgreSQL + Auth)
 
 ## Core Features
 
@@ -23,6 +26,10 @@ Market Sentinel is a Next.js application designed to track high-volatility tech 
 3. **Intel Hub (`/intel`)**:
    - Feed for geopolitical news and Fed-specific updates.
    - "Fed Transition Watch" focusing on Kevin Warsh's speeches.
+4. **Congress Tracker (`/congress`)**:
+   - US Congressional stock disclosure feed (Senate + House).
+   - Filter by politician (e.g. Pelosi) or ticker (e.g. LUNR, RKLB, ASTS).
+   - Data from SenateStockWatcher, HouseStockWatcher, and Finnhub.
 
 ## Initial Logic Setup (The 4 Pillars)
 
