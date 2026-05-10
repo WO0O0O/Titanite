@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.3.0] — Phase 3: State Management & Mock Prototype Logic — 2026-05-10
+### Added
+- `src/types/` — All TypeScript interfaces: `signals`, `holdings`, `market`, `intel`, `congress`.
+- `src/lib/metrics/registry.ts` — `METRIC_REGISTRY` with 8 metrics across 6 categories. Fully extensible.
+- `src/lib/mock/` — Mock data for market context, holdings (LUNR/RKLB/ASTS/PLTR/NVDA), Master Signals, intel feed, congress trades.
+- `src/lib/evaluator/signalEvaluator.ts` — Pure evaluator: static thresholds, static crossovers, metric-vs-metric crossovers.
+- `src/store/signalStore.ts` — Zustand: CRUD for Master Signals, `evaluateAll`, derived selectors.
+- `src/store/uiStore.ts` — Zustand: selected signal ID, Warsh Sentiment toggle.
+- `src/components/ui/Badge.tsx`, `ProgressMeter.tsx`, `StatusDot.tsx` — Shared UI primitives.
+- `src/components/builder/` — Full Signal Builder: `MetricSelector`, `ConditionRow`, `SignalEditor`, `MasterSignalList`, `BuilderContent`.
+- `/builder` page rebuilt as a proper Server Component shell with a `BuilderContent` client boundary.
+
 ## [0.2.0] — Phase 2: Core UI Scaffold & Theming — 2026-05-10
 ### Added
 - `src/app/globals.css` — Full Bloomberg terminal design system via Tailwind v4 `@theme` block (colour tokens, typography, custom scrollbars).

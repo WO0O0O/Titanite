@@ -1,15 +1,10 @@
-import TerminalWindow from '@/components/layout/TerminalWindow';
-
 /**
- * Signal Builder page — stub for Phase 2.
- * Will be populated in Phase 3 with SignalEditor and MasterSignalList.
+ * Signal Builder page — Server Component shell.
+ * All interactivity lives inside BuilderContent (client component).
  */
+
+import BuilderContent from '@/components/builder/BuilderContent';
+
 export default function BuilderPage() {
-  return (
-    <TerminalWindow title="Signal Builder" code="BLD" rightSlot="PROTOTYPE MODE">
-      <p style={{ color: 'var(--color-text-muted)' }}>
-        Signal Builder content coming in Phase 3.
-      </p>
-    </TerminalWindow>
-  );
+  return <BuilderContent />;
 }
