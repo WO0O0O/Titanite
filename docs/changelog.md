@@ -4,25 +4,51 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+---
+
+## [0.6.0] — Phase 6a: Web Intelligence Layer — 2026-05-18
+
+### Added
+- `src/lib/services/rss.service.ts` — 6 targeted Google News RSS feeds fetched in parallel, no external dependencies. Inline XML parser handles CDATA, `<title>`, `<link>`, `<pubDate>`, `<source>`. Feeds:
+  - `short-research` — Wolfpack, Hindenburg, Citron, Muddy Waters coverage
+  - `ft-tech` — Financial Times semiconductor/AI/data centre articles
+  - `power-wall` — Grid delay, transformer lead time, power allocation blocking DC builds (`POWER_WALL`)
+  - `capex-watch` — MSFT/META/AMZN/GOOGL CapEx vs cloud/AI revenue language (`HYPERSCALER_CAPEX`)
+  - `lead-time` — NVDA/TSMC GPU delivery window normalisation language (`LEAD_TIME_TRAP`)
+  - `deferred-delivery` — Corning/AAOI/Lumentum site-readiness/pushout language (`DEFERRED_DELIVERY`)
+- Company→ticker auto-tagging in `rss.service.ts` — scans headlines for company name substrings and attaches relevant tickers.
+- Signal filter row in `IntelContent` — amber buttons above sentiment row: `ALL SIGNALS | POWER WALL | CAPEX | LEAD TIME | DEFERRED`. Composes with sentiment filter.
+- Signal tag badges in `IntelItemRow` — signal-tagged articles show macro signal name in amber below ticker badges.
+
+### Changed
+- `src/app/api/intel/route.ts` — merges Finnhub + RSS in parallel, deduplicates by normalised headline, sorts newest-first.
+- `src/lib/services/finnhub.service.ts` — improved `deriveSentiment` keywords (consistent with RSS service); item limit 20→15.
+- `IntelItemRow` timestamp — always `DD Mon HH:MM` format (e.g. `17 May 05:01`). Seconds removed.
+
+---
+
+## [0.5.5] — Phase 5.5: Housekeeping & Stability — 2026-05-18
+
+### Fixed
+- **Yahoo Finance `historical()` deprecated** — migrated to `chart()` in `yahooFinance.service.ts`. `chart()` returns `{ quotes: [...] }` not a raw array. Added `suppressNotices: ['yahooSurvey', 'ripHistorical']` to silence log spam on dev server start.
+- **Intel page crash** — `MOCK_FED_WATCH_ITEMS is not defined` was a stale `.next/` cache from a prior refactor. Cleared on rebuild.
+- **Congress tab** — replaced broken `CongressContent` with a Coming Soon stub. All code preserved. Sidebar nav item rendered as non-clickable greyed div with `SOON` badge (`disabled: true` in `NAV_ITEMS`).
+
+---
+
 ## [0.5.1] — Phase 5 Bug Fixes & Data Accuracy — 2026-05-10
 
 ### Fixed
-- **Congress API 403** — Switched Senate/House Watcher URLs from dead raw GitHub paths to the correct S3 endpoints (`senate-stock-watcher-data.s3-us-west-2.amazonaws.com` / `house-stock-watcher-data.s3-us-west-2.amazonaws.com`). Added `User-Agent` header to prevent S3 bot-filtering (403). Replaced `{ next: { revalidate: 3600 } }` with `{ cache: 'no-store' }` to eliminate Next.js 2MB fetch-cache overflow errors.
-- **Yahoo Finance 500** — `yahoo-finance2` v3 breaking change: default export is now the class, not a singleton instance. Fixed with `import YahooFinance from 'yahoo-finance2'; const yahooFinance = new YahooFinance();` in both `yahooFinance.service.ts` and `trading212.service.ts`.
-- **VALUE column showing USD** — Per-position value was `currentPrice x qty` in native instrument currency (USD). Now fetches live `USDGBP=X` FX rate via yahoo-finance2 in parallel with T212 calls and multiplies to get GBP value. Falls back to `0.79` on FX fetch failure.
-- **FX direction bug** — Initial FX fix incorrectly used `GBPUSD=X` (~1.27, USD-per-GBP) as a multiplier, inflating USD values by ~27%. Corrected to `USDGBP=X` (~0.79, GBP-per-USD).
-- **P&L% mixed currencies** — Was computing `ppl (GBP) / (avgPrice x qty) (USD)` — a cross-currency ratio giving a meaningless number. Fixed to pure price ratio: `(currentPrice - avgPrice) / avgPrice x 100` (currency-neutral).
-- **24H% showing all-time gain** — Was computing `(currentPrice - avgPrice) / avgPrice` which is all-time P&L%, not daily change. T212 `/equity/portfolio` has no `previousClose` field. Now set to `0`; UI renders `N/A` in muted colour instead of a misleading number.
-- **Currency symbols** — All `$` / `en-US` locale formatting replaced with `£` / `en-GB` in `HoldingsTable` and `DashboardContent` (portfolio summary strip). Column headers updated to `AVG $`, `LAST $`, `P&L (£)`, `VALUE (£)`.
+- **Congress API 403** — Switched Senate/House Watcher URLs to correct S3 endpoints. Added `User-Agent` header. Replaced `{ next: { revalidate: 3600 } }` with `{ cache: 'no-store' }` to eliminate Next.js 2MB fetch-cache overflow.
+- **Yahoo Finance 500** — `yahoo-finance2` v3 breaking change: default export is now the class. Fixed: `import YahooFinance from 'yahoo-finance2'; const yahooFinance = new YahooFinance();`.
+- **VALUE column showing USD** — Per-position value now fetches live `USDGBP=X` FX rate via yahoo-finance2 in parallel with T212 calls. Falls back to `0.79`.
+- **FX direction bug** — `GBPUSD=X` (~1.27) was used as multiplier, inflating values. Corrected to `USDGBP=X` (~0.79).
+- **P&L% mixed currencies** — Was `ppl (GBP) / (avgPrice x qty) (USD)`. Fixed to `(currentPrice - avgPrice) / avgPrice x 100`.
+- **24H% showing all-time gain** — T212 `/equity/portfolio` has no `previousClose`. Set to `0`; UI shows `N/A`.
+- **Currency symbols** — `$`/`en-US` → `£`/`en-GB` throughout. Column headers: `AVG $`, `LAST $`, `P&L (£)`, `VALUE (£)`.
 
 ### Added
-- **`TICKER_DISPLAY_OVERRIDES` map** in `trading212.service.ts` — T212 retains legacy internal instrument identifiers after corporate actions (SPAC mergers, rebrands). Map corrects display tickers to current market symbols:
-  - `YNDX` → `NBIS` (Yandex NV → Nebius Group N.V., Aug 2024)
-  - `VACQ` → `RKLB` (Vector Acquisition Corp → Rocket Lab USA, Aug 2021)
-  - `SGH`  → `PENG` (SMART Global Holdings → Penguin Solutions, Oct 2024)
-  - `IPAX` → `LUNR` (Inflection Point Acquisition → Intuitive Machines, Feb 2023)
-  - `NPA`  → `ASTS` (New Providence Acquisition → AST SpaceMobile, Apr 2021)
-  - `ACIC` → `ACHR` (Atlas Crest Investment Corp → Archer Aviation, Sep 2021)
+- **`TICKER_DISPLAY_OVERRIDES`** in `trading212.service.ts` — corrects T212 legacy tickers: `YNDX→NBIS`, `VACQ→RKLB`, `SGH→PENG`, `IPAX→LUNR`, `NPA→ASTS`, `ACIC→ACHR`.
 
 ---
 

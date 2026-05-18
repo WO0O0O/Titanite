@@ -27,11 +27,21 @@ interface FinnhubNewsItem {
   url: string;
 }
 
-/** Simple keyword-based sentiment heuristic — good enough for a prototype. */
+/**
+ * Keyword-based sentiment heuristic — consistent with rss.service.ts scoring.
+ * Bearish is checked after bullish so an optimistic headline isn't mis-scored.
+ */
 function deriveSentiment(headline: string): IntelItem['sentiment'] {
   const lower = headline.toLowerCase();
-  const bearish = ['fall', 'drop', 'decline', 'crash', 'slump', 'plunge', 'hawkish', 'warn', 'risk', 'fear'];
-  const bullish = ['surge', 'rise', 'gain', 'rally', 'soar', 'jump', 'beat', 'win', 'strong', 'bull', 'dovish'];
+  const bullish = [
+    'surge', 'rise', 'gain', 'rally', 'soar', 'jump', 'beat', 'strong',
+    'bull', 'dovish', 'record', 'upgrade', 'outperform', 'growth', 'profit',
+  ];
+  const bearish = [
+    'fall', 'drop', 'decline', 'crash', 'slump', 'plunge', 'hawkish',
+    'warn', 'risk', 'fear', 'sell', 'loss', 'layoff', 'below', 'fraud',
+    'short', 'delay', 'pushout', 'correction', 'bubble', 'overvalued',
+  ];
   if (bullish.some((w) => lower.includes(w))) return 'BULLISH';
   if (bearish.some((w) => lower.includes(w))) return 'BEARISH';
   return 'NEUTRAL';
@@ -75,8 +85,8 @@ export async function fetchIntelFeed(): Promise<IntelItem[]> {
 
     const items: FinnhubNewsItem[] = await res.json();
 
-    // Limit to 20 most recent items to keep the feed scannable
-    return items.slice(0, 20).map(mapFinnhubItem);
+    // Limit to 15 most recent items — RSS feeds add ~48 more, so keep Finnhub focused
+    return items.slice(0, 15).map(mapFinnhubItem);
   } catch (error) {
     console.error('[Finnhub] Fetch intel feed failed, falling back to mock data.', error);
     return MOCK_INTEL_ITEMS;

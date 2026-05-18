@@ -24,11 +24,22 @@ const WARSH_DESC: Record<number, string> = {
   '-1': 'Dovish stance. Rate cuts likely. Risk assets supported.',
 };
 
-// Sentiment filter options for the feed
+// Sentiment filter options
 type SentimentFilter = 'ALL' | 'BULLISH' | 'BEARISH' | 'NEUTRAL';
+// Signal filter — matches relatedSignals array on each item
+type SignalFilter  = 'ALL' | 'POWER_WALL' | 'HYPERSCALER_CAPEX' | 'LEAD_TIME_TRAP' | 'DEFERRED_DELIVERY';
+
+const SIGNAL_LABELS: Record<SignalFilter, string> = {
+  ALL:               'ALL SIGNALS',
+  POWER_WALL:        'POWER WALL',
+  HYPERSCALER_CAPEX: 'CAPEX',
+  LEAD_TIME_TRAP:    'LEAD TIME',
+  DEFERRED_DELIVERY: 'DEFERRED',
+};
 
 export default function IntelContent() {
   const [sentimentFilter, setSentimentFilter] = useState<SentimentFilter>('ALL');
+  const [signalFilter,    setSignalFilter]    = useState<SignalFilter>('ALL');
   const { warshSentiment, setWarshSentiment } = useUIStore();
   const { evaluateAll } = useSignalStore();
   const { data: allItems = [] } = useIntelFeed();
@@ -52,9 +63,12 @@ export default function IntelContent() {
     });
   };
 
-  const filteredItems = sentimentFilter === 'ALL'
-    ? allItems
-    : allItems.filter((i) => i.sentiment === sentimentFilter);
+  const filteredItems = allItems.filter((i) => {
+    const sentimentOk = sentimentFilter === 'ALL' || i.sentiment === sentimentFilter;
+    // Signal filter: ALL shows everything; specific signal shows only items tagged with it
+    const signalOk = signalFilter === 'ALL' || i.relatedSignals.includes(signalFilter);
+    return sentimentOk && signalOk;
+  });
 
   const warshColor = warshSentiment === 1
     ? 'var(--color-signal-alert)'
@@ -73,21 +87,41 @@ export default function IntelContent() {
           title="Intel Feed"
           code="INT-1"
           rightSlot={
-            <div className="flex items-center gap-3">
-              {(['ALL', 'BULLISH', 'BEARISH', 'NEUTRAL'] as SentimentFilter[]).map((f) => (
-                <button
-                  key={f}
-                  type="button"
-                  onClick={() => setSentimentFilter(f)}
-                  className="text-[9px] tracking-wider transition-opacity"
-                  style={{
-                    color: sentimentFilter === f ? 'var(--color-text-primary)' : 'var(--color-text-muted)',
-                    opacity: sentimentFilter === f ? 1 : 0.6,
-                  }}
-                >
-                  {f}
-                </button>
-              ))}
+            <div className="flex flex-col items-end gap-1.5">
+              {/* Signal filter row */}
+              <div className="flex items-center gap-3">
+                {(Object.keys(SIGNAL_LABELS) as SignalFilter[]).map((f) => (
+                  <button
+                    key={f}
+                    type="button"
+                    onClick={() => setSignalFilter(f)}
+                    className="text-[8px] tracking-wider transition-opacity"
+                    style={{
+                      color: signalFilter === f ? 'var(--color-signal-warning)' : 'var(--color-text-muted)',
+                      opacity: signalFilter === f ? 1 : 0.5,
+                    }}
+                  >
+                    {SIGNAL_LABELS[f]}
+                  </button>
+                ))}
+              </div>
+              {/* Sentiment filter row */}
+              <div className="flex items-center gap-3">
+                {(['ALL', 'BULLISH', 'BEARISH', 'NEUTRAL'] as SentimentFilter[]).map((f) => (
+                  <button
+                    key={f}
+                    type="button"
+                    onClick={() => setSentimentFilter(f)}
+                    className="text-[9px] tracking-wider transition-opacity"
+                    style={{
+                      color: sentimentFilter === f ? 'var(--color-text-primary)' : 'var(--color-text-muted)',
+                      opacity: sentimentFilter === f ? 1 : 0.6,
+                    }}
+                  >
+                    {f}
+                  </button>
+                ))}
+              </div>
             </div>
           }
         >

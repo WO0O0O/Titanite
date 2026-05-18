@@ -19,11 +19,13 @@ const SENTIMENT_COLOR = {
 } as const;
 
 export default function IntelItemRow({ item, index }: IntelItemRowProps) {
-  const time = new Date(item.publishedAt).toLocaleTimeString('en-GB', {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  });
+  const dt = new Date(item.publishedAt);
+
+  // Always uniform: "17 May 05:01"
+  const timestamp = dt.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' })
+    + ' '
+    + dt.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+
   const sentimentColor = SENTIMENT_COLOR[item.sentiment];
 
   return (
@@ -35,9 +37,9 @@ export default function IntelItemRow({ item, index }: IntelItemRowProps) {
       }}
       onClick={() => item.url !== '#' && window.open(item.url, '_blank')}
     >
-      {/* Timestamp */}
-      <span className="text-[10px] tabular-nums shrink-0 mt-0.5" style={{ color: 'var(--color-text-muted)' }}>
-        {time}
+      {/* Timestamp — always uniform "17 May 14:07" */}
+      <span className="text-[10px] tabular-nums shrink-0 mt-0.5 w-20" style={{ color: 'var(--color-text-muted)' }}>
+        {timestamp}
       </span>
 
       {/* Sentiment badge */}
@@ -60,7 +62,7 @@ export default function IntelItemRow({ item, index }: IntelItemRowProps) {
 
       {/* Related tickers */}
       {item.relatedTickers.length > 0 && (
-        <div className="flex gap-1 shrink-0 mt-0.5">
+        <div className="flex gap-1 shrink-0 mt-0.5 flex-wrap">
           {item.relatedTickers.map((ticker) => (
             <span
               key={ticker}
@@ -68,6 +70,26 @@ export default function IntelItemRow({ item, index }: IntelItemRowProps) {
               style={{ color: 'var(--color-accent)', border: '1px solid var(--color-accent)30' }}
             >
               {ticker}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Signal tags — which macro signal this article is evidence for */}
+      {item.relatedSignals.length > 0 && (
+        <div className="flex gap-1 shrink-0 mt-0.5 flex-wrap">
+          {item.relatedSignals.map((sig) => (
+            <span
+              key={sig}
+              className="text-[8px] px-1 py-0.5 rounded-sm tracking-wider"
+              style={{
+                color: 'var(--color-signal-warning)',
+                border: '1px solid var(--color-signal-warning)40',
+              }}
+              title={sig}
+            >
+              {/* Shorten the signal ID for display */}
+              {sig.replace(/_/g, ' ')}
             </span>
           ))}
         </div>

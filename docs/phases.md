@@ -58,19 +58,22 @@
 
 ---
 
-## Phase 5.5: Housekeeping & Stability 🔧 UP NEXT
-- [ ] Fix Intel page crash — `MOCK_FED_WATCH_ITEMS is not defined`.
-- [ ] Fix `yahoo-finance2` deprecation — migrate `historical()` → `chart()`.
-- [ ] Congress tab — replace broken data with a "Coming Soon" stub (code preserved, just gated).
+## Phase 5.5: Housekeeping & Stability ✅ COMPLETE
+- [x] Fix Intel page crash — `MOCK_FED_WATCH_ITEMS is not defined` (stale `.next/` cache, cleared on rebuild).
+- [x] Fix `yahoo-finance2` deprecation — migrated `historical()` → `chart()`. Added `suppressNotices`.
+- [x] Congress tab — Coming Soon stub with greyed-out sidebar nav item (`SOON` badge).
 
 ---
 
-## Phase 6: Web Intelligence Layer (News Signal Inputs) 🌐
-See `docs/roadmap.md` for full detail.
-- [ ] Enhanced news monitoring (Finnhub + Google News RSS) for signal-relevant tickers.
-- [ ] Keyword matching engine for 4 macro signals (POWER_WALL, HYPERSCALER_CAPEX, LEAD_TIME_TRAP, DEFERRED_DELIVERY).
-- [ ] SEC EDGAR integration — search earnings transcripts for key phrases.
-- [ ] Signal Evidence Panel in Intel Hub.
+## Phase 6: Web Intelligence Layer ✅ COMPLETE (Phase 6a)
+- [x] `rss.service.ts` — 6 targeted Google News RSS feeds (no extra dependencies).
+- [x] Feeds: `short-research` (Wolfpack/Hindenburg/Citron), `ft-tech` (Financial Times), `power-wall`, `capex-watch`, `lead-time`, `deferred-delivery`.
+- [x] Company→ticker auto-tagging from headline text.
+- [x] Improved `deriveSentiment` — consistent across Finnhub and RSS, extended bearish phrases for supply-chain signals.
+- [x] Intel API route — merges Finnhub + RSS in parallel, deduplicates, sorts newest-first.
+- [x] Signal filter row in `IntelContent` — `ALL SIGNALS | POWER WALL | CAPEX | LEAD TIME | DEFERRED`.
+- [x] Signal tag badges in `IntelItemRow` — amber tags showing which macro signal an article is evidence for.
+- [x] Uniform timestamp format — `17 May 05:01` for all items.
 
 ## Phase 7: Discord Notifications 🔔
 See `docs/roadmap.md` for full detail.
