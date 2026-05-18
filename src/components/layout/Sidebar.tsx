@@ -23,6 +23,8 @@ interface NavItem {
   icon: React.ReactNode;
   /** Short terminal-style code shown next to the label */
   code: string;
+  /** If true, renders as a non-clickable greyed item with a SOON badge */
+  disabled?: boolean;
 }
 
 const NAV_ITEMS: NavItem[] = [
@@ -49,6 +51,8 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Congress',
     code: 'CGS',
     icon: <LandmarkIcon size={14} />,
+    // Paused: Senate/House Watcher S3 feeds are rate-limiting. Restored in a future phase.
+    disabled: true,
   },
 ];
 
@@ -73,7 +77,36 @@ export default function Sidebar() {
 
       <nav className="flex-1 flex flex-col gap-px px-2">
         {NAV_ITEMS.map((item) => {
-          const isActive = pathname.startsWith(item.href);
+          const isActive = !item.disabled && pathname.startsWith(item.href);
+
+          // Disabled items render as a non-interactive div to avoid routing to a broken page
+          if (item.disabled) {
+            return (
+              <div
+                key={item.href}
+                className="flex items-center gap-2 px-2 py-2 rounded-sm text-[12px] cursor-not-allowed opacity-40"
+                style={{ color: 'var(--color-text-muted)' }}
+                title="Coming soon — feature paused"
+              >
+                <span className="text-[10px] w-7 shrink-0" style={{ color: 'var(--color-text-muted)' }}>
+                  {item.code}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  {item.icon}
+                  {item.label}
+                </span>
+                <span
+                  className="ml-auto text-[8px] px-1 py-0.5 rounded tracking-widest"
+                  style={{
+                    border: '1px solid var(--color-border)',
+                    color: 'var(--color-text-muted)',
+                  }}
+                >
+                  SOON
+                </span>
+              </div>
+            );
+          }
 
           return (
             <Link

@@ -12,9 +12,10 @@
  */
 
 // yahoo-finance2 v3 breaking change: default export is now the class, not a singleton instance.
-// Must instantiate once at module level.
+// suppressNotices silences the survey prompt and the ripHistorical deprecation warning
+// (we've fully migrated from historical() to chart() so that warning is no longer relevant).
 import YahooFinance from 'yahoo-finance2';
-const yahooFinance = new YahooFinance();
+const yahooFinance = new YahooFinance({ suppressNotices: ['yahooSurvey', 'ripHistorical'] });
 import { computeEMA } from '@/lib/utils/ema';
 import type { MarketContext, MarketSnapshot } from '@/types/market';
 import { MOCK_MARKET_CONTEXT, MOCK_MARKET_SNAPSHOTS } from '@/lib/mock/marketData.mock';
@@ -38,17 +39,21 @@ async function getHistoricalCloses(symbol: string): Promise<number[]> {
   const start = new Date();
   start.setDate(start.getDate() - 400);
 
-  const rows: any[] = await yahooFinance.historical(symbol, {
+  // historical() was removed in yahoo-finance2 v3 (Yahoo killed the underlying API).
+  // chart() is the replacement — it returns { quotes: [...] } not a raw array.
+  const result = await yahooFinance.chart(symbol, {
     period1: start.toISOString().split('T')[0],
     period2: end.toISOString().split('T')[0],
     interval: '1d',
   });
 
+  const rows = result?.quotes ?? [];
+
   // Sort ascending (oldest first) and strip nulls before computing EMA
   return rows
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    .map((r) => r.close)
-    .filter((c): c is number => c != null);
+    .sort((a: any, b: any) => new Date(a.date).getTime() - new Date(b.date).getTime())
+    .map((r: any) => r.close)
+    .filter((c: unknown): c is number => c != null);
 }
 
 /**
