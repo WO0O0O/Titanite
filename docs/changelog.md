@@ -6,6 +6,19 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.7.0] — Phase 7: Discord Notifications — 2026-05-18
+
+### Added
+- `src/lib/services/discord.service.ts` — Pure server-side Discord webhook service. Builds rich embeds with per-condition status rows, completion summary, and London timezone timestamp. Batches up to 10 embeds per POST.
+- `src/app/api/evaluate/route.ts` — Cron-callable `GET` route. Fetches live market data (or mock fallback), evaluates all Master Signals via `evaluateAllMasterSignals`, fires Discord notifications for triggered signals. Returns JSON summary: `{ evaluatedAt, dataSource, totalSignals, triggeredSignals[], notifiedSignals }`.
+- `DISCORD_WEBHOOK_URL` env variable documented in `AI_CONTEXT.md`.
+
+### Alert Gating (both must be true)
+- `MasterSignal.alertEnabled === true` — user opts the whole signal in.
+- At least one `SubSignal.alertEnabled === true` in the triggered signal — at least one condition must be opted in for the notification to fire.
+
+---
+
 ## [0.6.0] — Phase 6a: Web Intelligence Layer — 2026-05-18
 
 ### Added

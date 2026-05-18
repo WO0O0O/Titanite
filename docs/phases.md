@@ -75,11 +75,17 @@
 - [x] Signal tag badges in `IntelItemRow` — amber tags showing which macro signal an article is evidence for.
 - [x] Uniform timestamp format — `17 May 05:01` for all items.
 
-## Phase 7: Discord Notifications 🔔
-See `docs/roadmap.md` for full detail.
-- [ ] Discord webhook integration (zero-cost, no OAuth).
-- [ ] Rich embeds for triggered Master Signals.
-- [ ] `/api/evaluate` cron endpoint (callable by free cron service).
+## Phase 7: Discord Notifications ✅ COMPLETE
+- [x] `discord.service.ts` — Pure server-side service. Builds rich Discord embeds and POSTs to webhook URL from env.
+- [x] Alert gating: `signal.alertEnabled` AND at least one `condition.alertEnabled` must both be true before a notification fires.
+- [x] Embed includes: signal name, logic mode, per-condition status (✅/⬜), completion summary, London timestamp.
+- [x] Batching: up to 10 embeds per Discord message; multiple batches if needed.
+- [x] `/api/evaluate` route — cron-callable `GET` handler. Fetches live market data, evaluates all signals, fires Discord for triggered+alertEnabled signals. Falls back to mock context if Yahoo Finance fails.
+- [x] `DISCORD_WEBHOOK_URL` added to `.env.local` and documented in `AI_CONTEXT.md`.
+- [x] `export const dynamic = 'force-dynamic'` ensures the evaluate route is never cached.
+
+> **Cron setup:** Hit `GET /api/evaluate` on a schedule using [cron-job.org](https://cron-job.org) (free). Recommended: every 15 minutes, Mon–Fri, 08:00–17:00 London time.
+> **Phase 9 upgrade path:** Replace `MOCK_MASTER_SIGNALS` seed in `evaluate/route.ts` with a Supabase query — nothing else changes.
 
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
