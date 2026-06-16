@@ -105,6 +105,11 @@
 - [x] Resolve the London Stock Exchange (LSE) market cap division-by-100 bug by mapping `GBp`/`GBX` to `GBP` for market cap conversion logic.
 - [x] Change the price formatter in `HoldingsTable.tsx` to format `AVG $` and `LAST $` columns in USD ($) while keeping `VALUE (£)` and `P&L (£)` in GBP (£).
 
+## Phase 7.7: Portfolio Filtering (AMD Pie Exclusion) ✅ COMPLETE
+- [x] Update `trading212.service.ts` to fetch `/equity/pies` in parallel with positions and cash.
+- [x] Parse pies, locate the pie named `"AMD"`, and extract its constituent tickers.
+- [x] Filter the returned portfolio holdings list to exclude those matching tickers.
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.

@@ -38,6 +38,19 @@ interface T212Cash {
   pieCash: number;
 }
 
+interface T212PieConstituent {
+  ticker: string;
+  expectedShare: number;
+  resultShare: number;
+}
+
+interface T212Pie {
+  id: number;
+  name: string;
+  status: string;
+  accounts: T212PieConstituent[];
+}
+
 /**
  * T212 keeps legacy internal instrument identifiers even after companies rebrand or
  * complete SPAC mergers. This map corrects the display ticker to its current market symbol.
@@ -180,6 +193,91 @@ export interface PortfolioServiceResponse {
   summary: PortfolioSummary;
 }
 
+/** Cache for AMD pie tickers — refreshed every 5 minutes. */
+interface PieCache {
+  tickers: string[];
+  expiresAt: number;
+}
+let pieCache: PieCache | null = null;
+const PIE_CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+/** Cache for the full portfolio response — refreshed every 60 seconds. */
+interface PortfolioCache {
+  data: PortfolioServiceResponse;
+  expiresAt: number;
+}
+let portfolioCache: PortfolioCache | null = null;
+const PORTFOLIO_CACHE_TTL_MS = 60 * 1000; // 60 seconds
+
+/**
+ * Fetch and cache the list of tickers that belong to the "AMD" pie.
+ * Key rule: only update the cache when we actually retrieved pie details
+ * successfully — never overwrite a good cache with [] due to a 429 on
+ * the detail endpoint.
+ */
+async function fetchAmdPieTickers(
+  baseUrl: string,
+  headers: Record<string, string>
+): Promise<string[]> {
+  // Return cached result if still fresh
+  if (pieCache && pieCache.expiresAt > Date.now()) {
+    console.log('[T212] Using cached AMD pie tickers:', pieCache.tickers);
+    return pieCache.tickers;
+  }
+
+  try {
+    const piesRes = await fetch(`${baseUrl}/equity/pies`, { headers });
+    if (!piesRes.ok) {
+      // Rate-limited or error — keep stale cache rather than serving []
+      console.warn(`[T212] Pies list failed (${piesRes.status}), using stale cache`);
+      return pieCache?.tickers ?? [];
+    }
+
+    const basicPies: Array<{ id: number }> = await piesRes.json();
+
+    // Fetch all pie details in parallel; individual failures return null
+    const detailedPies = (await Promise.all(
+      basicPies.map(bp =>
+        fetch(`${baseUrl}/equity/pies/${bp.id}`, { headers })
+          .then(res => (res.ok ? res.json() : null))
+          .catch(err => {
+            console.warn(`[T212] Failed to fetch pie ${bp.id} detail:`, err);
+            return null;
+          })
+      )
+    )).filter(Boolean);
+
+    // If ALL detail calls failed (e.g. 429), don't poison the cache with [].
+    // Return stale cache so AMD filtering keeps working.
+    if (detailedPies.length === 0) {
+      console.warn('[T212] All pie detail calls failed — keeping stale cache:', pieCache?.tickers ?? []);
+      return pieCache?.tickers ?? [];
+    }
+
+    // The detailed pie response shape:
+    // { settings: { id, name, ... }, instruments: [{ ticker, ... }] }
+    const amdPie = detailedPies.find(
+      (p: any) => (p?.settings?.name ?? '').trim().toUpperCase() === 'AMD'
+    );
+
+    const tickers: string[] = amdPie
+      ? (amdPie.instruments ?? []).map((inst: any) => normaliseTicker(inst.ticker))
+      : [];
+
+    console.log('[T212] AMD pie tickers to exclude (refreshed):', tickers);
+
+    // Only update cache if we got a positive result — never cache []
+    // if we expected to find AMD but didn't (guards against transient API gaps)
+    if (tickers.length > 0 || pieCache === null) {
+      pieCache = { tickers, expiresAt: Date.now() + PIE_CACHE_TTL_MS };
+    }
+    return pieCache?.tickers ?? tickers;
+  } catch (err) {
+    console.warn('[T212] Error fetching AMD pie tickers:', err);
+    return pieCache?.tickers ?? [];
+  }
+}
+
 export async function fetchPortfolio(): Promise<PortfolioServiceResponse> {
   const apiKey = process.env.T212_API_KEY;
   const apiSecret = process.env.T212_API_SECRET;
@@ -189,15 +287,24 @@ export async function fetchPortfolio(): Promise<PortfolioServiceResponse> {
     return { holdings: MOCK_HOLDINGS, summary: MOCK_PORTFOLIO_SUMMARY };
   }
 
+  // Return cached portfolio if still fresh — prevents 429 from rapid polls / restarts
+  if (portfolioCache && portfolioCache.expiresAt > Date.now()) {
+    console.log('[T212] Serving cached portfolio response');
+    return portfolioCache.data;
+  }
+
   const credentials = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
   const headers = { Authorization: `Basic ${credentials}` };
   const baseUrl = process.env.T212_BASE_URL || T212_BASE;
 
   try {
-    // Fetch positions, cash summary, and live FX rate in parallel
-    const [positionsRes, cashRes, gbpUsdRate] = await Promise.all([
+    // Fetch positions, cash summary, and live FX rate in parallel.
+    // Pie fetching is handled separately with its own cache to avoid rate-limiting
+    // the critical path — a pie failure should never block the portfolio load.
+    const [positionsRes, cashRes, amdTickers, gbpUsdRate] = await Promise.all([
       fetch(`${baseUrl}/equity/portfolio`, { headers }),
       fetch(`${baseUrl}/equity/account/cash`, { headers }),
+      fetchAmdPieTickers(baseUrl, headers),
       fetchGbpUsdRate(),
     ]);
 
@@ -230,21 +337,46 @@ export async function fetchPortfolio(): Promise<PortfolioServiceResponse> {
       }
     });
 
-    const holdings = positions.map((pos) => {
+    // Separate all mapped holdings before filtering so we can compute AMD's aggregate contribution
+    const allHoldings = positions.map((pos) => {
       const normalised = normaliseTicker(pos.ticker);
       return mapPosition(pos, gbpUsdRate, quoteMap.get(normalised));
     });
 
-    // We use the official T212 Cash endpoint payload for portfolio totals — these are already in GBP
+    // Compute how much the excluded AMD holdings contribute to account-wide totals.
+    // totalValue and pnlValue are already in GBP (set by mapPosition).
+    // investedValue = current value − P&L = cost basis in GBP.
+    const amdHoldings = amdTickers.length > 0
+      ? allHoldings.filter(h => amdTickers.includes(h.ticker))
+      : [];
+
+    const amdValue    = amdHoldings.reduce((s, h) => s + h.totalValue,  0);
+    const amdPnl      = amdHoldings.reduce((s, h) => s + h.pnlValue,    0);
+    const amdInvested = amdHoldings.reduce((s, h) => s + (h.totalValue - h.pnlValue), 0);
+
+    // Keep only non-AMD holdings for the table
+    const holdings = amdTickers.length > 0
+      ? allHoldings.filter(h => !amdTickers.includes(h.ticker))
+      : allHoldings;
+
+    // Deduct AMD contributions from the account-wide cash totals so the header
+    // reflects the Titanite pie only. cash.* values are all in GBP.
+    const adjInvested = (cash.invested ?? 0) - amdInvested;
+    const adjValue    = (cash.total    ?? 0) - amdValue;
+    const adjPnl      = (cash.ppl      ?? 0) - amdPnl;
+
     const summary: PortfolioSummary = {
-      totalInvested: cash.invested ?? 0,
-      totalValue: cash.total ?? 0,
-      totalPnlValue: cash.ppl ?? 0,
-      totalPnlPercent: cash.invested && cash.invested > 0 ? (cash.ppl / cash.invested) * 100 : 0,
-      cashBalance: cash.free ?? 0,
+      totalInvested:  adjInvested,
+      totalValue:     adjValue,
+      totalPnlValue:  adjPnl,
+      totalPnlPercent: adjInvested > 0 ? (adjPnl / adjInvested) * 100 : 0,
+      cashBalance:    cash.free ?? 0,
     };
 
-    return { holdings, summary };
+    // Store result in cache before returning
+    const result = { holdings, summary };
+    portfolioCache = { data: result, expiresAt: Date.now() + PORTFOLIO_CACHE_TTL_MS };
+    return result;
   } catch (error) {
     console.error('[T212] Fetch portfolio failed, falling back to mock data.', error);
     return { holdings: MOCK_HOLDINGS, summary: MOCK_PORTFOLIO_SUMMARY };

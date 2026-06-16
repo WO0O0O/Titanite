@@ -92,7 +92,7 @@ export async function GET(request: Request) {
   let found = false;
 
   if (folder === 'SPACE') {
-    filePath = join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}.md`);
+    filePath = join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`);
     if (existsSync(filePath)) {
       found = true;
     }
@@ -101,16 +101,16 @@ export async function GET(request: Request) {
   if (!found) {
     const candidates = [
       // Space fallback
-      join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}.md`),
-      join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}-RESEARCH-REPORT.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}-RESEARCH-REPORT.md`),
       // Small-Cap AI Infra
-      join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`),
-      join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-Analysis.md`),
-      join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-Analysis.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}.md`),
       // Situational Awareness / Leopold
-      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}.md`),
-      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-Analysis.md`),
-      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-RESEARCH-REPORT.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-Analysis.md`),
+      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-RESEARCH-REPORT.md`),
     ];
 
     for (const c of candidates) {

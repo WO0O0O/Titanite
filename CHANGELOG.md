@@ -4,7 +4,25 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.3] - 16 June 2026
+
+### AMD PIE EXCLUSION — ROBUSTNESS & CORRECTNESS FIXES
+**Rationale:** The initial pie filtering implementation (v2.0.2) could not identify the AMD pie due to a schema mismatch in the T212 API response, and was also vulnerable to cache poisoning that silently disabled filtering. Additionally, portfolio header totals were still including AMD contributions since they were sourced from account-wide cash endpoint values.
+
+- **API Schema Fix:** Corrected the field mapping in `fetchAmdPieTickers` inside [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts). The `GET /equity/pies/{id}` detail response nests the pie name under `settings.name` (not top-level `name`) and constituent tickers under `instruments[].ticker` (not `accounts[].ticker`).
+- **Cache Poisoning Fix:** Added a guard in `fetchAmdPieTickers` to prevent caching an empty ticker list when all pie detail calls fail (e.g. due to a 429). Previously, a failed detail fetch would overwrite a valid `['AMD']` cache entry with `[]`, silently disabling exclusion for the next 5 minutes. Now, the stale cache is preserved when no detail responses are available.
+- **Portfolio Response Cache (60s TTL):** Added a server-side `portfolioCache` to [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts). After a successful portfolio fetch, subsequent calls within 60 seconds are served from cache — preventing cascading 429 errors from rapid page loads or dev-server restarts without impacting the client's 60-second polling cycle.
+- **Summary Header Deduction:** Fixed the portfolio summary (Invested / Value / P&L) to subtract the AMD holdings' GBP contribution from the account-wide `cash.*` totals. Each excluded holding's `totalValue` and `pnlValue` (both already in GBP) are summed and deducted so the dashboard header reflects only the Titanite pie.
+
+---
+
 ## [v2.0.2] - 16 June 2026
+
+### PORTFOLIO PIE FILTERING (AMD EXCLUSION)
+**Rationale:** Exclude assets that belong to the "AMD" investment pie from the dashboard holdings table to isolate high-conviction research targets.
+
+- **Pie Constituents Resolution:** Added a parallel fetch to `GET /equity/pies` inside [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts), parsing the results to locate the "AMD" pie and map its constituent tickers.
+- **Holdings Exclusion:** Updated the holdings collection logic to filter out any mapped positions that match tickers contained inside the excluded "AMD" pie (with safety try-catch wrappers to fall back gracefully if the endpoint is unavailable).
 
 ### PORTFOLIO MARKET CAP INTEGRATION & CLEANUP
 **Rationale:** Integrate live market capitalization data from Yahoo Finance and clean up redundant table columns to improve dashboard layout and density.

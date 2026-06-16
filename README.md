@@ -16,11 +16,20 @@ Integrated directly into the dashboard is the **Titanite Research** framework, a
    - **Active Signals**: Real-time status grid of Master Signals (Green/Neutral/Alert).
    - **4 Macro Pillars**: Quick view of key macro triggers: TNX Yield, VIX Index, S&P 500 vs. 200-Day MA, and Warsh Sentiment.
    - **Trading 212 Holdings Table**: Dense, live-calculated holdings table displaying current share price, FX-converted values, conviction tiers, and conviction scoring from Titanite Research.
+
+![Titanite Dashboard](docs/images/dash.png)
+
 2. **Signal Builder (`/builder`)**:
    - Composes multi-condition Boolean logic rules using static thresholds or comparative EMA metrics.
+
+![Signals Builder](docs/images/signals.png)
+
 3. **Intel Hub (`/intel`)**:
    - Aggregated news feed merging Finnhub and Google News RSS queries, auto-tagging mentioned tickers with macroeconomic signal badges.
    - **Fed Transition Watch** monitoring central bank policy shifts.
+
+![Intel News Feed](docs/images/news.png)
+
 4. **Congress Tracker (`/congress`)**:
    - Standardised feed of US Senate and House stock disclosures, filterable by politician or ticker.
 
@@ -31,6 +40,10 @@ Integrated directly into the dashboard is the **Titanite Research** framework, a
 The scaling laws of AGI are no longer confined to software. As model training and deployment scale by orders of magnitude (OOMs), the primary constraints have shifted from algorithmic design to the physical world: energy, TGVs, lasers, metrology, advanced packaging, and launch capacity.
 
 Titanite Research tracks the critical nodes, materials, and equipment manufacturers that underpin this transition. Heavily inspired by the macro-industrial and national security outlook of Leopold Aschenbrenner's _Situational Awareness_ thesis, it focuses on mispriced companies that will capture the economics of this capex before the market prices them in.
+
+![Research Universe](docs/images/research.png)
+
+![Full Research Report](docs/images/full-research.png)
 
 ### Research Pillars
 
