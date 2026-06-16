@@ -7,9 +7,10 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { ResearchedCompany, ResearchTier } from '@/types/research';
 import { TIER_COLOURS } from '@/types/research';
+import MarkdownRenderer from './MarkdownRenderer';
 
 interface ResearchUniverseTableProps {
   companies: ResearchedCompany[];
@@ -29,6 +30,49 @@ export default function ResearchUniverseTable({ companies }: ResearchUniverseTab
   const [filter, setFilter] = useState<ResearchTier | 'ALL'>('ALL');
   const [sort, setSort] = useState<SortKey>('score');
   const [search, setSearch] = useState('');
+  const [selectedTicker, setSelectedTicker] = useState<string | null>(null);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [reportContent, setReportContent] = useState<string | null>(null);
+  const [loadingReport, setLoadingReport] = useState(false);
+  const [reportError, setReportError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!selectedTicker) {
+      setReportContent(null);
+      setReportError(null);
+      setIsFullScreen(false);
+      return;
+    }
+
+    setLoadingReport(true);
+    setReportError(null);
+    setReportContent(null);
+
+    fetch(`/api/research/report?ticker=${selectedTicker}`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`Could not load report (Status ${res.status})`);
+        return res.json();
+      })
+      .then((data) => {
+        setReportContent(data.content);
+      })
+      .catch((err) => {
+        setReportError(err.message);
+      })
+      .finally(() => {
+        setLoadingReport(false);
+      });
+  }, [selectedTicker]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedTicker(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const filtered = companies
     .filter((c) => filter === 'ALL' || c.tier === filter)
@@ -161,6 +205,11 @@ export default function ResearchUniverseTable({ companies }: ResearchUniverseTab
               <tr
                 key={company.ticker}
                 className="research-table-row"
+                onClick={() => setSelectedTicker(company.ticker)}
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: selectedTicker === company.ticker ? 'var(--color-terminal-800)' : undefined,
+                }}
               >
                 <td style={{ ...tdStyles, fontWeight: 700, color: 'var(--color-accent)' }}>
                   {company.ticker}
@@ -197,6 +246,111 @@ export default function ResearchUniverseTable({ companies }: ResearchUniverseTab
       <div style={{ color: 'var(--color-muted)', fontSize: '0.62rem', fontFamily: 'var(--font-geist-mono)' }}>
         SHOWING {filtered.length} / {companies.length} COMPANIES · SC-AI-INFRA FRAMEWORK v2.0.0
       </div>
+
+      {/* Sliding side drawer for Research Reports */}
+      {selectedTicker && (
+        <div
+          style={{
+            position: 'fixed',
+            top: isFullScreen ? 0 : 'var(--spacing-header)',
+            right: 0,
+            bottom: 0,
+            width: isFullScreen ? '100%' : '600px',
+            maxWidth: '100%',
+            background: 'var(--color-terminal-black)',
+            borderLeft: isFullScreen ? 'none' : '1px solid var(--color-border)',
+            boxShadow: '-4px 0 24px rgba(0,0,0,0.5)',
+            display: 'flex',
+            flexDirection: 'column',
+            zIndex: 1000,
+            fontFamily: 'var(--font-geist-mono)',
+          }}
+        >
+          {/* Header */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '12px 16px',
+              background: 'var(--color-terminal-800)',
+              borderBottom: '1px solid var(--color-border)',
+            }}
+          >
+            <div>
+              <span style={{ color: 'var(--color-accent)', fontWeight: 700, fontSize: '0.75rem' }}>
+                ◈ RESEARCH REPORT: {selectedTicker}
+              </span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button
+                onClick={() => setIsFullScreen(!isFullScreen)}
+                style={{
+                  background: 'transparent',
+                  border: '1px solid var(--color-border)',
+                  color: 'var(--color-muted)',
+                  cursor: 'pointer',
+                  fontSize: '0.62rem',
+                  fontFamily: 'var(--font-geist-mono)',
+                  fontWeight: 700,
+                  marginRight: '12px',
+                  padding: '3px 8px',
+                  outline: 'none',
+                }}
+              >
+                {isFullScreen ? 'COLLAPSE' : 'EXPAND'}
+              </button>
+              <button
+                onClick={() => setSelectedTicker(null)}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: 'var(--color-muted)',
+                  cursor: 'pointer',
+                  fontSize: '0.9rem',
+                  fontWeight: 700,
+                  outline: 'none',
+                  padding: '4px 8px',
+                }}
+                title="Close Report (Esc)"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+
+             {/* Report Content */}
+          <div
+            style={{
+              flex: 1,
+              overflowY: 'auto',
+              padding: '16px 20px',
+            }}
+          >
+            {loadingReport && (
+              <div style={{ padding: '40px 0', textAlign: 'center', color: 'var(--color-muted)', fontSize: '0.72rem' }}>
+                LOADING REPORT DATA...
+              </div>
+            )}
+            {reportError && (
+              <div style={{ padding: '40px 0', textAlign: 'center', color: 'var(--color-negative)', fontSize: '0.72rem' }}>
+                {reportError.toUpperCase()}
+              </div>
+            )}
+            {reportContent && (
+              <div
+                style={{
+                  maxWidth: '800px',
+                  margin: '0 auto',
+                  padding: '0 16px 40px 16px',
+                }}
+              >
+                <MarkdownRenderer content={reportContent} />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
