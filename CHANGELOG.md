@@ -6,6 +6,13 @@ This document tracks all modifications to the research frameworks to prevent sco
 
 ## [v2.0.1] - 16 June 2026
 
+### OUST COMPANY RE-AUDIT & RE-CALIBRATION
+**Rationale:** Execute the mandatory re-audit of Ouster, Inc. (OUST) under the v2.0.0 framework rules, incorporating Q1 2026 disclosures and physical cluster-scaling TAM models.
+
+- **Data Ingestion Buffer:** Populated manual Step B audit verification trail and updated working capital metrics in [OUST-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/SMALLCAP-AI-INFRA/robotics/OUST-EXTRACTION-BUFFER.md).
+- **Scorer Implementation:** Generated [OUST-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/SMALLCAP-AI-INFRA/robotics/OUST-RESEARCH-REPORT.md) following the `SC-AI-SCORER.md` analytical scoring standard.
+- **Legacy File Retirement:** Marked the older version `OUST-Ouster.md` for deletion.
+
 ### BUG FIXES & ROUTING ROBUSTNESS
 
 **Rationale:** Address routing 404 bugs for Situational Awareness (Leopold) companies on the web dashboard, and align the workflow instructions for multi-framework support.
