@@ -11,7 +11,8 @@ const INDUSTRY_MAP: Record<string, string> = {
   "NBIS": "AI-CLOUD-INFRA",
   "KEEL": "AI-CLOUD-INFRA",
   "TLN": "ENERGY",
-  "BE": "ENERGY",
+  "NRGV": "ENERGY",
+  "BE": "ENERGY", 
   "VST": "ENERGY",
   "CEG": "ENERGY",
   "OKLO": "ENERGY",
@@ -84,21 +85,34 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: `No industry folder mapped for ticker ${ticker}` }, { status: 404 });
   }
 
-  // Resolve path
+  // Resolve path: We check multiple directories (SPACE, SMALLCAP-AI-INFRA, and SITUATIONAL-AWARENESS)
+  // because reports can be generated using different frameworks (SC-AI-INFRA, leopold, or space-infra)
+  // and we want the routing to be resilient to varying naming conventions and folder allocations.
   let filePath = '';
+  let found = false;
+
   if (folder === 'SPACE') {
     filePath = join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}.md`);
-  } else {
-    filePath = join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`);
+    if (existsSync(filePath)) {
+      found = true;
+    }
   }
 
-  if (!existsSync(filePath)) {
-    // Try alternatives (e.g. -Analysis.md or custom name)
+  if (!found) {
     const candidates = [
+      // Space fallback
+      join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}.md`),
+      join(process.cwd(), 'research', 'notes', 'SPACE', `${ticker}-RESEARCH-REPORT.md`),
+      // Small-Cap AI Infra
+      join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`),
       join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-Analysis.md`),
       join(process.cwd(), 'research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}.md`),
+      // Situational Awareness / Leopold
+      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}.md`),
+      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-Analysis.md`),
+      join(process.cwd(), 'research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-RESEARCH-REPORT.md`),
     ];
-    let found = false;
+
     for (const c of candidates) {
       if (existsSync(c)) {
         filePath = c;
@@ -106,10 +120,10 @@ export async function GET(request: Request) {
         break;
       }
     }
+  }
 
-    if (!found) {
-      return NextResponse.json({ error: `Report file not found for ${ticker}` }, { status: 404 });
-    }
+  if (!found) {
+    return NextResponse.json({ error: `Report file not found for ${ticker}` }, { status: 404 });
   }
 
   try {

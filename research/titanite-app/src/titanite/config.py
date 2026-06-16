@@ -61,6 +61,7 @@ INDUSTRY_MAP: dict[str, str] = {
     "NBIS": "AI-CLOUD-INFRA",
     "KEEL": "AI-CLOUD-INFRA",
     "TLN": "ENERGY",
+    "NRGV": "ENERGY",
     "BE": "ENERGY",
     "VST": "ENERGY",
     "CEG": "ENERGY",
@@ -132,7 +133,6 @@ SEC_EDGAR_HEADERS = {
         "TitaniteResearch research@titanite.local"
     ),
     "Accept-Encoding": "gzip, deflate",
-    "Host": "data.sec.gov",
 }
 
 # ---------------------------------------------------------------------------

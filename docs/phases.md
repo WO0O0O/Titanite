@@ -94,6 +94,10 @@
 - [x] Fix status parsing bug in `catalyst_parser.py` supporting emoji prefixes (e.g. `🟡 Active`, `✅ Hit`).
 - [x] Add watchlist / pending purchase exclusion in `holdings_parser.py`.
 - [x] Build `useResearchCompanies` client hook and wire lookup map to `<HoldingsTable>` on the dashboard.
+- [x] Run automated data extraction and scorer pipeline for NRGV to verify end-to-end integration.
+- [x] Fix research report 404 routing error by adding multi-framework search fallback (SPACE, SMALLCAP-AI-INFRA, and SITUATIONAL-AWARENESS) in Next.js `route.ts`.
+- [x] Update research `workflow.md` documentation covering all three active frameworks (sc, leopold, and space).
+
 
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.

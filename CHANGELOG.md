@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.1] - 16 June 2026
+
+### BUG FIXES & ROUTING ROBUSTNESS
+
+**Rationale:** Address routing 404 bugs for Situational Awareness (Leopold) companies on the web dashboard, and align the workflow instructions for multi-framework support.
+
+- **Next.js API Route Resolver:** Updated [route.ts](file:///Users/danwooster/1.%20DEV/signals/src/app/api/research/report/route.ts) to search across `SPACE/`, `SMALLCAP-AI-INFRA/`, and `SITUATIONAL-AWARENESS/` directories, making routing resilient to framework-specific file structures and extensions (`.md`, `-Analysis.md`, `-RESEARCH-REPORT.md`).
+- **Research Workflow Documentation:** Updated [workflow.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/prompts/workflow.md) to document prompt templates, target folders, and CLI extraction constraints for the three active frameworks (`sc`, `leopold`, and `space`).
+
 ---
 
 ## [v2.0.0] - 14 June 2026
