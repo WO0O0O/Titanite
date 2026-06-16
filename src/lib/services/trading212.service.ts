@@ -50,12 +50,58 @@ const TICKER_DISPLAY_OVERRIDES: Record<string, string> = {
   IPAX: 'LUNR',  // Inflection Point Acquisition Corp → Intuitive Machines (merged Feb 2023)
   NPA:  'ASTS',  // New Providence Acquisition Corp → AST SpaceMobile (merged Apr 2021)
   ACIC: 'ACHR',  // Atlas Crest Investment Corp (SPAC) → Archer Aviation (merged Sep 2021)
+  // European / UK stock exchange ticker overrides
+  '2DG':  'SIVE',  // Sivers Semiconductors AB (traded as 2DG on Gettex)
+  LPKG:  'LPK',   // LPKF Laser & Electronics SE (traded as LPKG on Gettex/Frankfurt)
+  S9E:   'SEYE',  // Smart Eye AB (traded as S9E on Gettex)
+  '4AC':  'ACCON', // Acconeer AB (traded as 4AC on Gettex)
+  '2CRSI': 'AL2SI', // 2CRSi S.A. (alternative Euronext symbol representation)
+  IQEL:  'IQE',   // IQE plc (alternative London Stock Exchange symbol representation)
 };
 
 /** Strip T212's internal suffix (e.g. "NVDA_US_EQ" → "NVDA") and apply display overrides. */
 function normaliseTicker(t212Ticker: string): string {
-  const base = t212Ticker.split('_')[0];
+  let base = t212Ticker.split('_')[0];
+
+  // Strip trailing lowercase exchange-identifying suffixes (e.g., '2DGd' -> '2DG', 'IQEl' -> 'IQE', 'AL2SIp' -> 'AL2SI')
+  if (base.length > 1 && /[a-z]/.test(base[base.length - 1])) {
+    base = base.slice(0, -1);
+  }
+
   return TICKER_DISPLAY_OVERRIDES[base] ?? base;
+}
+
+/**
+ * Fetch the live GBP/USD exchange rate so we can convert USD-denominated
+ * position values to GBP. Falls back to 0.79 (approximate) on error.
+ * One call per portfolio request — rate applied to all positions.
+ */
+const TICKER_YAHOO_MAP: Record<string, string> = {
+  SIVE: 'SIVE.ST',
+  LPK: 'LPK.DE',
+  AL2SI: 'AL2SI.PA',
+  IQE: 'IQE.L',
+  SEYE: 'SEYE.ST',
+  ACCON: 'ACCON.ST',
+};
+
+function getYahooSymbol(ticker: string): string {
+  return TICKER_YAHOO_MAP[ticker.toUpperCase()] ?? ticker.toUpperCase();
+}
+
+function convertToUsd(value: number, currency: string, gbpUsdRate: number): number {
+  if (currency === 'USD') return value;
+  if (currency === 'GBp' || currency === 'GBX') {
+    const gbpValue = value / 100;
+    return gbpUsdRate > 0 ? gbpValue / gbpUsdRate : gbpValue / 0.79;
+  }
+  if (currency === 'GBP') {
+    return gbpUsdRate > 0 ? value / gbpUsdRate : value / 0.79;
+  }
+  const cur = currency.toUpperCase();
+  if (cur === 'EUR') return value * 1.08; // approximate EUR/USD rate
+  if (cur === 'SEK') return value * 0.095; // approximate SEK/USD rate
+  return value; // fallback
 }
 
 /**
@@ -76,8 +122,12 @@ async function fetchGbpUsdRate(): Promise<number> {
   }
 }
 
-function mapPosition(pos: T212Position, gbpUsdRate: number): Holding {
+function mapPosition(pos: T212Position, gbpUsdRate: number, quote?: any): Holding {
   const ticker = normaliseTicker(pos.ticker);
+
+  const currency = quote?.currency || 'USD';
+  const averagePrice = convertToUsd(pos.averagePrice, currency, gbpUsdRate);
+  const currentPrice = convertToUsd(pos.currentPrice, currency, gbpUsdRate);
 
   // ppl (T212's profit/loss) is in account currency (GBP) after FX conversion.
   // averagePrice and currentPrice are in the instrument's native currency (e.g. USD for US stocks).
@@ -102,16 +152,26 @@ function mapPosition(pos: T212Position, gbpUsdRate: number): Holding {
   // cannot be computed here. We set it to 0 and the UI renders "N/A" for this column.
   const percentageChange24h = 0;
 
+  // Market Cap (in USD)
+  let marketCap: number | undefined = undefined;
+  if (quote && typeof quote.marketCap === 'number') {
+    const rawCurrency = quote.currency || 'USD';
+    // Yahoo Finance returns market cap in major currency (GBP) even if price is in pence (GBp/GBX)
+    const mcapCurrency = (rawCurrency === 'GBp' || rawCurrency === 'GBX') ? 'GBP' : rawCurrency;
+    marketCap = convertToUsd(quote.marketCap, mcapCurrency, gbpUsdRate);
+  }
+
   return {
     ticker,
     name: ticker,
     quantity: pos.quantity,
-    averagePrice: pos.averagePrice,
-    currentPrice: pos.currentPrice,
+    averagePrice,
+    currentPrice,
     percentageChange24h,
     pnlValue,
     pnlPercent,
     totalValue,
+    marketCap,
   };
 }
 
@@ -148,7 +208,32 @@ export async function fetchPortfolio(): Promise<PortfolioServiceResponse> {
     const positions: T212Position[] = await positionsRes.json();
     const cash: T212Cash = await cashRes.json();
 
-    const holdings = positions.map((pos) => mapPosition(pos, gbpUsdRate));
+    // Fetch quotes for all tickers in parallel
+    const yahooSymbols = positions.map(p => getYahooSymbol(normaliseTicker(p.ticker)));
+    const quotes = await Promise.all(
+      yahooSymbols.map(sym => 
+        (yahooFinance.quote(sym) as Promise<any>)
+          .catch(err => {
+            console.warn(`[YahooFinance] Failed to fetch quote for ${sym}:`, err);
+            return null;
+          })
+      )
+    );
+
+    // Build quote mapping
+    const quoteMap = new Map<string, any>();
+    positions.forEach((pos, idx) => {
+      const normalised = normaliseTicker(pos.ticker);
+      const quote = quotes[idx];
+      if (quote) {
+        quoteMap.set(normalised, quote);
+      }
+    });
+
+    const holdings = positions.map((pos) => {
+      const normalised = normaliseTicker(pos.ticker);
+      return mapPosition(pos, gbpUsdRate, quoteMap.get(normalised));
+    });
 
     // We use the official T212 Cash endpoint payload for portfolio totals — these are already in GBP
     const summary: PortfolioSummary = {

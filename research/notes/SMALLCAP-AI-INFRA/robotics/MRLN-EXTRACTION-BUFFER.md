@@ -17,7 +17,7 @@ Before writing out the JSON code block, you must populate this exact Search Exec
 | **Pass 3:** Transcript Moats                    | `site:sec.gov/Archives/edgar/data/2028707 "receivable" "inventories" OR "inventory" "2026" "10-Q"` | 3 | Disclosed customer concentration shows the U.S. government accounts for over 80% of current revenues, with the Ameriflight cargo fleet partnership acting as the future civil commercial driver. |
 | **Step B:** Short Seller / Accounting Fraud     | `"Merlin, Inc." "accounts receivable" OR "accounts receivable, net" OR "inventories" OR "inventory" "March 31, 2026" "December 31, 2025"` | 3 | Confirmed clean regulatory records for CEO Matthew George and CFO Ryan Carrithers. No active short seller reports or structural fraud allegations. |
 | **Step B:** Substack & Specialist Moat Analyses | `"Merlin, Inc." "accounts receivable" OR "accounts receivable, net" OR "receivables" "September 30, 2025" OR "June 30, 2025" OR "2025" OR "SPAC"` | 3 | High switching costs of 3-5 years due to the physical engineering of avionics interfaces, control software, and FAA/CAA Part 135 certification processes. |
-| **Step B:** National Innovation Agency Checks   | `"Condensed Consolidated Balance Sheets" "Merlin, Inc." OR "MRLN" "March 31, 2026" OR "December 31, 2025"` | 4 | Certification is supported by civil partnerships (FAA/CAA) and military flight test programs, with zero material dependency on regional innovation grants. |
+| **Step B:** National Innovation Agency Checks   | `"Condensed Consolidated Balance Sheets" "Merlin, Inc." OR "MRLN" "March 31, 2026" OR "December 31, 2025"` | 4 | Certification is supported by civil partnerships (FAA/CAA) and military flight test programmes, with zero material dependency on regional innovation grants. |
 | **Step B:** Executive / Leadership Background   | `site:sec.gov/Archives/edgar/data "Merlin, Inc." "CONSOLIDATED BALANCE SHEETS" OR "Condensed Consolidated Balance Sheets" "2026"` | 4 | BDO USA, P.C. was appointed as auditor on 16 March 2026, replacing Withum. The auditor transition was standard and without disagreement. |
 
 ```json
@@ -28,7 +28,7 @@ Before writing out the JSON code block, you must populate this exact Search Exec
     "pass_1_opportunities": [
       {
         "keyword": "backlog",
-        "quote": "The USSOCOM C-130J program has a contract ceiling of USD 105 million.",
+        "quote": "The USSOCOM C-130J programme has a contract ceiling of USD 105 million.",
         "speaker": "Management Disclosure",
         "quarter": "Q1 2026"
       },

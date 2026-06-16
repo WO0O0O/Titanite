@@ -4,6 +4,29 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.2] - 16 June 2026
+
+### PORTFOLIO MARKET CAP INTEGRATION & CLEANUP
+**Rationale:** Integrate live market capitalization data from Yahoo Finance and clean up redundant table columns to improve dashboard layout and density.
+
+- **Market Cap Field Addition:** Updated the `Holding` interface in `src/types/holdings.ts` and mock data in `src/lib/mock/holdings.mock.ts` to support the optional `marketCap` field.
+- **Parallel Quote Fetching:** Updated [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts) to resolve Yahoo Finance ticker mappings and retrieve company quotes in parallel.
+- **Redundant Column Removal:** Removed the redundant `COMPANY` name column from [HoldingsTable.tsx](file:///Users/danwooster/1.%20DEV/signals/src/components/dashboard/HoldingsTable.tsx) as the ticker provides sufficient identification.
+- **Market Cap Column Display:** Introduced a new `MKT CAP $` column to [HoldingsTable.tsx](file:///Users/danwooster/1.%20DEV/signals/src/components/dashboard/HoldingsTable.tsx) using compact notation (e.g., `$925.1M`, `$3.56B`, `$1.58T`).
+
+### PORTFOLIO CURRENCY FORMAT CALIBRATION
+**Rationale:** Align the portfolio dashboard to show individual asset price metrics and market capitalization in USD ($) while retaining total position value and P&L in GBP (£) for a UK-based investor.
+
+- **Price Mapping Fix:** Corrected return mapping in `mapPosition` in [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts) to output converted USD prices (`averagePrice`, `currentPrice`) rather than raw values.
+- **LSE Market Cap Conversion Bug:** Fixed a division-by-100 error where London Stock Exchange market caps denominated in pence (`GBp`/`GBX`) were incorrectly converted. The conversion logic now correctly maps them to `GBP` beforehand, yielding the correct market cap scale (e.g. ~$925.1M for IQE instead of ~$9.7M).
+- **Holdings Table Formatter:** Updated `fmt.price` in [HoldingsTable.tsx](file:///Users/danwooster/1.%20DEV/signals/src/components/dashboard/HoldingsTable.tsx) to prepend `$` instead of `£` for the average price and last price columns.
+
+### PORTFOLIO DASHBOARD TICKER RESOLUTION
+**Rationale:** Fix the mismatch between Trading 212 exchange-specific tickers (e.g. `2DGd`, `AL2SIp`, `IQEl`, `LPKd`) and the research database canonical tickers.
+
+- **Trading 212 Normalisation:** Added an automatic stripping rule in [trading212.service.ts](file:///Users/danwooster/1.%20DEV/signals/src/lib/services/trading212.service.ts) to slice off single trailing lowercase exchange characters (like Gettex `d`, Euronext `p`, and LSE `l`) from the base ticker before display mapping.
+- **Research Database Export:** Compiled database updates via `titanite export` to regenerate `companies.json` with correct British English spelling ("programme").
+
 ## [v2.0.1] - 16 June 2026
 
 ### OUST COMPANY RE-AUDIT & RE-CALIBRATION

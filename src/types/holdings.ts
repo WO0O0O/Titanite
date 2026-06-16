@@ -9,6 +9,7 @@ export interface Holding {
   pnlValue: number;
   pnlPercent: number;
   totalValue: number;
+  marketCap?: number;
 }
 
 /** Aggregate totals shown above the holdings table. */

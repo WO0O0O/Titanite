@@ -95,7 +95,7 @@ The table below details quarterly revenues and gross profit for the last five qu
 Under the Qualification-Cycle modifier, trailing gross margin pressure is exempt.
 
 **Sub-section B — Forward Run-rate Signals:**
-* **Backlog:** The USSOCOM C-130J program has a contract ceiling of USD 105 million.
+* **Backlog:** The USSOCOM C-130J programme has a contract ceiling of USD 105 million.
 * **Volume Ramp:** Ameriflight has signed a design partnership for retrofitting its Cessna Caravan fleet, representing a future backlog of dozens of aircraft. Management has stated that they have more aircraft retrofits queued than their engineering team can certify.
 
 ---

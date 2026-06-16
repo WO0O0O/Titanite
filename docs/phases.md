@@ -97,7 +97,13 @@
 - [x] Run automated data extraction and scorer pipeline for NRGV to verify end-to-end integration.
 - [x] Fix research report 404 routing error by adding multi-framework search fallback (SPACE, SMALLCAP-AI-INFRA, and SITUATIONAL-AWARENESS) in Next.js `route.ts`.
 - [x] Update research `workflow.md` documentation covering all three active frameworks (sc, leopold, and space).
+- [x] Fix Trading 212 ticker normalisation for European/UK stocks by automatically stripping lowercase exchange-identifying suffixes (`d`, `p`, `l`) to resolve dashboard holdings tier/score matching.
+- [x] Regenerate research database (`companies.json`) with corrected British English spellings.
 
+## Phase 7.6: Currency Display Calibration ✅ COMPLETE
+- [x] Correct return mapping in `trading212.service.ts` to output converted USD share prices.
+- [x] Resolve the London Stock Exchange (LSE) market cap division-by-100 bug by mapping `GBp`/`GBX` to `GBP` for market cap conversion logic.
+- [x] Change the price formatter in `HoldingsTable.tsx` to format `AVG $` and `LAST $` columns in USD ($) while keeping `VALUE (£)` and `P&L (£)` in GBP (£).
 
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.

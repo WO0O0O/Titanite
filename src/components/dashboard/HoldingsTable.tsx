@@ -28,15 +28,21 @@ interface HoldingsTableProps {
 // P&L%     → pure price ratio (currency-neutral)
 // VALUE    → GBP (server-side FX conversion via live GBPUSD=X rate)
 // AVG/LAST → native instrument currency (USD for US stocks)
-const COL_HEADERS = ['TICKER', 'COMPANY', 'QTY', 'AVG $', 'LAST $', 'P&L (£)', 'P&L%', 'VALUE (£)', '24H%', 'TIER'];
+const COL_HEADERS = ['TICKER', 'MKT CAP $', 'QTY', 'AVG $', 'LAST $', 'P&L (£)', 'P&L%', 'VALUE (£)', '24H%', 'TIER'];
 
 export default function HoldingsTable({ holdings, researchLookup }: HoldingsTableProps) {
   const fmt = {
-    // GBP — user is UK-based; T212 account is denominated in £
-    price: (v: number) => `£${v.toFixed(2)}`,
+    price: (v: number) => `$${v.toFixed(2)}`,
     pct: (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`,
     qty: (v: number) => v.toLocaleString(),
     value: (v: number) => `£${v.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+    mcap: (v?: number) => {
+      if (v === undefined || v === null) return '—';
+      if (v >= 1_000_000_000_000) return `$${(v / 1_000_000_000_000).toFixed(2)}T`;
+      if (v >= 1_000_000_000) return `$${(v / 1_000_000_000).toFixed(2)}B`;
+      if (v >= 1_000_000) return `$${(v / 1_000_000).toFixed(1)}M`;
+      return `$${v.toLocaleString()}`;
+    }
   };
 
   const pnlColor = (v: number) =>
@@ -72,8 +78,8 @@ export default function HoldingsTable({ holdings, researchLookup }: HoldingsTabl
                 <td className="px-2 py-1.5 font-bold" style={{ color: 'var(--color-accent)' }}>
                   {h.ticker}
                 </td>
-                <td className="px-2 py-1.5 truncate max-w-[120px]" style={{ color: 'var(--color-text-secondary)' }}>
-                  {h.name}
+                <td className="px-2 py-1.5 tabular-nums text-right font-medium" style={{ color: 'var(--color-text-secondary)' }}>
+                  {fmt.mcap(h.marketCap)}
                 </td>
                 <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
                   {fmt.qty(h.quantity)}

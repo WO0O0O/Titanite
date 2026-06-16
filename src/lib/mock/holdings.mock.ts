@@ -16,6 +16,7 @@ export const MOCK_HOLDINGS: Holding[] = [
     pnlValue: 172.5,
     pnlPercent: 16.91,
     totalValue: 1192.5,
+    marketCap: 592500000, // £592.5M
   },
   {
     ticker: 'RKLB',
@@ -27,6 +28,7 @@ export const MOCK_HOLDINGS: Holding[] = [
     pnlValue: 140.0,
     pnlPercent: 8.24,
     totalValue: 1840.0,
+    marketCap: 3560000000, // £3.56B
   },
   {
     ticker: 'ASTS',
@@ -38,6 +40,7 @@ export const MOCK_HOLDINGS: Holding[] = [
     pnlValue: 250.0,
     pnlPercent: 20.83,
     totalValue: 1450.0,
+    marketCap: 2780000000, // £2.78B
   },
   {
     ticker: 'PLTR',
@@ -49,6 +52,7 @@ export const MOCK_HOLDINGS: Holding[] = [
     pnlValue: 125.0,
     pnlPercent: 11.36,
     totalValue: 1225.0,
+    marketCap: 39500000000, // £39.5B
   },
   {
     ticker: 'NVDA',
@@ -60,6 +64,7 @@ export const MOCK_HOLDINGS: Holding[] = [
     pnlValue: 4250.0,
     pnlPercent: 94.44,
     totalValue: 8750.0,
+    marketCap: 1580000000000, // £1.58T
   },
 ];
 
