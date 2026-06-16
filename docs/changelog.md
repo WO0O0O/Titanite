@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [0.7.5] — Phase 7.5: Titanite Research Pipeline Integration — 2026-06-16
+
+### Added
+- `research/` subdirectory containing `titanite-app` (Python validation/extraction CLI) and `notes/` (structured markdown research).
+- `src/hooks/useResearchCompanies.ts` client hook for loading the company universe.
+- `src/components/dashboard/HoldingsTable` now displays Titanite Tier badge and score.
+
+### Fixed
+- Standardized Sakai ticker to `4078.T` in `TABLE.md` to pass validation.
+- Patched path mappings in `config.py` and test suites to look in `research/notes`.
+- Fixed parser bug in `catalyst_parser.py` handling emoji-prefixed statuses (e.g. `🟡 Active`, `✅ Hit`).
+- Excluded watchlist / pending purchase items from active holdings list in `holdings_parser.py`.
+- Connected lookup map in `DashboardContent.tsx` to enrich holdings rows.
+
 ## [0.7.0] — Phase 7: Discord Notifications — 2026-05-18
 
 ### Added

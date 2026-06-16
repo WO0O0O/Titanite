@@ -16,6 +16,7 @@ import { useSignalStore } from '@/store/signalStore';
 import { useUIStore } from '@/store/uiStore';
 import { useMarketData } from '@/hooks/useMarketData';
 import { useHoldings } from '@/hooks/useHoldings';
+import { useResearchCompanies } from '@/hooks/useResearchCompanies';
 import MacroPillarsBar from './MacroPillarsBar';
 import MasterSignalCard from './MasterSignalCard';
 import HoldingsTable from './HoldingsTable';
@@ -36,6 +37,11 @@ export default function DashboardContent() {
 
   const { data: marketData } = useMarketData();
   const { data: portfolioData } = useHoldings();
+  const { data: researchPayload } = useResearchCompanies();
+
+  const researchLookup = researchPayload
+    ? new Map(researchPayload.companies.map((c) => [c.ticker.toUpperCase(), c]))
+    : undefined;
 
   // When real market data loads, re-evaluate all signals against live context
   useEffect(() => {
@@ -129,7 +135,7 @@ export default function DashboardContent() {
           </div>
         }>
           <div className="-m-4 overflow-y-auto h-full">
-            <HoldingsTable holdings={holdings} />
+            <HoldingsTable holdings={holdings} researchLookup={researchLookup} />
           </div>
         </TerminalWindow>
       </div>

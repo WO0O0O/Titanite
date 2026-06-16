@@ -30,6 +30,14 @@ def parse_holdings_md(path: Path, companies: list[ResearchedCompany]) -> list[Re
     held_tickers: set[str] = set()
 
     for line in content.splitlines():
+        # Stop parsing when hitting the watchlist section
+        if "watchlist" in line.lower() or "watch list" in line.lower():
+            break
+
+        # Skip pending purchases not yet held
+        if "to buy" in line.lower() or "buy soon" in line.lower():
+            continue
+
         # Look for ticker patterns: **TICKER** or | TICKER |
         matches = re.findall(r"\*\*([A-Z0-9.]+)\*\*", line)
         for m in matches:

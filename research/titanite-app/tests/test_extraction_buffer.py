@@ -15,7 +15,7 @@ from titanite.models.extraction_buffer import ExtractionBuffer
 
 # tests/test_*.py → tests/ → titanite-app/ → titanite/ (repo root)
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-RESEARCH_NOTES = REPO_ROOT / "RESEARCH-NOTES"
+RESEARCH_NOTES = REPO_ROOT / "notes"
 
 
 def get_existing_buffers() -> list[Path]:

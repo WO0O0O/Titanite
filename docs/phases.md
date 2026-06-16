@@ -87,6 +87,14 @@
 > **Cron setup:** Hit `GET /api/evaluate` on a schedule using [cron-job.org](https://cron-job.org) (free). Recommended: every 15 minutes, Mon–Fri, 08:00–17:00 London time.
 > **Phase 9 upgrade path:** Replace `MOCK_MASTER_SIGNALS` seed in `evaluate/route.ts` with a Supabase query — nothing else changes.
 
+## Phase 7.5: Titanite Research Pipeline Integration ✅ COMPLETE
+- [x] Copy and integrate Titanite research app + notes directories.
+- [x] Configure paths (`config.py`, `test_extraction_buffer.py`) pointing to `research/notes`.
+- [x] Resolve `TABLE.md` parsing errors by standardizing Sakai ticker format to `4078.T`.
+- [x] Fix status parsing bug in `catalyst_parser.py` supporting emoji prefixes (e.g. `🟡 Active`, `✅ Hit`).
+- [x] Add watchlist / pending purchase exclusion in `holdings_parser.py`.
+- [x] Build `useResearchCompanies` client hook and wire lookup map to `<HoldingsTable>` on the dashboard.
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.

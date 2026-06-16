@@ -28,7 +28,7 @@ REPO_ROOT = _CONFIG_FILE.parent.parent.parent.parent  # titanite/
 # ---------------------------------------------------------------------------
 # Research notes paths
 # ---------------------------------------------------------------------------
-RESEARCH_NOTES_DIR = REPO_ROOT / "RESEARCH-NOTES"
+RESEARCH_NOTES_DIR = REPO_ROOT / "notes"
 SC_AI_INFRA_DIR = RESEARCH_NOTES_DIR / "SMALLCAP-AI-INFRA"
 SITUATIONAL_AWARENESS_DIR = RESEARCH_NOTES_DIR / "SITUATIONAL-AWARENESS"
 SPACE_DIR = RESEARCH_NOTES_DIR / "SPACE"
@@ -96,6 +96,7 @@ INDUSTRY_MAP: dict[str, str] = {
     "ALBKK": "Semis",
     "XFAB": "Semis",
     "GCTS": "Semis",
+    "4078.T": "MLCC",
     "AL2SI": "server-systems",
     "SILC": "server-systems",
     "SEYE": "computer-vision",

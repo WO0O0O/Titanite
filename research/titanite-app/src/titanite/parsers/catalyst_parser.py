@@ -50,13 +50,16 @@ def parse_catalyst_tracker_md(path: Path) -> list[Catalyst]:
 
         # Status (last column)
         status_raw = re.sub(r"\*\*|\*", "", cols[-1]).strip().lower()
-        status_map: dict[str, CatalystStatus] = {
-            "active": CatalystStatus.ACTIVE,
-            "hit": CatalystStatus.HIT,
-            "missed": CatalystStatus.MISSED,
-            "cancelled": CatalystStatus.CANCELLED,
-        }
-        status = status_map.get(status_raw, CatalystStatus.ACTIVE)
+        if "active" in status_raw:
+            status = CatalystStatus.ACTIVE
+        elif "hit" in status_raw:
+            status = CatalystStatus.HIT
+        elif "missed" in status_raw:
+            status = CatalystStatus.MISSED
+        elif "cancelled" in status_raw:
+            status = CatalystStatus.CANCELLED
+        else:
+            status = CatalystStatus.ACTIVE
 
         # Thesis impact (5th column if it exists)
         thesis_impact = ""
