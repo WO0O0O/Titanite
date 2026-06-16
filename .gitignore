@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+research/titanite-app/.venv/
+research/titanite-app/.cache/
+public/research-data/

@@ -1,28 +1,36 @@
 /**
  * HoldingsTable — dense terminal-style portfolio table.
  *
- * Columns: TICKER | NAME | QTY | AVG | LAST | P&L | P&L% | VALUE | 24H%
+ * Columns: TICKER | NAME | QTY | AVG | LAST | P&L | P&L% | VALUE | 24H% | TIER
  *
  * Positive values are coloured neon green, negative red — matching Bloomberg
  * convention. No row hover effects other than a subtle background shift.
  *
  * Pure display component — accepts holdings as props so it can be used
  * with both mock data and future T212 API data without changes.
+ *
+ * The optional `researchLookup` prop enriches rows with Titanite conviction scores.
+ * Pass the Map from buildResearchLookup() in research.service.ts.
  */
 
 import type { Holding } from '@/types/holdings';
+import type { ResearchedCompany } from '@/types/research';
+import { TIER_COLOURS } from '@/types/research';
+import { TierBadge } from '@/components/research/ResearchUniverseTable';
 
 interface HoldingsTableProps {
   holdings: Holding[];
+  /** Optional: enriches rows with Titanite research scores. Map<ticker, ResearchedCompany> */
+  researchLookup?: Map<string, ResearchedCompany>;
 }
 
 // P&L (£) → from T212 ppl field (FX-adjusted by T212, already in GBP)
 // P&L%     → pure price ratio (currency-neutral)
 // VALUE    → GBP (server-side FX conversion via live GBPUSD=X rate)
 // AVG/LAST → native instrument currency (USD for US stocks)
-const COL_HEADERS = ['TICKER', 'COMPANY', 'QTY', 'AVG $', 'LAST $', 'P&L (£)', 'P&L%', 'VALUE (£)', '24H%'];
+const COL_HEADERS = ['TICKER', 'COMPANY', 'QTY', 'AVG $', 'LAST $', 'P&L (£)', 'P&L%', 'VALUE (£)', '24H%', 'TIER'];
 
-export default function HoldingsTable({ holdings }: HoldingsTableProps) {
+export default function HoldingsTable({ holdings, researchLookup }: HoldingsTableProps) {
   const fmt = {
     // GBP — user is UK-based; T212 account is denominated in £
     price: (v: number) => `£${v.toFixed(2)}`,
@@ -51,43 +59,59 @@ export default function HoldingsTable({ holdings }: HoldingsTableProps) {
           </tr>
         </thead>
         <tbody>
-          {holdings.map((h, i) => (
-            <tr
-              key={h.ticker}
-              style={{
-                borderBottom: '1px solid var(--color-border-subtle)',
-                backgroundColor: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)',
-              }}
-            >
-              <td className="px-2 py-1.5 font-bold" style={{ color: 'var(--color-accent)' }}>
-                {h.ticker}
-              </td>
-              <td className="px-2 py-1.5 truncate max-w-[120px]" style={{ color: 'var(--color-text-secondary)' }}>
-                {h.name}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
-                {fmt.qty(h.quantity)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-secondary)' }}>
-                {fmt.price(h.averagePrice)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right font-semibold" style={{ color: 'var(--color-text-primary)' }}>
-                {fmt.price(h.currentPrice)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: pnlColor(h.pnlValue) }}>
-                {h.pnlValue >= 0 ? '+' : ''}{fmt.value(h.pnlValue)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: pnlColor(h.pnlPercent) }}>
-                {fmt.pct(h.pnlPercent)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
-                {fmt.value(h.totalValue)}
-              </td>
-              <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: h.percentageChange24h === 0 ? 'var(--color-text-muted)' : pnlColor(h.percentageChange24h) }}>
-                {h.percentageChange24h === 0 ? 'N/A' : fmt.pct(h.percentageChange24h)}
-              </td>
-            </tr>
-          ))}
+          {holdings.map((h, i) => {
+            const research = researchLookup?.get(h.ticker.toUpperCase());
+            return (
+              <tr
+                key={h.ticker}
+                style={{
+                  borderBottom: '1px solid var(--color-border-subtle)',
+                  backgroundColor: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)',
+                }}
+              >
+                <td className="px-2 py-1.5 font-bold" style={{ color: 'var(--color-accent)' }}>
+                  {h.ticker}
+                </td>
+                <td className="px-2 py-1.5 truncate max-w-[120px]" style={{ color: 'var(--color-text-secondary)' }}>
+                  {h.name}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
+                  {fmt.qty(h.quantity)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-secondary)' }}>
+                  {fmt.price(h.averagePrice)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right font-semibold" style={{ color: 'var(--color-text-primary)' }}>
+                  {fmt.price(h.currentPrice)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: pnlColor(h.pnlValue) }}>
+                  {h.pnlValue >= 0 ? '+' : ''}{fmt.value(h.pnlValue)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: pnlColor(h.pnlPercent) }}>
+                  {fmt.pct(h.pnlPercent)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: 'var(--color-text-primary)' }}>
+                  {fmt.value(h.totalValue)}
+                </td>
+                <td className="px-2 py-1.5 tabular-nums text-right" style={{ color: h.percentageChange24h === 0 ? 'var(--color-text-muted)' : pnlColor(h.percentageChange24h) }}>
+                  {h.percentageChange24h === 0 ? 'N/A' : fmt.pct(h.percentageChange24h)}
+                </td>
+                {/* Research enrichment column — shows Titanite tier if this ticker is covered */}
+                <td className="px-2 py-1.5">
+                  {research ? (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', alignItems: 'flex-start' }}>
+                      <TierBadge tier={research.tier} />
+                      <span style={{ color: 'var(--color-muted)', fontSize: '0.58rem', fontFamily: 'var(--font-geist-mono)' }}>
+                        {research.score.toFixed(1)}/13
+                      </span>
+                    </div>
+                  ) : (
+                    <span style={{ color: 'var(--color-muted)', fontSize: '0.65rem', fontFamily: 'var(--font-geist-mono)' }}>—</span>
+                  )}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -14,6 +14,7 @@ import {
   Sliders,
   Newspaper,
   LandmarkIcon,
+  FlaskConical,
 } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 
@@ -45,6 +46,12 @@ const NAV_ITEMS: NavItem[] = [
     label: 'Intel Hub',
     code: 'INT',
     icon: <Newspaper size={14} />,
+  },
+  {
+    href: '/research',
+    label: 'Research',
+    code: 'RSH',
+    icon: <FlaskConical size={14} />,
   },
   {
     href: '/congress',
@@ -161,8 +168,8 @@ export default function Sidebar() {
           borderTop: '1px solid var(--color-border)',
         }}
       >
-        <div>MARKET SENTINEL</div>
-        <div>v0.1.0 — PROTOTYPE</div>
+        <div>TITANITE RESEARCH TERMINAL</div>
+        <div>v0.2.0 — RESEARCH INTEGRATED</div>
       </div>
     </aside>
   );

@@ -106,3 +106,22 @@ body {
   background: var(--color-accent-dim);
   color: var(--color-text-primary);
 }
+
+/* ── Research Component Aliases (Titanite integration) ────────  */
+/* Maps to existing token names for components in /research        */
+:root {
+  --color-muted:    var(--color-text-muted);
+  --color-text:     var(--color-text-primary);
+  --color-positive: var(--color-signal-ok);
+  --color-warning:  var(--color-signal-warning);
+  --color-negative: var(--color-signal-alert);
+}
+
+/* ── Research table row hover ─────────────────────────────────  */
+.research-table-row {
+  cursor: default;
+  transition: background-color 80ms ease;
+}
+.research-table-row:hover {
+  background-color: var(--color-terminal-800);
+}
