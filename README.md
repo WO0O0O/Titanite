@@ -17,7 +17,7 @@ Integrated directly into the dashboard is the **Titanite Research** framework, a
    - **4 Macro Pillars**: Quick view of key macro triggers: TNX Yield, VIX Index, S&P 500 vs. 200-Day MA, and Warsh Sentiment.
    - **Trading 212 Holdings Table**: Dense, live-calculated holdings table displaying current share price, FX-converted values, conviction tiers, and conviction scoring from Titanite Research.
 
-![Titanite Dashboard](docs/images/dash.png)
+<!-- ![Titanite Dashboard](docs/images/dash.png) -->
 
 2. **Signal Builder (`/builder`)**:
    - Composes multi-condition Boolean logic rules using static thresholds or comparative EMA metrics.
