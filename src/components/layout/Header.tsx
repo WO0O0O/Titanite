@@ -28,7 +28,7 @@ export default function Header() {
           className="text-[12px] font-bold tracking-widest uppercase"
           style={{ color: 'var(--color-text-primary)' }}
         >
-          MKT SENTINEL
+          TITANITE
         </span>
       </div>
 

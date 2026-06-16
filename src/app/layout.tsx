@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Market Sentinel',
+  title: 'Titanite Research',
   description:
-    'High-beta tech risk dashboard. Track macro triggers, build composite signals, and monitor US Congressional trades.',
+    'High-beta tech risk dashboard and AGI infrastructure chokepoint research terminal.',
 };
 
 /**

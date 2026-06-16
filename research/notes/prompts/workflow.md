@@ -36,27 +36,6 @@ titanite extract --ticker [TICKER]
 
 Depending on the research framework of the target company, execute the following scoring and file generation guidelines:
 
-### A. Small-Cap AI Infra (SC)
-
-- **Scoring Rules:** [SC-AI-SCORER.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/prompts/SC/SC-AI-SCORER.md)
-- **Prompt:** _"Read [SC-AI-INFRA.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/prompts/SC/SC-AI-INFRA.md) and the completed buffer [TICKER]-EXTRACTION-BUFFER.md. Perform the Turn 2 Deep Analytical Valuation & Scoring for [TICKER] and write the final research report to [TICKER]-RESEARCH-REPORT.md."_
-- **Target Path:** `research/notes/SMALLCAP-AI-INFRA/[SECTOR]/[TICKER]-RESEARCH-REPORT.md` (or `[TICKER].md`)
-- **Action:** Save the AI-generated report directly to this file (using British English spelling, zero emojis, and the raw scorecard).
-
-### B. Situational Awareness (Leopold)
-
-- **Scoring Rules:** [leopold.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/prompts/leopold.md)
-- **Prompt:** _"Read leopold.md. Perform the Deep Analytical Valuation & Scoring for [TICKER] and write the final research report."_
-- **Target Path:** `research/notes/SITUATIONAL-AWARENESS/[SECTOR]/[TICKER].md` (or `[TICKER]-RESEARCH-REPORT.md`)
-- **Action:** Write the finished report (incorporating the 15 sections and OOM cluster scaling math) directly to this path.
-
-### C. Space-Infrastructure (Space)
-
-- **Scoring Rules:** [SPACE-INFRA.md](file:///Users/danwooster/1.%20DEV/signals/research/notes/prompts/SPACE-INFRA.md)
-- **Prompt:** _"Read SPACE-INFRA.md. Perform the orbital buildout and manifest analysis for [TICKER] and write the final research report."_
-- **Target Path:** `research/notes/SPACE/[TICKER].md`
-- **Action:** Save the completed orbital buildout scorecard directly to this path.
-
 ---
 
 ## Step 3: Update Master Indexes

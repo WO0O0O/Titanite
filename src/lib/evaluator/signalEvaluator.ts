@@ -1,7 +1,7 @@
 /**
  * Signal Evaluator — pure functions, no side effects, no UI dependencies.
  *
- * This is the core business logic of Market Sentinel. It takes a MasterSignal
+ * This is the core business logic of Titanite. It takes a MasterSignal
  * and a MarketContext and returns an updated MasterSignal with all computed
  * fields recalculated (isMet per condition, completionPercentage, isTriggered).
  *

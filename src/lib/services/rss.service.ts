@@ -194,7 +194,7 @@ async function fetchSingleFeed(feed: RssFeedConfig): Promise<IntelItem[]> {
     // 15-minute server cache — same policy as market data
     next: { revalidate: 900 },
     headers: {
-      'User-Agent': 'Mozilla/5.0 (compatible; MarketSentinel/1.0)',
+      'User-Agent': 'Mozilla/5.0 (compatible; TitaniteResearch/1.0)',
       'Accept': 'application/rss+xml, application/xml, text/xml',
     },
   });

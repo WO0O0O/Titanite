@@ -97,7 +97,7 @@ export async function fetchCongressTrades(): Promise<CongressTrade[]> {
     // which caused every request to re-fetch anyway. Explicit no-store avoids the error spam.
     // User-Agent is required — S3 returns 403 for requests without one (bot-filtering).
     const congressHeaders = {
-      'User-Agent': 'Mozilla/5.0 (compatible; MarketSentinel/1.0)',
+      'User-Agent': 'Mozilla/5.0 (compatible; TitaniteResearch/1.0)',
       'Accept': 'application/json',
     };
     const [senateRes, houseRes] = await Promise.all([

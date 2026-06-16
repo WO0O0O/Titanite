@@ -131,7 +131,7 @@ function buildEmbed(signal: MasterSignal): DiscordEmbed {
         inline: false,
       },
     ],
-    footer: { text: `Market Sentinel · ${londonTimestamp()}` },
+    footer: { text: `Titanite Research · ${londonTimestamp()}` },
     timestamp: new Date().toISOString(),
   };
 }
@@ -179,7 +179,7 @@ export async function sendDiscordAlerts(
   for (let i = 0; i < alertable.length; i += BATCH_SIZE) {
     const batch = alertable.slice(i, i + BATCH_SIZE);
     const payload: DiscordWebhookPayload = {
-      username: 'Market Sentinel',
+      username: 'Titanite Research',
       embeds: batch.map(buildEmbed),
     };
 
