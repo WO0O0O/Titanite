@@ -1,4 +1,4 @@
-# Market Sentinel — Development Phases
+# Titanite — Development Phases
 
 ## Phase 1: Planning and Setup ✅ COMPLETE
 - [x] Create project documentation (`docs/` folder).

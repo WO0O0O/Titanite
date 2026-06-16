@@ -1,8 +1,8 @@
-# Market Sentinel - Project Overview
+# Titanite - Project Overview
 
 ## Objective
 
-Market Sentinel is a Next.js application designed to track high-volatility tech stocks with a specific focus on "Macro-Triggers" (e.g., Fed Chair Transition risks). The app provides a Signal Builder and a Dashboard to alert the user when specific macro conditions threaten their portfolio.
+Titanite is a Next.js application designed to track high-volatility tech stocks with a specific focus on "Macro-Triggers" (e.g., Fed Chair Transition risks). The app provides a Signal Builder and a Dashboard to alert the user when specific macro conditions threaten their portfolio.
 
 ## Tech Stack
 

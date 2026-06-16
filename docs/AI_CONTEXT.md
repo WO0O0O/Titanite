@@ -1,4 +1,4 @@
-# Market Sentinel — AI Session Context
+# Titanite — AI Session Context
 
 > Share this file at the start of every new AI session. It contains everything needed to write correct code immediately.
 > For full detail, reference the other docs in `/docs/` only when needed for a specific task.
