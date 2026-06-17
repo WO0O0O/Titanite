@@ -8,15 +8,15 @@ as of 16/06/2026: ~+850% return
 
 ## T212:
 
-(in rough order of portfolio weight)
+(in order of portfolio weight)
 
 - **SIVE** (Sivers Semiconductors)
 - **TRT** (Trio-Tech International)
-- **LPK** (LPKF Laser & Electronics)
 - **AL2SI** (2CRSi S.A.)
-- **ASPI** (ASP Isotopes Inc)
+- **LPK** (LPKF Laser & Electronics)
 - **AMPG** (Amplitech)
 - **IQE** (IQE Plc)
+- **AAOI** (Applied Optoelectronics)
 
 ## IBKR:
 
