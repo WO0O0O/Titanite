@@ -106,8 +106,9 @@ graph TD
 
 - **Sub-section A — Trailing Documented Evidence:** Gross margins have been volatile (trough) due to a 2024/2025 commercial decision to grant a 7% to 10% discount to a major US client to compensate for a shipment delay. EBITDA grew 4.6x to €9.64m in H1 2025/2026. Backlog is highly concentrated in the $610m master contract and the €140m Japanese infrastructure deployment.
 - **Sub-section B — Forward Run-Rate Signals:** 2CRSi is ramping manufacturing facilities in Strasbourg, San Jose, and India to meet the surge in Blackwell orders. High-performance GPU allocation from NVIDIA remains the primary gating factor for delivery, with lead times of several months for Blackwell architectures. Management upgraded full-year FY25/26 revenue guidance to over €400 million, surpassing the initial €300 million target.
+- **Operational Bottleneck / Inventory-to-Backlog Audit:** The extraction buffer shows an inventory-to-binding backlog ratio of 0.03. This indicates that supply cannot be met from existing physical inventory ($23.0M inventory vs $761.2M binding backlog). The primary operational gating factor is the physical capacity expansion and formal customer qualification of the Strasbourg, San Jose, and India assembly facilities, rather than simple inventory drawdown.
 
-*Supply tightness exists due to GPU allocation limits, but trailing gross margins remain unoptimised due to historical client discounts.*
+*Supply tightness exists due to GPU allocation limits and facility qualification requirements, while trailing gross margins remain unoptimised due to historical client discounts.*
 
 ---
 
@@ -131,6 +132,8 @@ The trough occurred in H1 2023/2024 (€10.7 million) following the divestiture 
 **Sub-section B — Forward Run-Rate Signals:**
 Management upgraded FY25/26 revenue guidance to >€400 million (up from €300 million) and outlined a long-term revenue ambition of >€1.00 billion for FY26/27.
 
+*Facility Qualification Dependency:* Because physical inventory is limited to $23.0M relative to the $761.2M binding backlog, the projected revenue inflection is highly sensitive to facility qualification milestones at the new manufacturing lines. Any customer audit delays at these locations will slow the backlog drawdown velocity and affect revenue recognition timing.
+
 ---
 
 ## SECTION 5 — SMALL CAP / ASYMMETRIC UPSIDE
@@ -152,10 +155,11 @@ Management upgraded FY25/26 revenue guidance to >€400 million (up from €300 
 
 1. **Current Stage:** Volume Ramp.
 2. **Transition Milestones:** Delivery of the initial $290 million USD order for the Sacramento AI Factory is scheduled for summer 2026 (following a client-side infrastructure delay from spring 2026).
-3. **Operating Leverage:**
+3. **Operating Leverage & Valuation Anchoring:**
    - Current EBITDA Margin: 4.7% (H1 2025/2026).
    - Target EBITDA Margin at Scale: >12.0% for FY25/26 and 15.0% by FY26/27.
    - The gap represents operating leverage as assembly overheads are absorbed by large-scale orders.
+   - *Valuation Anchoring:* The extremely low inventory-to-binding backlog ratio (0.03) highlights that the company's valuation is structurally bound to facility qualification milestones rather than physical inventory accumulation. Volume scaling and execution of the $290M Sacramento order starting in summer 2026 are contingent on successful assembly site qualifications.
 
 ---
 

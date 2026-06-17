@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.4] - 17 June 2026
+
+### AL2SI RESEARCH REPORT CALIBRATION (SC-AI-INFRA v2.0.0 COMPLIANCE)
+**Rationale:** Under the v2.0.0 framework, if a company's extraction buffer shows an inventory-to-binding backlog ratio near zero, the analysis must explicitly address this operational bottleneck in Sections 3, 4, and 6. AL2SI has a ratio of 0.03 ($23.0M inventory vs $761.2M binding backlog), which was not previously addressed.
+
+- **Section 3 Update:** Added physical capacity expansion and customer facility qualification bottleneck context, noting that physical inventory cannot support the backlog.
+- **Section 4 Update:** Added detailed dependency of forward revenue inflection on site qualification milestones.
+- **Section 6 Update:** Anchored immediate valuation to facility qualifications rather than inventory accumulation.
+
 ## [v2.0.3] - 16 June 2026
 
 ### AMD PIE EXCLUSION — ROBUSTNESS & CORRECTNESS FIXES

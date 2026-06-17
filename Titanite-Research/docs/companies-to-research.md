@@ -8,6 +8,8 @@ $3290.TW (Nextron)
 
 ## SMALL CAPS:
 
+FPS forgent power solutions
+
 MXL
 DGXX
 

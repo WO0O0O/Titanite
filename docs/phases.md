@@ -110,6 +110,9 @@
 - [x] Parse pies, locate the pie named `"AMD"`, and extract its constituent tickers.
 - [x] Filter the returned portfolio holdings list to exclude those matching tickers.
 
+## Phase 7.8: Research Framework Calibration ✅ COMPLETE
+- [x] Calibrate AL2SI research report to comply with the Turn 2 Data Validation Rule of SC-AI-INFRA v2.0.0 (addressed inventory-to-binding backlog ratio of 0.03 and facility qualification milestones bottleneck in Sections 3, 4, and 6).
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.

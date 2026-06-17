@@ -20,7 +20,7 @@ If the company is new, map the ticker to its industry folder (e.g., `"NRGV": "EN
 Run the automated extractor in the Python environment:
 
 ```bash
-cd research/titanite-app
+cd Titanite-Research/titanite-app
 source .venv/bin/activate
 titanite extract --ticker [TICKER]
 ```
@@ -53,7 +53,20 @@ Record the completed research in the documentation files:
 Generate the frontend database payloads by running:
 
 ```bash
-titanite export
+./Titanite-Research/titanite-app/.venv/bin/titanite export
+
+.venv/bin/titanite export
+```
+
+audit portfolio concentration limits:
+
+- TODO: to add later
+
+```bash
+./Titanite-Research/titanite-app/.venv/bin/titanite portfolio audit
+
+./.venv/bin/titanite portfolio audit
+
 ```
 
 This compiles the master markdown indices into JSON structures inside Next.js's `public/research-data/`, automatically updating the web dashboard in real-time.
