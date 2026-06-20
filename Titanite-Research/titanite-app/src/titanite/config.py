@@ -61,6 +61,7 @@ INDUSTRY_MAP: dict[str, str] = {
     "NBIS": "AI-CLOUD-INFRA",
     "KEEL": "AI-CLOUD-INFRA",
     "TLN": "ENERGY",
+    "AIRJ": "ENERGY",
     "NRGV": "ENERGY",
     "BE": "ENERGY",
     "VST": "ENERGY",
