@@ -9,6 +9,11 @@ $3290.TW (Nextron)
 ## SMALL CAPS:
 
 FPS forgent power solutions
+noventa - robotics
+timker tkr
+moog inc
+usa rare earth metals
+BLG
 
 MXL
 DGXX

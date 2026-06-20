@@ -44,6 +44,7 @@ If catalysts consistently arrive 6-12 months late, the thesis return profile deg
 | **ACCON** | Commercial launch and volume shipments of the A212 sensor on automotive platform | Late 2026 | Medium-High | _Pending_ | — | Drives royalty and volume sales inflection | 🟡 Active |
 | **XFAB** | Confirmed volume production contract for silicon photonics or GaN with Tier 1 | H2 2026 / H1 2027 | Medium | _Pending_ | — | De-risks capacity utilisation ramp at Lubbock or Corbeil-Essonnes | 🟡 Active |
 | **TRT** | Penang facility operational commencement and gross margin recovery to >20% | Q4 2026 | Medium-High | _Pending_ | — | De-risks capacity constraints and triggers gross margin recovery | 🟡 Active |
+| **AIRJ** | UL/NSF certification of the AirJoule Core (A250) unit | Q4 2026 | Medium | _Pending_ | — | Enables commercial launch and initial product sales | 🟡 Active |
 
 ---
 

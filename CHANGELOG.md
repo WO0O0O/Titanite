@@ -4,6 +4,33 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.7] - 19 June 2026
+
+### AIRJOULE TECHNOLOGIES CORPORATION (AIRJ) RESEARCH REPORT RE-CALIBRATION
+**Rationale:** Refined the research report to incorporate the closing of the $15.00 million registered direct offering on 1 June 2026 and updated stock price metrics to $4.92 (as of market close 18 June 2026). Corrected spelling tokens (centre, defence) in both extraction buffer and scoring report to enforce absolute compliance with British English framework standards.
+
+- **Data Ingestion Buffer Update:** Corrected Americanised spellings (`data center` -> `data centre` and `defense` -> `defence` in search audit log) in [AIRJ-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/ENERGY/AIRJ-EXTRACTION-BUFFER.md).
+- **Scorer Report Refinement:** Updated stock price to $4.92, Market Capitalisation to $356.21 million, and EV to $325.11 million in the Gate Check and Section 5 matrix of [AIRJ-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/ENERGY/AIRJ-RESEARCH-REPORT.md). Added closed transaction details for the June 1 offering in Section 9 and re-calibrated the asymmetric return multiple to 5.6x. Corrected target spellings to `centre`.
+
+## [v2.0.6] - 19 June 2026
+
+### AIRJOULE TECHNOLOGIES CORPORATION (AIRJ) INITIAL AUDIT AND SCORING
+**Rationale:** AirJoule Technologies Corporation was identified as an energy and cooling infrastructure target in the small-cap watchlist. An initial research audit was executed under the modular two-turn pipeline rules of SC-AI-INFRA.
+
+- **Data Ingestion Buffer:** Populated search execution log and compiled pre-revenue balance sheet parameters (cash of $31.1M, zero debt, $38,570 property and equipment net) in [AIRJ-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/ENERGY/AIRJ-EXTRACTION-BUFFER.md).
+- **Scorer Implementation:** Completed [AIRJ-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/ENERGY/AIRJ-RESEARCH-REPORT.md) following the analytical chokepoint scoring criteria, assigning a final score of 12/13 (Tier 1 conviction candidate) with the Qualification-Cycle Modifier active.
+- **Central Index and Watchlist Integration:** Registered AIRJ in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md), added active UL/NSF certification catalyst (targeted Q4 2026) to [CATALYST-TRACKER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/CATALYST-TRACKER.md), mapped the ticker to the ENERGY directory in the CLI [config.py](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/titanite-app/src/titanite/config.py) industry map, and updated [TITANITE-HOLDINGS.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TITANITE-HOLDINGS.md) watchlist.
+
+## [v2.0.5] - 18 June 2026
+
+### AL2SI THESIS RE-AUDIT AND POST-MORTEM (THESIS FAILURE)
+**Rationale:** Grizzly Research published a short report on June 18, 2026, revealing fabricated revenues and backlog via undisclosed related parties (NewYork GreenCloud / Joseph Church). The stock crashed 40.8% to €26.40, triggering the mandatory Post-Mortem Protocol under the SC-AI-INFRA v2.0.0 rules.
+
+- **Ingestion Buffer Update:** Search audit trail updated; toggled `working_capital_divergence_detected` and `potential_channel_stuffing_signals` to true, set `ai_segment_pivot_modifier_applies` to false, and set `inventory_to_binding_backlog_ratio` to null (void).
+- **Re-Scoring:** Re-scored all 15 sections of the research report, dropping the final score from 12/13 (Tier 1) to 1/13 (Thesis Failure).
+- **Post-Mortem Protocol:** Documented failure triggers, section-by-section errors, and framework modifications (verifying counterparty incorporation dates and checking public utility/CEQA databases for >10MW facilities).
+- **Framework Prompts Update:** Updated [SC-AI-INFRA.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-INFRA.md), [SC-AI-EXTRACTOR.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-EXTRACTOR.md), and [SC-AI-SCORER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-SCORER.md) to integrate the **Counterparty Inception Rule** (Sections 2, 7, 12, and automatic disqualifiers), the **Utility Queue Check** (Sections 6, 13, and automatic disqualifiers), and the **PUE Feasibility Limits** (Section 8).
+
 ## [v2.0.4] - 17 June 2026
 
 ### AL2SI RESEARCH REPORT CALIBRATION (SC-AI-INFRA v2.0.0 COMPLIANCE)

@@ -130,8 +130,9 @@ _1 point_
 3. Confirmed design-ins, qualifications, or supply agreements? Quote with date.
 4. What percentage of revenue is driven by AI infrastructure capex vs. legacy applications?
 5. Any "pull" signals — increased order volumes, shortened procurement cycles, public statements referencing [TICKER]'s technology?
+6. **Counterparty Inception & Registry Verification:** For any contract representing >20% of trailing annual revenue, verify the client's incorporation date and address. If the counterparty was incorporated within 6 months of the contract announcement or registered at a residential/non-business address (e.g. veterinary clinic, residential home, retail shop), the linkage is invalid and triggers an automatic integrity failure in Section 12.
 
-**Score 1 point** only if confirmed hyperscaler linkages or Tier 1 supplier relationships exist with documentary evidence. (For edge-AI, robotics, or other niche hardware, industry-specific Tier 1 supplier relationships — such as automotive Tier 1 integrators or major industrial distributors — are accepted as Tier 1 connections).
+**Score 1 point** only if confirmed hyperscaler linkages or Tier 1 supplier relationships exist with documentary evidence, and the Counterparty Inception Check is passed with zero red flags. (For edge-AI, robotics, or other niche hardware, industry-specific Tier 1 supplier relationships — such as automotive Tier 1 integrators or major industrial distributors — are accepted as Tier 1 connections).
 
 ---
 
@@ -234,8 +235,9 @@ _1 point_
 4. Management's stated gross margin at scale vs. current gross margin — the gap is the operating leverage
 5. Timeline from today to meaningful revenue? (Acceptable: 6–24 months)
 6. Specific risks that could delay the transition?
+7. **Utility Grid & Interconnection Check:** For any physical data centre or power facility >10 MW, verify the project's status in the regional grid interconnection queue (e.g. CAISO, PJM, ERCOT queue portals) and environmental review databases (e.g. CEQA). If the project is unlisted or in the early study phase with estimated completion >36 months, adjust the transition timeline.
 
-**Score 1 point** only if there is a clear, near-term (6–24 month) transition to volume revenue with named catalysts and a credible management timeline.
+**Score 1 point** only if there is a clear, near-term (6–24 month) transition to volume revenue with named catalysts, a credible management timeline, and active utility queue status confirming the feasibility of physical power delivery.
 
 ---
 
@@ -250,10 +252,11 @@ _1 point_
 5. Single customer loss scenario: revenue impact and implied stock price?
 6. Customer concentration rate of change: calculate the growth rate of bookings and revenue outside the top-2 customers. Is the concentration risk actively dissolving?
 7. **Counterparty Credit & Aggregator Audit:** Are the top customers pre-revenue startups, GPU brokers/aggregators, or related-party entities? In small caps, high concentration is normal; however, concentration must be audited for credit quality. If the customer book represents adverse selection (pre-revenue counterparties carrying high default risk), deduct 1 point. (Pre-revenue startup counterparties do not trigger this deduction if they are backed by Tier 1 venture capital or strategic partners exceeding a $100M funding threshold).
+8. **Shell & Related-Party Counterparty Check:** Verify whether top counterparties are newly incorporated shell entities or share physical addresses/management ties with the company. If any material customer shows a related-party shell structure, trigger an immediate credit failure and deduct 1 point, cross-referencing with Section 12.
 
 Acceptable thresholds: top customer >25%; top 3–5 >50%; confirmed hyperscaler or Tier 1 design-in even if undisclosed.
 
-**Score 1 point** only if thresholds are met with confirmed hyperscaler or Tier 1 connections AND counterparty credit check is passed (no deduction under item 7).
+**Score 1 point** only if thresholds are met with confirmed hyperscaler or Tier 1 connections AND counterparty credit check is passed (no deductions under items 7 and 8).
 
 ---
 
@@ -266,8 +269,9 @@ _1 point_
 3. Technical barriers to displacement in 24 months: patents, manufacturing know-how, capex to replicate, qualification time, regulatory approvals?
 4. Any competitor with a credible roadmap to displace [TICKER] within 24 months?
 5. Government or geopolitical moat: export controls, CHIPS Act, domestic content requirements, national security designations?
+6. **PUE Feasibility Limits:** Any commercial AI data centre PUE claim below 1.05 must be rejected as marketing fantasy and scored 0 unless validated by an independent tier-one engineering audit.
 
-**Score 1 point** only if defensible 12–24 month technology lead, clear structural moat, or near-monopoly / duopoly positioning with evidence.
+**Score 1 point** only if defensible 12–24 month technology lead, clear structural moat, or near-monopoly / duopoly positioning with evidence, AND any low-PUE claims (<1.05) are independently verified.
 
 ---
 
@@ -349,6 +353,7 @@ This section has two components. A management team with a history of fraud, SPAC
    
    - **Pre-Volume Working Capital Calibration:** For companies verified under the 'Qualification-Cycle Player' or 'Segment-Pivot Player' modifier, a contract assets-to-receivables ratio above 30% does not trigger an automatic score of 0 or a 'Working Capital Divergence' flag if those assets are fundamentally driven by Non-Recurring Engineering (NRE) development milestones or hardware validation phases with Tier 1 customers. Sequential DSO expansion up to 50% does not trigger the automatic downgrade if it is documented as a shipment timing variance with clean collections.
    - **Memory Drift Verification Check:** Check the `working_capital_divergence_detected` flag in your Raw Data Extraction Buffer. If this flag is set to `true` (and neither the Qualification-Cycle nor the Segment-Pivot modifier applies), you are mathematically barred from scoring Section 12 above 0.
+7. **Counterparty Inception & Registry Check (Counterparty Inception Rule):** Has the company announced material contracts with counterparties that were incorporated within 6 months of the contract announcement date, or are registered at residential/non-business storefront addresses (e.g. residential homes, retail storefronts, or veterinary clinics)? If yes, trigger an automatic integrity failure (score 0 for Section 12).
 
 **MANDATORY: Working Capital Override Log**
 
@@ -366,7 +371,7 @@ Every report must include this section immediately after the integrity audit:
 - If exemption applied, justification: [NRE milestone revenue / Customer qualification phase / Segment transition]
 ```
 
-If any integrity audit finding is negative (prior fraud involvement, going concern, auditor changes with unexplained departures, active regulatory investigation, material weakness, or triggering the 'Working Capital Divergence' monitor flag without qualifying for the NRE/Qualification-Cycle/Segment-Pivot Exemption) — score this section 0 and escalate to a prominent warning at the top of the report.
+If any integrity audit finding is negative (prior fraud involvement, going concern, auditor changes with unexplained departures, active regulatory investigation, material weakness, counterparty inception rule breach, or triggering the 'Working Capital Divergence' monitor flag without qualifying for the NRE/Qualification-Cycle/Segment-Pivot Exemption) — score this section 0 and escalate to a prominent warning at the top of the report.
 
 **Component B — Execution track record**
 
@@ -390,7 +395,7 @@ Run the strongest possible bear case before concluding. If a short report exists
 **MANDATORY STRUCTURE:** You are strictly forbidden from condensing this section or combining headings. You must write out each of the following eight headings explicitly as its own sub-section header and provide a detailed, data-dense analysis:
 
 - **Thesis Killer:** The single most credible scenario in which this thesis fails completely within 24 months — specific mechanism, not generic macro risk.
-- **Short Report Reconciliation:** If an active short thesis exists, summarise its core allegations and cross-verify them against the **Architectural Moat Override** and filed tech specs. Run the **Forensic Conflation Check**: determine if the short seller is committing an architectural or generational boundary error (e.g., citing an alternative legacy component supplier to claim the target company has been displaced, while failing to recognise that the downstream architecture is shifting to a completely different physical substrate or wavelength standard, such as GaAs/GaAsP to Indium Phosphide tunable arrays). Reconcile these claims using verified ecosystem documentation (foundry PDKs, MSA standards, or Tier 1 contract manufacturing partnerships) from the extraction buffer.
+- **Short Report Reconciliation:** If an active short thesis exists, summarise its core allegations and cross-verify them against the **Architectural Moat Override** and filed tech specs. Check for undisclosed related-party shell counterparties, registration address validity, and physical asset status. Run the **Forensic Conflation Check**: determine if the short seller is committing an architectural or generational boundary error (e.g., citing an alternative legacy component supplier to claim the target company has been displaced, while failing to recognise that the downstream architecture is shifting to a completely different physical substrate or wavelength standard, such as GaAs/GaAsP to Indium Phosphide tunable arrays). Reconcile these claims using verified ecosystem documentation (foundry PDKs, MSA standards, or Tier 1 contract manufacturing partnerships) from the extraction buffer.
 - **Substitute Threat:** Who is building a substitute right now? Timeline to volume production? How credible?
 - **Concentration Stress Test:** Model a loss of the largest single customer — revenue impact and implied stock price.
 - **Technology Skip Risk:** Any risk that next-gen AI architecture bypasses [TICKER]'s product entirely?
@@ -502,6 +507,8 @@ Known AI infrastructure institutional rotation sequence:
 - Active regulatory investigation against the company or current executives (Note: Inquiries into general market trading activity, leaks by third parties, or private shareholder class-action lawsuits do not trigger regulatory disqualification unless a regulatory authority has filed formal civil or criminal charges of fraud or securities violations against the entity or its current executive officers).
 - Going concern opinion from the current auditor or unresolved going concern disclosures (Note: Standard footnote discussions of short runway or risk-factor going concern notes under liquidity management sections do not trigger disqualification if the company has recently completed a capital raise or has a signed bridge/volume ramp pathway that resolves near-term insolvency).
 - Short report allegations that cannot be refuted with filed evidence (Note: In reconciling short reports against filed restatements for qualification-cycle players, forward architecture lock-ins/foundry integrations verified via official ecosystem documentation take precedence over historical period retro-adjustments).
+- Counterparty Inception Rule breach (announced contracts representing >20% of revenue with client entities incorporated within 6 months of the announcement, or registered at residential/non-business storefront addresses such as veterinary clinics or residential homes).
+- Unlisted or study-phase utility queue status for physical data centre or power facilities >10 MW, delaying physical delivery timelines beyond 36 months.
 - Integrity audit finding of prior fraud or securities violations by current leadership
 - Auditor resignation or replacement with no credible explanation
 - Active debt defaults or debt default waivers on bridge or related-party loans within the last 12 months that threaten entity solvency (historical defaults do not disqualify if they were fully retired, settled, or restructured as a condition of a completed merger or capital raise that leaves the company with a positive net working capital position)

@@ -6,47 +6,37 @@
 
 ## SECTION 00 — CRITICAL MATERIAL OVERHANG AUDIT
 
-> [!NOTE]
-> **GOVERNANCE AND ACCOUNTING AUDIT:** 2CRSi S.A. transitioned from IFRS to French GAAP (ANC standards) for the fiscal year ended 30 June 2025, which requires close monitoring of balance sheet comparability, though statutory audits remain clean. 
-> Former executive Wally Liaw (co-founder of Supermicro and President of 2CRSi Corp from June 2020 to April 2021) was indicted by U.S. federal authorities in March 2026 for allegedly violating export controls by diverting advanced NVIDIA-powered AI servers to China. Liaw has pleaded not guilty; the indictment occurs five years after Liaw's departure and does not target 2CRSi's current management team or current operations. 
-> Historical receivership of primary client Blade SAS (Shadow cloud computing) in March 2021 left 2CRSi with a €30.2m exposure, but the company successfully reclaimed server hardware and recovered €10.5m via a court-approved settlement with Jezby Ventures.
+> [!WARNING]
+> **GOVERNANCE AND ACCOUNTING AUDIT — THESIS FAILURE:** On June 18, 2026, Grizzly Research published a short report revealing that almost the entire revenue and backlog growth of 2CRSi S.A. is fabricated through an undisclosed related-party scheme. 
+> The $610M master contract and $290M Sacramento order are with NewYork GreenCloud (NYGC), a shell company co-founded and co-owned by 2CRSi's CEO Alain Wilmouth and Joseph Church (a local veterinarian whose companies are registered at his animal hospital in Plattsburgh, NY). NYGC's website is created and hosted by 2CRSi's IT department.
+> Furthermore, former executive Wally Liaw (former President of 2CRSi Corp, indicted in March 2026 for export control violations diverting advanced AI servers to China) represents a severe ongoing regulatory risk.
+> Historical transition from IFRS to French GAAP (ANC standards) in June 2025 appears to have been utilized to mask accounts receivable manipulations and balance sheet comparability.
 
 ---
 
 ## GATE CHECK — MARKET CAP FILTER
 
-As of 4 June 2026, 2CRSi (AL2SI) trades on Euronext Growth Paris.
-- **Share Price:** €54.50
+As of 18 June 2026, 2CRSi (AL2SI) trades on Euronext Growth Paris.
+- **Share Price:** €26.40 (crashed 40.8% following Grizzly Research short report)
 - **Shares Outstanding:** 22,596,441
-- **Market Capitalisation:** €1.232 billion (~$1.33 billion USD)
+- **Market Capitalisation:** €596.5 million (~$644.2 million USD)
 - **Gross Financial Debt:** €11.27 million
 - **Cash and Equivalents:** €9.00 million
 - **Net Debt:** €2.27 million
-- **Enterprise Value (EV):** €1.234 billion (~$1.33 billion USD)
+- **Enterprise Value (EV):** €598.8 million (~$646.7 million USD)
 
-**Gate Status: PASS**
-The market capitalisation is well below the $5.0 billion USD threshold, ensuring institutional discovery has not yet occurred.
+**Gate Status: PASS (Technically)**
+The market capitalisation is below the $5.0 billion USD threshold, but the thesis is **VOID** due to fabricated growth.
 
-### Return Math (Bull Case Target: 24–36 Months)
-- **Target Revenue (FY26/27):** €1.00 billion (management's explicit organic target).
-- **Target EBITDA Margin:** 15.0% (driven by scaling services and proprietary server lines, up from 12.0% guidance).
-- **Target EBITDA:** €150.0 million.
-- **Bull Case Multiple:** 4.0x P/S or 25x EV/EBITDA (justified by sovereign European AI infrastructure monopoly and proprietary liquid cooling premium).
-- **Implied Valuation:** €4.00 billion to €6.00 billion.
-- **Implied Share Price:** €177.00 to €265.00.
-- **Implied Return:** 225% to 386% from today's price (representing 3.25x to 4.86x return multiples).
-- **Extended 36-Month Bull Case (Revenue reaches €1.50 billion with re-rating to 4.2x P/S):** €6.30 billion valuation.
-- **Implied Return (Extended):** 5.11x (511% return). This meets the framework's minimum return threshold of 500% for hardware-dominant businesses.
+### Return Math (Thesis Failure — Void)
+- All bull case return projections are **VOID** and classified as **Thesis Failure**. The €1.00 billion organic revenue target for FY26/27 was built on fabricated related-party backlog and is completely infeasible. The stock represents a massive capital loss risk and is a write-off.
 
 ---
 
 ## FRAMEWORK MODIFIERS — DETECTING UNPRICED ASYMMETRY
 
-The `ai_segment_pivot_modifier_applies` flag in the extraction buffer is **true**.
-- **Section 3 (Demand > Supply):** Underabsorbed initial scaling costs are exempt; we do not penalise for low trailing gross margins caused by historical client delays and transitional pricing.
-- **Section 4 (Revenue Inflection):** Trailing semi-annual revenue tables are evaluated alongside forward evidence of Strasbourg, San Jose, and India facility production ramps.
-- **Section 9 (Recent Capital Raise):** We focus on cash-flow self-funding capabilities and management's commitment to avoid dilutive capital increases to fund organic growth.
-- **Section 12 (Management Integrity):** DSO sequential growth is within acceptable boundaries, and contract assets are 0.0. We do not penalise for the historical Blade SAS receivership which was successfully resolved.
+The `ai_segment_pivot_modifier_applies` flag in the extraction buffer is **false**.
+- **Segment Pivot Exemption Voided:** All segment-pivot modifications and exemptions are voided. Trailing low gross margins and accounts receivable metrics must be fully penalized as they represent structural cash bleeding and accounting manipulation rather than temporary transitional scaling.
 
 ---
 
@@ -74,133 +64,92 @@ graph TD
 
 ## SECTION 1 — WHICH AI INFRA BOTTLENECK DOES IT SOLVE?
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-2CRSi addresses the **Cooling** and **Power** constraints of high-performance computing.
-- **The Bottleneck:** Modern GPU systems (e.g., NVIDIA HGX Blackwell) require up to 100kW+ per rack. Conventional air cooling is physically incapable of dissipating this heat density.
-- **The 2CRSi Solution:** 2CRSi holds proprietary patents in direct-to-chip liquid cooling and immersion cooling (both single- and two-phase systems, developed with Chemours). These systems allow data centres to operate at a Power Usage Effectiveness (PUE) of 1.03–1.05.
-- **Quantifiable Impact:** Liquid cooling reduces cooling energy consumption by up to 90% and total data centre space requirements by 40%, directly unlocking capacity in power-constrained European grids.
+- **Bottleneck Expose:** While 2CRSi markets liquid cooling and immersion systems, the technical claims are exposed as marketing fantasies.
+- **Infeasibility:** The announced direct-to-chip liquid cooling systems claim a PUE of 1.02. This is a physical impossibility for a commercial multi-megawatt AI campus (real liquid-cooled facilities operate at 1.10–1.15; Google's best is 1.06).
+- **Power Constraints:** The proposed power base of using repowered, formerly idle biomass plants (idle for 8-10 years) fails to meet the 99.99%+ uptime required for AI training/inference. Pyrolysis scaling from 18MW to 41MW is unvalidated and technically infeasible.
 
 ---
 
 ## SECTION 2 — HYPERSCALER LINKAGE
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Direct Customers:** Cloud service providers (Atlas Cloud AI, NewYork GreenCloud), sovereign data centres, and telecom operators.
-2. **Hyperscaler Dependency:** These partners lease compute resources to regional enterprise clients and research labs seeking local residency.
-3. **Confirmed Design-Wins & Partnerships:**
-   - **$610 Million USD Master Contract (January 2024):** Large-scale AI data centre operator.
-   - **$290 Million USD Sacramento Order (September 2025):** AI Factory utilising 2,304 NVIDIA Blackwell Ultra GPUs, with delivery starting in summer 2026.
-   - **€140 Million Order (February 2026):** Server supply to a Canadian client for deployment in the Japanese market (using NVIDIA Blackwell Ultra B300 chips).
-   - **Valeo Immersion-Cooled Edge Partnership (February 2026):** Joint launch of immersion-cooled edge data centre solutions designed for high-density decentralised computing.
-   - **ÆTHER AI Gigafactory Site Negotiations (February 2026):** Entry into formal negotiations for the launch of a new AI Gigafactory site to handle upcoming server line deployment.
-   - **Chemours Two-Phase Liquid Cooling Collaboration (February 2026):** Strategic collaboration with Chemours to accelerate deployment of high-performance two-phase immersion and direct liquid cooling systems.
-4. **Capex Allocation:** Over 90% of current revenue is driven by AI and high-performance computing infrastructure capex.
+1. **Direct Customers:** The US growth story is fabricated through undisclosed related parties. The counterparty to the $610 million master contract and the $290 million Sacramento order is NewYork GreenCloud (NYGC), a shell company co-founded and co-owned by 2CRSi CEO Alain Wilmouth and a local veterinarian, Joseph Church.
+2. **Fabricated Partnerships:** NYGC was incorporated on the same day the contract was announced. Its website is created and hosted by 2CRSi's IT department. Joseph Church co-owns Plattsburgh Animal Hospital, and all his shell companies (Church Energy Center, Green Buffalo Data, Hypercompuglobomeganet LLC) are registered at his veterinary clinic.
+3. **Atlas Cloud AI Partnership:** The $6B partnership and $250M initial commitment announced in Dec 2025 with Atlas Cloud AI is another shell transaction. Atlas was incorporated in July 2024 and lacks the financial resources to buy GPUs. Church admitted in his May 2026 interview that Atlas's commitment is a non-binding "ROI commitment" and they have no signed customers.
+4. **Other Contracts:** Contracts in Munich (€110M), Canada (€140M), and the New York $100M order are highly suspect and lack identifiable, creditworthy counterparties.
 
 ---
 
 ## SECTION 3 — DEMAND OUTWEIGHS SUPPLY
 
-*Score: 1 / 2*
+*Score: 0 / 2*
 
-- **Sub-section A — Trailing Documented Evidence:** Gross margins have been volatile (trough) due to a 2024/2025 commercial decision to grant a 7% to 10% discount to a major US client to compensate for a shipment delay. EBITDA grew 4.6x to €9.64m in H1 2025/2026. Backlog is highly concentrated in the $610m master contract and the €140m Japanese infrastructure deployment.
-- **Sub-section B — Forward Run-Rate Signals:** 2CRSi is ramping manufacturing facilities in Strasbourg, San Jose, and India to meet the surge in Blackwell orders. High-performance GPU allocation from NVIDIA remains the primary gating factor for delivery, with lead times of several months for Blackwell architectures. Management upgraded full-year FY25/26 revenue guidance to over €400 million, surpassing the initial €300 million target.
-- **Operational Bottleneck / Inventory-to-Backlog Audit:** The extraction buffer shows an inventory-to-binding backlog ratio of 0.03. This indicates that supply cannot be met from existing physical inventory ($23.0M inventory vs $761.2M binding backlog). The primary operational gating factor is the physical capacity expansion and formal customer qualification of the Strasbourg, San Jose, and India assembly facilities, rather than simple inventory drawdown.
-
-*Supply tightness exists due to GPU allocation limits and facility qualification requirements, while trailing gross margins remain unoptimised due to historical client discounts.*
+- **Sub-section A — Trailing Documented Evidence:** The stated $761.2M backlog is fabricated. The "exceptional discount" granted to the major US client to explain zero H2 2025 profits was a cover story to hide structural unprofitable transactions and related-party channel stuffing.
+- **Sub-section B — Forward Run-Rate Signals:** The upgraded guidance of >€400 million is entirely based on fabricated orders. There is no real demand backing the facilities in Strasbourg, San Jose, or India.
+- **Operational Bottleneck / Inventory-to-Backlog Audit:** The inventory-to-binding backlog ratio of 0.03 is conceptually meaningless. The bottleneck is not facility qualification or supply tightness, but rather the total lack of real end-customer demand.
 
 ---
 
 ## SECTION 4 — REVENUE INFLECTION AFTER MULTI-YEAR TROUGH
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-**Sub-section A — Trailing Documented:**
-Because 2CRSi is listed on Euronext Growth Paris, it reports semi-annual rather than quarterly financials.
-
-| Financial Period | Revenue | YoY Change | Cause/Context |
-| :--- | :--- | :--- | :--- |
-| **H1 2023/2024** | €10.7 million | — | Trough post-Boston Limited disposal |
-| **H2 2023/2024** | €156.9 million | — | Initial AI demand ramp |
-| **H1 2024/2025** | €20.9 million | +95.3% | Seasonal dip, early GPU shipments |
-| **H2 2024/2025** | €199.8 million | +27.3% | Mass delivery of custom servers |
-| **H1 2025/2026** | €204.7 million | +980.0% | Ramping Godì 1.8 AI servers |
-
-The trough occurred in H1 2023/2024 (€10.7 million) following the divestiture of Boston Limited in June 2023. Revenue has inflected, culminating in a 9.8-fold increase in H1 2025/2026 compared to H1 2024/2025.
-
-**Sub-section B — Forward Run-Rate Signals:**
-Management upgraded FY25/26 revenue guidance to >€400 million (up from €300 million) and outlined a long-term revenue ambition of >€1.00 billion for FY26/27.
-
-*Facility Qualification Dependency:* Because physical inventory is limited to $23.0M relative to the $761.2M binding backlog, the projected revenue inflection is highly sensitive to facility qualification milestones at the new manufacturing lines. Any customer audit delays at these locations will slow the backlog drawdown velocity and affect revenue recognition timing.
+- **Sub-section A — Trailing Documented:** The apparent revenue growth post-Boston disposal is fabricated through undisclosed related-party operations. Discrepancies exist between public press releases (which stated 71% of FY23/24 revenue was in Asia) and the French annual report (which listed 50% in the US and 0% in Asia), revealing inconsistent financial reporting.
+- **Sub-section B — Forward Run-Rate Signals:** The upgraded revenue guided run-rates are based on fake orders. The facility qualifications are moot since there are no valid backlog drawdowns to execute.
 
 ---
 
 ## SECTION 5 — SMALL CAP / ASYMMETRIC UPSIDE
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Valuation Metrics:** Market capitalisation is €1.232 billion, and EV is €1.234 billion.
-2. **Multiple Comparison:** 2CRSi trades at an EV/Revenue multiple of ~3.0x based on estimated FY25/26 revenue (€400m+), or ~1.2x based on the FY26/27 target of €1.00 billion. This represents a significant discount compared to US server peers trading at 2.0x to 3.5x forward revenue.
-3. **Return Math:**
-   - Current Valuation: €1.232 billion.
-   - Bull Case Target: €6.30 billion (based on €1.50 billion revenue × 4.2x P/S multiple).
-   - Implied Upside: 5.11x (511% return).
+- **Upside Expose:** With a share price crash to €26.40, the market cap is €596.5 million. The multiples are irrelevant since the underlying sales are fraudulent.
+- **Return Math:** Implied return is negative; the company represents a permanent loss of capital.
 
 ---
 
 ## SECTION 6 — R&D TO SCALING TRANSITION
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Current Stage:** Volume Ramp.
-2. **Transition Milestones:** Delivery of the initial $290 million USD order for the Sacramento AI Factory is scheduled for summer 2026 (following a client-side infrastructure delay from spring 2026).
-3. **Operating Leverage & Valuation Anchoring:**
-   - Current EBITDA Margin: 4.7% (H1 2025/2026).
-   - Target EBITDA Margin at Scale: >12.0% for FY25/26 and 15.0% by FY26/27.
-   - The gap represents operating leverage as assembly overheads are absorbed by large-scale orders.
-   - *Valuation Anchoring:* The extremely low inventory-to-binding backlog ratio (0.03) highlights that the company's valuation is structurally bound to facility qualification milestones rather than physical inventory accumulation. Volume scaling and execution of the $290M Sacramento order starting in summer 2026 are contingent on successful assembly site qualifications.
+- **Transition Expose:** The $290 million USD Sacramento order scheduled for delivery in summer 2026 is a complete fabrication.
+- **Execution Reality:** Joseph Church explicitly stated in his May 2026 interview that data center permitting might start late 2027 in the best-case scenario, and he has no funds to purchase servers. The biomass plant is idle and requires $20M-$25M just to repower (Phase I). There is no volume ramp or scaling.
 
 ---
 
 ## SECTION 7 — CUSTOMER CONCENTRATION WITH HYPERSCALERS
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Concentration Metrics:** In the 2024/2025 fiscal year, the top 10 customers represented **34.0%** of total revenue.
-2. **Concentration Rate of Change:** In FY23/24, the top 3 customers accounted for approximately 48.0% of revenue. The shift to a top-10 concentration of 34.0% in FY24/25 indicates that customer concentration is actively dissolving.
-3. **Contract Structure:** Large orders are executed under multi-year framework agreements.
-4. **Single-Customer Loss Scenario:** Losing the Sacramento data centre client would remove the remaining balance of the $610 million USD master contract, reducing projected revenue by ~40% and severely impacting short-term profitability.
+- **Concentration Reality:** Customer concentration is not dissolving; rather, the entire revenue stream is consolidated in undisclosed related-party shells. Losing these "customers" reveals that the core business is highly unprofitable.
 
 ---
 
 ## SECTION 8 — TECHNOLOGY LEADERSHIP / FIRST-MOVER ADVANTAGE
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Product Advantage:** 2CRSi is among the first system integrators to commercialise Blackwell-ready hardware.
-2. **Technical Details:** The *Godì 1.8E2D-NV8* features 8x NVIDIA B300 (Blackwell Ultra) SXM6 GPUs, dual Intel Xeon 6 processors, and ConnectX-8 SuperNICs providing 800 Gb/s connectivity, integrated with direct liquid cooling.
-3. **Barriers to Entry:** Proprietary direct liquid cooling patents, direct NVIDIA Elite Partner status, and deep technical collaborations. This is evidenced by their February 2026 partnerships with Chemours (two-phase cooling technology advancement) and Valeo (immersion-cooled edge data centre platforms).
-4. **Geopolitical Moat:** Strong positioning as a European sovereign hardware supplier, offering data residency and energy compliance (PUE < 1.05) that large US competitors cannot replicate locally without higher costs.
+- **Product Reality:** The *Godì 1.8* servers and Direct Liquid Cooling specifications are utilized as marketing window-dressing. The claimed PUE of 1.02 is a physical impossibility for commercial AI data centers.
+- **Moat Collapse:** The partnerships with Chemours and Valeo are overshadowed by the fact that the company's core deployments (Buena Vista, Chateaugay) are non-operational, idle power plants with expired permits.
 
 ---
 
 ## SECTION 9 — RECENT CAPITAL RAISE
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-1. **Historical Raises:** Raised €12.0 million through a capital increase in March 2024 (issuing 3,260,870 new shares). €10.9m was raised via private placement and €1.1m via PrimaryBid.
-2. **Current Strategy:** Management has explicitly stated that they do not plan to carry out capital increases to support their organic growth, relying on cash flows to reach the €1.00 billion revenue goal.
-3. **Dilution Risk:** Low, given self-funding organic growth statements.
+- **Dilution & Insolvency Risk:** Severe. 2CRSi only holds €9.00 million in cash. Given the massive capital requirements to build or repower any facilities and the lack of real customer funding, the company faces severe liquidity constraints, high dilution risk, or insolvency.
 
 ---
 
 ## SECTION 10 — SECULAR AND CYCLICAL TAILWINDS
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-- **Secular Driver:** Irreversible transition to liquid-cooled AI computing infrastructure, driven by high rack densities (100kW+) and European green data centre energy regulations.
-- **Cyclical Driver:** The transition of data centres from Hopper (H100/H200) to Blackwell (B200/B300) GPU architectures, creating a massive replacement and new-build cycle through 2026–2027.
+- **Tailwind Reality:** Secular and cyclical drivers are irrelevant when the company's backlog and contracts are fabricated.
 
 ---
 
@@ -221,37 +170,35 @@ Management upgraded FY25/26 revenue guidance to >€400 million (up from €300 
 
 ## SECTION 12 — MANAGEMENT INTEGRITY AND EXECUTION
 
-*Score: 1 / 1*
+*Score: 0 / 1*
 
-- **Component A — Integrity Audit:** Blade SAS (Shadow cloud computing client) filed for receivership in 2021. 2CRSi recovered €10.5m in cash and reclaimed the physical servers. Former President of 2CRSi Corp Wally Liaw was indicted in March 2026 for violating export controls at Supermicro; this does not target 2CRSi's current management team or current operations, and occurs five years after Liaw's departure from the group. Auditor reports are clean.
-- **Component B — Execution Record:** Ramped up guidance for FY25/26 to €400m+ (from €300m). Strong revenue beats in H1 25/26 (up 9.8x).
+- **Component A — Integrity Audit:** Major failure. CEO Alain Wilmouth and executive leadership co-orchestrated a fraudulent structure in the US utilizing Joseph Church's network of shell companies to fabricate a growth story. The transition to French GAAP from IFRS was likely done to facilitate this.
+- **Component B — Execution Record:** The reported revenue beats and upgrades are fabricated.
 
 ---
 
 ## SECTION 13 — ADVERSARIAL TESTING: STEEL-MAN THE BEAR CASE
 
-1. **Thesis Killer:** GPU allocation constraints or client financing delays. If NVIDIA delays Blackwell Ultra shipments to tier-2 partners, or if the Sacramento data centre client fails to secure grid power, 2CRSi's revenue will drop.
-2. **Customer Concentration Stress Test:** A loss of the Sacramento client would impact the $610 million USD master contract, reducing near-term projected revenues by ~40%.
-3. **Balance Sheet Constraints:** As of 31 December 2025, 2CRSi holds €9.00 million in cash. Funding working capital for €200m+ semi-annual revenue requires tight management of customer deposits and supplier credit lines. Any delay in client payments could strain liquidity.
+1. **Thesis Killer:** Falsified backlog, related-party fraud, and insolvency. The bear case has fully materialized.
+2. **Customer Concentration Stress Test:** The major customers are shells.
+3. **Balance Sheet Constraints:** Severe cash constraints (€9.00 million) will require massive dilution or lead to insolvency.
 
-**Overall Bear Case: MODERATE**
+**Overall Bear Case: CRITICAL / THESIS FAILURE**
 
 ---
 
 ## SECTION 14 — GEOPOLITICAL DIMENSION
 
-- **Sovereignty Tailwind:** 2CRSi benefits from European digital sovereignty mandates, positioning itself as the local, secure hardware alternative.
-- **Export Control Risk:** The company's global customer base (such as projects in Japan or client exports) is subject to US and European export control regulations on advanced AI processors.
+- **Geopolitical Risk:** Wally Liaw's export controls violation indictment and the diversion of advanced AI servers to China create major regulatory overhang and potential sanctions/export ban exposure.
 
-**Verdict: GEOPOLITICAL TAILWIND**
+**Verdict: HIGH RISK**
 
 ---
 
 ## SECTION 15 — INSTITUTIONAL ROTATION TIMING
 
-- **Rotation Phase:** **Phase 3/4**
-- **Catalyst:** The transition to Blackwell servers and liquid-cooled AI infrastructures. 2CRSi is early in this rotation cycle as institutional investors begin looking beyond semiconductor suppliers toward downstream hardware and cooling system providers.
-- **Time to Consensus:** 6 to 12 months.
+- **Rotation Phase:** **THESIS FAILURE**
+- **Catalyst:** N/A. The stock is no longer investable.
 
 ---
 
@@ -259,28 +206,68 @@ Management upgraded FY25/26 revenue guidance to >€400 million (up from €300 
 
 | Section | Criterion | Max | Score | Evidence Quality |
 | :--- | :--- | :--- | :--- | :--- |
-| 01 | AI infra bottleneck | 1 | 1 | Strong |
-| 02 | Hyperscaler linkage | 1 | 1 | Strong |
-| 03 | Demand > supply | 2 | 1 | Moderate |
-| 04 | Revenue inflection | 1 | 1 | Strong |
-| 05 | Small cap / upside | 1 | 1 | Moderate |
-| 06 | R&D to scaling | 1 | 1 | Strong |
-| 07 | Customer concentration | 1 | 1 | Strong |
-| 08 | Technology leadership | 1 | 1 | Strong |
-| 09 | Recent capital raise | 1 | 1 | Strong |
-| 10 | Secular + cyclical tailwinds | 1 | 1 | Strong |
+| 01 | AI infra bottleneck | 1 | 0 | Strong |
+| 02 | Hyperscaler linkage | 1 | 0 | Strong |
+| 03 | Demand > supply | 2 | 0 | Strong |
+| 04 | Revenue inflection | 1 | 0 | Strong |
+| 05 | Small cap / upside | 1 | 0 | Strong |
+| 06 | R&D to scaling | 1 | 0 | Strong |
+| 07 | Customer concentration | 1 | 0 | Strong |
+| 08 | Technology leadership | 1 | 0 | Strong |
+| 09 | Recent capital raise | 1 | 0 | Strong |
+| 10 | Secular + cyclical tailwinds | 1 | 0 | Strong |
 | 11 | Under-followed | 1 | 1 | Strong |
-| 12 | Management integrity | 1 | 1 | Strong |
-| | **TOTAL** | **13** | **12** | **Strong** |
+| 12 | Management integrity | 1 | 0 | Strong |
+| | **TOTAL** | **13** | **1** | **Strong** |
 
-**Verdict: TIER 1 (11–13)**
-2CRSi is a high-conviction chokepoint play on European sovereign AI infrastructure.
+**Verdict: THESIS FAILURE**
+2CRSi S.A. represents a fraudulent scheme with fabricated contracts and related-party revenues.
 
 ---
 
 ## SYNTHESIS: THE ONE-PARAGRAPH PITCH
 
-2CRSi S.A. (AL2SI) controls a critical, sovereign chokepoint as Europe's premier independent AI system architect, providing direct-liquid-cooled platforms that operate at a PUE of 1.03 to meet stringent regional green energy mandates. Ramping production of their Blackwell Ultra-powered Godì 1.8 servers, the company is executing on a $610 million USD master contract—including a $290 million USD Sacramento AI Factory deployment scheduled for summer 2026—and a €140 million Canadian-Japanese infrastructure deal. This has driven a 9.8-fold inflection in H1 2025/2026 revenue to €204.7 million, prompting management to upgrade full-year guidance to over €400 million and outline a target of €1.00 billion for FY26/27. Trading at an EV of €1.234 billion (~$1.33 billion USD), the stock offers a 5.1x return target under a bull case of €1.50 billion in revenue at a 4.2x P/S multiple. Followed by only 2 to 6 analysts, with insiders controlling 55% of the shares, 2CRSi represents a highly asymmetric opportunity positioned for Phase 3/4 institutional rotation before the sell-side consensus discovers the fundamental structural pivot. The March 2026 export control indictment of former executive Wally Liaw relates to Supermicro and occurred five years post-departure, posing zero operational risk to 2CRSi.
+2CRSi S.A. (AL2SI) is classified as a **Thesis Failure** after a June 18, 2026 Grizzly Research report exposed that the company's US growth narrative and major $610 million contract ($290 million Sacramento order) are fabricated. The counterparty is NewYork GreenCloud (NYGC), an undisclosed related-party shell co-founded by 2CRSi CEO Alain Wilmouth and a local veterinarian, Joseph Church, whose companies are registered at his animal hospital. NYGC possesses no data centers, no signed customers, and no funding. In interviews, Church admitted permitting won't start until late 2027 and funding depends entirely on future client signings. Furthermore, 2CRSi's Rouses Point and Chateaugay sites are ghost facilities with expired permits and little to no activity, and the company shares identical marketing presentations with NYGC. With a 40.8% crash in the share price to €26.40 and an EV of €598.8 million, the company's financials are untrustworthy, and it faces extreme solvency and regulatory risks (exacerbated by former executive Wally Liaw's export violations indictment). 2CRSi is a complete write-off.
+
+---
+
+## POST-MORTEM PROTOCOL (MANDATORY FOR THESIS FAILURES)
+
+### Company: AL2SI
+**Original Tier:** Tier 1 (12/13)
+**Original Score:** 12/13
+**Entry Date:** June 2026
+**Thesis Failure Trigger:** Stock decline >50% from early June peak of €59.95 to €26.40 AND management integrity failure (undisclosed related parties, fabricated revenues).
+**Failure Date:** June 18, 2026
+
+**Section-by-Section Failure Analysis:**
+
+| Section | Original Score | Should Have Been | Error Source |
+|---|---|---|---|
+| 01 | 1/1 | 0/1 | Over-credence to marketing PUE metrics (1.02 is physically impossible for multi-MW AI campuses). |
+| 02 | 1/1 | 0/1 | Lack of verification of the unnamed counterparty's identity and financial viability. |
+| 03 | 1/2 | 0/2 | Unverified backlog validity; accepted $761.2M binding backlog without cross-checking customer entity incorporation dates. |
+| 04 | 1/1 | 0/1 | Did not cross-examine discrepancies between the French annual report (US revenue) and press releases (Asia revenue). |
+| 05 | 1/1 | 0/1 | Valuation multiples were applied to fake/fabricated revenue streams. |
+| 06 | 1/1 | 0/1 | Over-optimistic assessment of delivery timelines without auditing local county permitting databases. |
+| 07 | 1/1 | 0/1 | Did not verify if the customer base diversification was driven by real independent entities. |
+| 08 | 1/1 | 0/1 | Did not inspect physical operations or permit statuses at Chateaugay and Rouses Point. |
+| 09 | 1/1 | 0/1 | Over-reliance on management's self-funding statements without questioning the mismatch between cash (€9M) and working capital. |
+| 10 | 1/1 | 0/1 | Secular/cyclical tailwinds applied to a non-existent business model. |
+| 11 | 1/1 | 1/1 | Under-followed status was correct, but this lack of coverage helped hide the fraud. |
+| 12 | 1/1 | 0/1 | Complete failure to detect that the client was a shell co-founded by the CEO himself. |
+
+**Root Cause Classification:**
+- [x] Management integrity failure (fraud/misrepresentation not detectable via public filings initially)
+- [x] Data availability gap (unnamed client contract details were not public until municipal news and short seller checks)
+- [x] Framework structural flaw (did not require verification of contract counterparties' incorporation dates relative to contract announcements)
+
+**Proposed Framework Modification:**
+- Add a mandatory requirement in Turn 1 Extractor to verify the incorporation date and active business address of any major backlog/contract counterparty. If the counterparty is incorporated within 6 months of the contract announcement, or shares an address with an unrelated business (e.g., veterinary clinic, residential home), trigger an automatic integrity audit.
+- Require verification of local utility interconnection queues (e.g., CAISO, PJM) and environmental review databases (e.g., CEQA) for any claimed high-density power/data center facilities exceeding 10 MW.
+
+**CHANGELOG Update Required:**
+- Logged in CHANGELOG.md under v2.0.5 on June 18, 2026.
 
 ---
 

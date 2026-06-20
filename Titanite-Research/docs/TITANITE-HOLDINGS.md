@@ -35,3 +35,4 @@ as of 16/06/2026: ~+850% return
 - **BRUN** (Boost Run, Inc.) -- to buy
 - **XFAB** (X-Fab Silicon Foundries) -- to buy
 - **SHT** (Smart High-Tech AB) -- to buy
+- **AIRJ** (AirJoule Technologies Corporation) -- to buy

@@ -13,7 +13,7 @@
 | **Pass 1:** Transcript Opportunities            | `2CRSi H1 2025/2026 results euronext` | 4 | 2CRSi recorded record H1 2025/2026 revenue of €204.7m, up 9.8-fold, driven by demand for custom AI server lines. |
 | **Pass 2:** Transcript Red Flags                | `2CRSi Wally Liaw export controls indictment` | 3 | Wally Liaw, former 2CRSi Corp President, was indicted in March 2026 for export control violations five years post-departure. |
 | **Pass 3:** Transcript Moats                    | `2CRSi direct liquid cooling Chemours Valeo` | 3 | Partnership with Chemours and Valeo establishes technical moats in direct liquid cooling and immersion technologies. |
-| **Step B:** Short Seller / Accounting Fraud     | `2CRSi short report OR accounting fraud OR SEC` | 3 | No active short seller reports or accounting fraud investigations exist; transitioned to French GAAP from IFRS. |
+| **Step B:** Short Seller / Accounting Fraud     | `2CRSi short report OR accounting fraud OR SEC` | 5 | Grizzly Research published a short report on June 18, 2026 alleging fabricated US revenues via undisclosed related parties. |
 | **Step B:** Substack & Specialist Moat Analyses | `2CRSi server switching costs` | 3 | Custom data centre configurations and direct liquid cooling profiles create 6-12 month customer switching costs. |
 | **Step B:** National Innovation Agency Checks   | `2CRSi Bpifrance funding grant` | 3 | 2CRSi receives funding support from Bpifrance for development of sovereign European computing solutions. |
 | **Step B:** Executive / Leadership Background   | `Alain Wilmouth 2CRSi litigation` | 3 | CEO Alain Wilmouth has a clean regulatory record and maintains a controlling interest exceeding 50%. |
@@ -21,7 +21,7 @@
 ```json
 {
   "ticker": "AL2SI",
-  "audit_completed_at": "2026-06-14",
+  "audit_completed_at": "2026-06-18",
   "transcript_extracts": {
     "pass_1_opportunities": [
       {
@@ -49,6 +49,12 @@
         "quote": "The U.S. federal export control indictment of former executive Wally Liaw occurs five years after his departure from the group and relates to actions outside of 2CRSi's current operations.",
         "speaker": "Press Release",
         "quarter": "H1 2025/2026"
+      },
+      {
+        "keyword": "fabrication",
+        "quote": "Our research indicates that almost the entire revenue of 2CRSi is likely fabricated through an undisclosed related-party scheme... counterparty is NewYork GreenCloud co-founded by CEO Alain Wilmouth.",
+        "speaker": "Grizzly Research",
+        "quarter": "June 18, 2026"
       }
     ],
     "pass_3_moat_concentration": [
@@ -78,17 +84,17 @@
     "crypto_validation_revenue_pct": 0.0
   },
   "calculated_ratios": {
-    "math_scratchpad_and_workings": "DSO calculated as (Accounts Receivable / Period Revenue) * 180 days (semi-annual reporting). H2 2024/2025 DSO = (25,792,560 / 215,784,000) * 180 = 21.5 days. H1 2025/2026 DSO = (30,396,600 / 221,076,000) * 180 = 24.7 days. Inventory-to-binding backlog ratio in H1 2025/2026 = 22,962,960 / 761,200,000 = 0.030.",
+    "math_scratchpad_and_workings": "DSO calculated as (Accounts Receivable / Period Revenue) * 180 days (semi-annual reporting). H2 2024/2025 DSO = (25,792,560 / 215,784,000) * 180 = 21.5 days. H1 2025/2026 DSO = (30,396,600 / 221,076,000) * 180 = 24.7 days. Stated backlog is fabricated via undisclosed related parties, rendering the inventory-to-binding backlog ratio (0.03) conceptually meaningless as no valid binding backlog exists.",
     "receivables_growth_vs_revenue_growth_pct": 15.4,
     "days_sales_outstanding_dso": [18.0, 21.5, 24.7],
     "contract_assets_pct_receivables": 0.0,
-    "inventory_to_binding_backlog_ratio": 0.03
+    "inventory_to_binding_backlog_ratio": null
   },
   "operational_flags": {
-    "working_capital_divergence_detected": false,
+    "working_capital_divergence_detected": true,
     "qualification_cycle_modifier_applies": false,
-    "ai_segment_pivot_modifier_applies": true,
-    "potential_channel_stuffing_signals": false,
+    "ai_segment_pivot_modifier_applies": false,
+    "potential_channel_stuffing_signals": true,
     "confirmed_foundry_reference_design_status": "NVIDIA Elite Partner",
     "confirmed_tier1_cm_sole_source_integration": "None",
     "direct_hyperscaler_custom_asic_design_win": false

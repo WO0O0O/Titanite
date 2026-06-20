@@ -112,6 +112,16 @@
 
 ## Phase 7.8: Research Framework Calibration ✅ COMPLETE
 - [x] Calibrate AL2SI research report to comply with the Turn 2 Data Validation Rule of SC-AI-INFRA v2.0.0 (addressed inventory-to-binding backlog ratio of 0.03 and facility qualification milestones bottleneck in Sections 3, 4, and 6).
+- [x] Execute mandatory post-mortem protocol and re-auditing of AL2SI (2CRSi) under the v2.0.0 rules following the June 18, 2026 short-seller report and 40.8% stock crash (Thesis Failure re-scored to 1/13).
+- [x] Fortify SC-AI-INFRA, SC-AI-EXTRACTOR, and SC-AI-SCORER prompts with Counterparty Inception, Utility Interconnection Queue, and PUE Feasibility validation gates.
+
+## Phase 7.9: AirJoule Technologies (AIRJ) Research & Audit ✅ COMPLETE
+- [x] Gather and ingest financial data and transcripts for Q3 2025, Q4 2025, and Q1 2026.
+- [x] Populate the data extraction buffer `AIRJ-EXTRACTION-BUFFER.md` under `SMALLCAP-AI-INFRA/ENERGY/`.
+- [x] Perform analytical scoring and research report generation `AIRJ-RESEARCH-REPORT.md` (12/13 Tier 1 verdict).
+- [x] Update global framework tracking including `CATALYST-TRACKER.md` (active catalyst) and `TABLE.md` (ranking index).
+- [x] Map `AIRJ` in CLI config and add it to `TITANITE-HOLDINGS.md` watchlist.
+- [x] Recalibrate research report and extraction buffer to reflect the June 2026 capital raise completion ($15.00M), update stock price to $4.92, and enforce British English spelling compliance.
 
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.

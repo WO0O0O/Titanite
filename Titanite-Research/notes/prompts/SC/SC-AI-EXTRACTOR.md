@@ -69,6 +69,9 @@ Run explicit web and X searches for:
 - Search for industry reports, specialist analyses, Substack write-ups, or X/Twitter discussions relating to the company's technology moat and client concentration changes.
 - _Recent News Sweep:_ Search for "[Company Name] press release" and "[Company Name] news" restricted to the last 30 days.
 - _National Innovation Agency Checks:_ For European/regional micro-caps, search for the company name alongside regional funding bodies (e.g. "Vinnova", "FFI", "Horizon Europe", "Innovate UK").
+- **Counterparty Background Check (Mandatory for >20% Revenue Contracts):** Search for the exact name of the counterparty entity, e.g. "[Counterparty Name] incorporation date," "[Counterparty Name] business address," "[Counterparty Name] founder background," and cross-examine executive links.
+- **Utility & Grid Interconnection Checks:** For facilities >10 MW, search local utility interconnection queue portals (e.g. CAISO, PJM, ERCOT queue status) and environmental review registries (e.g. CEQA) for the project site.
+
 
 **Step C — Forward vs. trailing separation**
 
