@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.0.8] - 24 June 2026
+
+### POET TECHNOLOGIES INC. (POET) RESEARCH NOTES RESTRUCTURING & OSINT UPDATE
+**Rationale:** Decoupled the consolidated POET research notes into a Turn 1 Extraction Buffer and Turn 2 Research Report following the modular two-turn pipeline guidelines of SC-AI-INFRA. Integrated new OSINT information from Lumilens CEO Ankur Singla's LinkedIn post confirming a CPO/NPO deployment with a Top-3 hyperscaler, using Sivers Semiconductors' CW DFB laser light sources.
+
+- **Data Ingestion Buffer:** Created [POET-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/POET-EXTRACTION-BUFFER.md) populated with search execution logs, transcripts, and financial/working capital variables under the qualification-cycle player rules.
+- **Scorer Implementation:** Created [POET-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/POET-RESEARCH-REPORT.md) following the analytical chokepoint scoring criteria (9/13 pre-penalty, 8.5/13 net total). Re-calibrated Section 2 (Hyperscaler Linkage) and Section 7 (Customer Concentration) with the Top-3 hyperscaler CPO link. Formulated Section 5 return multiple using the Cluster Scaling Return Matrix, resulting in a 4.25x return (failing the 5.0x hardware hurdle). Section 12 remains at 0 due to going concern and CFO confidentiality breach.
+- **Legacy File Retirement:** Retired legacy consolidated research notes `POET-POET-Technologies.md`.
+
 ## [v2.0.7] - 19 June 2026
 
 ### AIRJOULE TECHNOLOGIES CORPORATION (AIRJ) RESEARCH REPORT RE-CALIBRATION

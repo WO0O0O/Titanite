@@ -123,6 +123,12 @@
 - [x] Map `AIRJ` in CLI config and add it to `TITANITE-HOLDINGS.md` watchlist.
 - [x] Recalibrate research report and extraction buffer to reflect the June 2026 capital raise completion ($15.00M), update stock price to $4.92, and enforce British English spelling compliance.
 
+## Phase 7.10: POET Technologies (POET) Research Restructuring & Hyperscaler Integration ✅ COMPLETE
+- [x] Extract and populate data extraction buffer `POET-EXTRACTION-BUFFER.md` under `SMALLCAP-AI-INFRA/photonics/`.
+- [x] Perform analytical scoring and research report generation `POET-RESEARCH-REPORT.md` (8.5/13 disqualified verdict).
+- [x] Integrate OSINT details linking Lumilens and Sivers to a Top-3 hyperscaler CPO deployment.
+- [x] Retire legacy consolidated notes `POET-POET-Technologies.md`.
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.

@@ -14,6 +14,12 @@ timker tkr
 moog inc
 usa rare earth metals
 BLG
+AKTS
+ALMU
+WOLF
+MRAM
+ACLS
+PDFS
 
 MXL
 DGXX
