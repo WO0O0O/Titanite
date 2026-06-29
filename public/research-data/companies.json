@@ -1,0 +1,618 @@
+{
+  "exportedAt": "2026-06-29T19:49:31.353519Z",
+  "count": 68,
+  "companies": [
+    {
+      "ticker": "PENG",
+      "companyName": "Penguin Solutions, Inc.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "Specialized AI factory cluster integration and custom high-density memory solutions. Strategic $200M investment from SK Telecom (Dec 2024) to build South Korea's Haein Blackwell GPU cluster. Reaffirmed FY26 outlook tracking to the high end of ranges.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SKM",
+      "companyName": "SK Telecom Co., Ltd.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "Sovereign AI compute chokepoint and pre-IPO Anthropic proxy. Owns 3.7M shares of Anthropic (~0.51% basic stake, priced at less than zero). Rebounded operating income above \u20a9500B in Q1 2026 post-breach. KKR AIDC 49% acquisition at \u20a92.0\u20132.5T valuation expected to sign by June 30. Haein B200 cluster (1,000 GPUs) launched Gasan AIDC under Petasus virtualisation software. Evaluated under Large-Cap/Safe-Play override on 2.24x return target.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SHT",
+      "companyName": "Smart High-Tech AB",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "Semis",
+      "keySummary": "Graphene-based Thermal Interface Materials (TIM). Certified as an approved Nvidia supplier (25 May 2026). Partnered with Henkel for global distribution. High operating leverage.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ACCON",
+      "companyName": "Acconeer AB",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "robotics",
+      "keySummary": "Proprietary low-power Pulsed Coherent Radar (PCR) chips. Volume commercial production ramp underway in 2026. Traded via German ticker 4AC.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "TLN",
+      "companyName": "Talen Energy Corporation",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Independent power producer in PJM owning the 2.5 GW Susquehanna nuclear plant. Secured a restructured 17-year, $18B retail PPA with AWS for up to 1,920 MW of nuclear power. Completed $4.0B refinancing in April 2026 and received final regulatory approvals for the 2.6 GW gas-fired Cornerstone Acquisition on 1 June 2026.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "BE",
+      "companyName": "Bloom Energy Corporation",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Dominant U.S. solid oxide fuel cell provider (Layer P). Behind-the-meter Containerised Energy Servers resolve utility grid bottlenecks. Backlog of $20B is anchored by a 2.8 GW Oracle agreement (1.2 GW contracted) and a $2.6B Nebius contract. Balance sheet holds $2.52B in cash and 0% convertible notes due 2030.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "VST",
+      "companyName": "Vistra Corp.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Largest competitive U.S. power generator owning 44 GW of capacity, including 6.5 GW of nuclear. Secured 20-year PPAs with Meta Platforms (2.6 GW PJM nuclear) and AWS (1.2 GW Comanche Peak). Reaffirmed FY26 Ongoing Operations Adjusted EBITDA guidance of $6.8B\u2013$7.6B, excluding Meta PPAs and pending 5.5 GW Cogentrix gas acquisition. Achieved dual investment-grade status in March 2026.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "CEG",
+      "companyName": "Constellation Energy Corporation",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Largest competitive U.S. power producer (55 GW capacity) combining 22 GW nuclear with Calpine's gas/geothermal. Secured 20-year Microsoft PPA for the 835 MW Crane nuclear restart. 1 June 2026 FERC waiver approval transfers 760 MW capacity rights, bypassing PJM grid delays to keep H2 2027 restart on schedule. Tracked for intelligence value (market cap >$75B).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SPCX",
+      "companyName": "Space Exploration Technologies Corp.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "SPACE",
+      "keySummary": "Unified launch, LEO connectivity (10,636 active Starlink satellites), and neocloud compute operator (xAI merged February 2026). Nasdaq IPO on 12 June 2026 raised $75B, valuing the firm at $2.5T. Secured $75.36B in binding neocloud compute-rental contracts with Anthropic ($1.25B/month lease of Memphis Colossus 1) and Google ($920M/month lease), representing an asymmetric 2.0x consensus gap against legacy models. Tracked for intelligence value.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "MU",
+      "companyName": "Micron Technology, Inc.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "Semis",
+      "keySummary": "HBM memory packaging chokepoint. OSINT confirms 2026 supply sold out with $100B in minimum contracted revenue under 16 Strategic Customer Agreements (SCAs). Tracked for intelligence value (market cap >$150B).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "USAC",
+      "companyName": "USA Compression Partners, LP",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Largest U.S. outsourced contract compression fleet (4.93 million horsepower) and key natural gas power bottleneck player. Integrates J-W Power Company (completed January 2026). Average monthly revenue per horsepower hit an all-time high of $22.73 in Q1 2026. Directly linked to Energy Transfer's pipeline connections for Oracle and Fermi America AI data centre campuses.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "OKLO",
+      "companyName": "Oklo Inc.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Liquid-metal-cooled fast fission Aurora powerhouses. Landmark 1.2 GW Ohio campus prepayment PPA with Meta Platforms (Jan 2026), 500 MW LOI with Equinix, and 12 GW Switch master agreement. NRC approved Principal Design Criteria in May 2026 on an accelerated schedule. Fully capitalised with $2.54B cash and zero debt.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ASPI",
+      "companyName": "ASP Isotopes Inc.",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "HALEU SMR fuel and Silicon-28 quantum materials chokepoint. Signed 10-year TerraPower supply agreement (backed by $22M loan) and pre-implementation NECSA Pelindaba contract (Feb 2026). Renergen merger completed Jan 2026, adding helium and LNG segments (backed by $500M US DFC senior debt). Silicon-28 Pretoria facility restarted in May 2026 with shipments commencing in Q3 2026. Ongoing SDNY class action litigation is a moderate risk, but Skyline deconsolidation in March 2026 cleaned the balance sheet, resolving working capital divergence (DSO fell to 51.5 days).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "3363.TW",
+      "companyName": "Fiber Optic Communications, Inc. (FOCI)",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Taiwanese silicon photonics alignment chokepoint. Supplies Fibre Array Units (FAUs) and Reflowable Lensed Fibre Arrays (ReLFACon) for TSMC's COUPE platform in partnership with Himax, which holds a 5% equity stake. Positioned upstream of Nvidia's next-generation optical NVLink clusters. Commercial shipments of co-packaged optics (CPO) FAUs are scheduled to begin in Q3 2026, backed by a NT$1.58B automated machine expansion programme. Clean balance sheet features NT$4.39B in cash and zero debt. Evaluated under the Segment-Pivot modifier.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "6451.TW",
+      "companyName": "Shunsin Technology Holdings Limited",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Taiwanese CPO advanced packaging chokepoint. Performs heterogeneous packaging and active optical alignment for Broadcom's CPO switch platform. Proactively expanding capacity in Hanoi and Quang Chau (Vietnam) to serve Western hyperscalers, with trial production scheduled for mid-2026. Commercial shipments of 1.6T high-density optical fibre arrays are scheduled to begin in Q3 2026. Balance sheet has NT$5.57B in cash, supported by parent company Foxconn. Evaluated under the Segment-Pivot modifier.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AAOI",
+      "companyName": "Applied Optoelectronics, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Vertically integrated manufacturer of high-speed transceivers and EML laser chips. Remediated technical material weaknesses and appointed PwC as auditor in May 2026. $600M ATM programme launched to fund Texas laser fab expansion. Microsoft and AWS are primary customers. Missed Q1 2026 earnings due to 800G transceiver shipment timing.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AIRJ",
+      "companyName": "AirJoule Technologies Corporation",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "ENERGY",
+      "keySummary": "Developer of sorbent-based atmospheric water harvesting and dehumidification technology. Formed a 50/50 joint venture (AirJoule LLC) with GE Vernova and secured an exclusive Americas HVAC commercialisation term sheet with Carrier. Newark production showcase facility and first Prime A1000 unit completed in early 2026. Bypasses gross margin and consensus requirements under the Qualification-Cycle Modifier.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AMPG",
+      "companyName": "AmpliTech Group, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "quantum",
+      "keySummary": "Specialised RF and microwave components chokepoint controlling 15-20% of premium cryogenic 4K pHEMT LNA supply for quantum computing readout. Validated by successful Spring 2026 O-RAN PlugFest participation and a GPU-accelerated Massive MIMO AI-RAN demonstration with NVIDIA/Northeastern. Reaffirmed FY26 revenue guidance of at least $50.0M (representing ~100% YoY growth), backed by $118M in active telecom MNO LOIs. Net proceeds of $16.4M from Q1 2026 rights offering leave the balance sheet debt-free with $18.4M in cash/securities.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AL2SI",
+      "companyName": "2CRSi S.A.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "server-systems",
+      "keySummary": "High-performance direct liquid-cooled AI server builder and NVIDIA Elite Partner. Ramping Blackwell Ultra-powered God\u00ec 1.8 platforms under a $610M master contract (Sacramento H2 2026) and a \u20ac140M Canadian-Japanese deployment. H1 25/26 revenue surged 9.8x to \u20ac204.7M; FY25/26 revenue guided to >\u20ac400M with a \u20ac1.00B FY26/27 target. Backed by proprietary cooling patents and February 2026 Chemours/Valeo partnerships. Yih-Shyan (Wally) Liaw (former President of 2CRSi Corp, departed April 2021) was indicted in March 2026 on unrelated export violations.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ALBKK",
+      "companyName": "Baikowski SA",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "Semis",
+      "keySummary": "Ultra-pure alumina (4N/5N HPA) powders for semiconductor CMP slurries and jet engine CMCs. Controls ~19% of global HPA market. Mikael Frenkian appointed CEO effective 1 June 2026.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "GAPW",
+      "companyName": "Gapwaves AB",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "robotics",
+      "keySummary": "Contactless waveguide antennas for 4D imaging radar. Valeo contract win; transferring production to Frencken Group for automated high-volume assembly in H2 2026. Traded via German ticker 6GW.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "INFQ",
+      "companyName": "Infleqtion, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "quantum",
+      "keySummary": "Room-temperature neutral-atom quantum computing and optical atomic clock timing infrastructure. Holds ~65% share of global ultra-high-vacuum cold-atom cells. Delivered 100-qubit system to UK NQCC in Dec 2025; signed $100M CHIPS Act LOI and $100M U.S. government grant. NVIDIA integrated.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "IQE",
+      "companyName": "IQE plc",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Compound semiconductor epitaxial wafers. Strategic \u00a381M raise (May 2026) anchored by MACOM's \u00a345M investment and LTSAs. Key defence supplier to U.S. primes (Raytheon Greensboro, BAE, Lockheed). Protected by January 2026 InP Executive Order. Under Segment-Pivot modifier rules, standard market cap gate is overridden, and gross margin underabsorption and historical execution misses are fully exempt.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "MRVL",
+      "companyName": "Marvell Technology, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Optical DSP market monopoly (>80% share) and custom ASIC partner for Google, Amazon, and Meta. Strategic $2.0B partnership with Nvidia integrates custom XPUs directly into the NVLink Fusion platform. Secured advanced wafer/packaging capacity with $1.0B in prepayments. Tracked for intelligence value (market cap >$150B).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ONDS",
+      "companyName": "Ondas Holdings Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "defence",
+      "keySummary": "Vetted autonomous air and ground systems for sovereign defence (Layer G). Optimus platform is Blue UAS cleared; Sentrycs selected for 2026 FIFA World Cup airspace security. Completed a $1.0B equity raise in January 2026, leaving $1.48B in cash. Monitor flag active due to historical material weaknesses under BDO USA remediation.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SEYE",
+      "companyName": "Smart Eye AB",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "computer-vision",
+      "keySummary": "Edge AI driver monitoring system (DMS) software. Driven by the 7 July 2026 EU General Safety Regulation mandate. Royalty inflection underway; EBITDA positive. Traded via German ticker S9E.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SILC",
+      "companyName": "Silicom Ltd.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "server-systems",
+      "keySummary": "SmartNICs and secure Edge AI cards incorporating post-quantum cryptography (PQC). NASDAQ-listed. Q1 2026 revenue inflection (+32.6% YoY).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "XNDU",
+      "companyName": "Xanadu Quantum Technologies Ltd.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "quantum",
+      "keySummary": "Differentiable photonic quantum computing hardware and software developer. PennyLane controls ~45% of QML framework flow. Partners include Tower Semiconductor (custom waveguides) and GlobalFoundries (GF Fotonix\u2122). Fully capitalised with $272.5M in cash and a $300M synthetic ATM facility. SIF loan carrying value of $27.6M is interest-free and conditionally repayable starting in 2028.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SOITEC",
+      "companyName": "Soitec SA",
+      "score": 11.5,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Holds 95% global market share in 12-inch Photonics-SOI substrates for 1.6T silicon photonics transceivers. Fab loading bottomed in Q1 FY26. Balance sheet has \u20ac562M cash with low net leverage (0.4x). Laurent R\u00e9mont appointed CEO in April 2026.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "NBIS",
+      "companyName": "Nebius Group N.V.",
+      "score": 11.5,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "GPU-as-a-service cloud operator (Layer O) with owned physical fabric (Layer F). Disclosed contracted backlog exceeds $46B, including a $27B contract with Meta and $19.4B with Microsoft. Strategic $2B equity investment from NVIDIA. Monitor flag active due to historical fixed-asset accounting material weaknesses.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "TRT",
+      "companyName": "Trio-Tech International",
+      "score": 11.5,
+      "tier": "Tier 1",
+      "industryFolder": "Semis",
+      "keySummary": "High-performance burn-in boards and reliability testing for next-generation AI GPUs. Secured $7.8M in orders. Completed $10M capital raise in April 2026 to fund Penang, Malaysia facility expansion (adjusted for -0.5 geopolitical penalty).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "BRUN",
+      "companyName": "Boost Run, Inc.",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "NVIDIA Exemplar Cloud status (1 of only 8 globally) secures a preferred Blackwell B300 allocation chokepoint. Backlog of $1.415B, pipeline LOIs suggest $4.0B+ ARR. Mira Murati's Thinking Machines Lab contract ($471.7M, non-cancelable) validates customer credit quality. SPAC proceeds retired all bridge debt. Downside protected by M&A floor at 5x ARR.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "DGXX",
+      "companyName": "Digi Power X Inc.",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "Pivoting from cryptocurrency mining to high-density AI data centre colocation. Secured a 10-year, $1.1B Master Services Agreement with Cerebras Systems for a 40 MW campus at Columbiana, Alabama, with Phase 1 (15 MW) scheduled for 15 December 2026. Backed by $125M cash and zero debt.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "EOS",
+      "companyName": "Electro Optic Systems",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "directed-energy",
+      "keySummary": "Counter-drone defence platforms. Fails standard 5x return hurdle, but holds high strategic value following the acquisition of MARSS NiDAR command-and-control software.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "LPK",
+      "companyName": "LPKF Laser & Electronics SE",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "TGV",
+      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "MRLN",
+      "companyName": "Merlin, Inc.",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "robotics",
+      "keySummary": "Aircraft-agnostic autonomous flight control system (Merlin Pilot). Backed by a USD 105M USSOCOM C-130J programme ceiling, Honeywell Anthem design-in partnership, and Ameriflight cargo fleet retrofits. Holds USD 183M cash and zero debt post-PIPE. Disclosed material weaknesses in internal controls override its integrity score.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SEE",
+      "companyName": "Seeing Machines Limited",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "computer-vision",
+      "keySummary": "DMS safety software, pre-integrated into Qualcomm's Snapdragon Ride platform. High-volume royalty inflection started in Q3 FY26. Refinancing of $54.4M Magna convertible note (due Oct 2026) is the key bear case risk.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SIVE",
+      "companyName": "Sivers Semiconductors AB",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules, offering exposure to NVIDIA. Opportunity pipeline grew 77% YTD to $799M. Under the updated pre-volume working capital calibration, the 59.0% contract assets ratio is exempt from penalties.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AXTI",
+      "companyName": "AXT, Inc.",
+      "score": 12.0,
+      "tier": "Tier 2",
+      "industryFolder": "photonics",
+      "keySummary": "Functional duopoly with Sumitomo Electric supplying indium phosphide (InP) wafers for AI optical transceivers. Evaluated under a Large-Cap/Safe-Play override on a conservative 2x-3x return target. Backlog reached record $100M in Q1 2026. Bypassed Beijing Tongmei's stalled STAR Market IPO by completing a $632.5M capital raise in April 2026. Exposed to material Geopolitical Headwinds due to Beijing manufacturing facilities.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "TPEG",
+      "companyName": "PVA TePla AG",
+      "score": 11.0,
+      "tier": "Tier 2",
+      "industryFolder": "3D-metrology",
+      "keySummary": "Crystal growing furnaces and 3D metrology inspection equipment. Classified as Tier 2 due to lower return multiple/asymmetry from current entry price.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ADTN",
+      "companyName": "ADTRAN Holdings, Inc.",
+      "score": 10.0,
+      "tier": "Tier 2",
+      "industryFolder": "broadband",
+      "keySummary": "Fibre access and optical transport equipment. Restructuring debt; secured design-ins with Tier 1 telcos (Deutsche Telekom, BT). Under the Segment-Pivot modifier, the legacy broadband gross margin underutilisation is exempt. Section 12 remains 0/1 due to the May 2025 inventory accounting restatement.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "NCI",
+      "companyName": "Nippon Chemical Industrial",
+      "score": 10.0,
+      "tier": "Tier 2",
+      "industryFolder": "MLCC",
+      "keySummary": "Barium titanate (BaTiO3) powder for MLCCs. Operating profit inflection starting, but valuation is already run-up. Ticker 4092.T.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "XFAB",
+      "companyName": "X-Fab Silicon Foundries",
+      "score": 10.0,
+      "tier": "Tier 2",
+      "industryFolder": "Semis",
+      "keySummary": "Specialty analog-mixed signal and SiC foundry. Pullback to 9.70 EUR (~1.48x P/B) represents a deep value entry point.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "KAORI",
+      "companyName": "Kaori Heat Treatment Co.",
+      "score": 9.0,
+      "tier": "Tier 2",
+      "industryFolder": "2-phase-cooling",
+      "keySummary": "Brazed plate heat exchangers (BPHE) and CDU components for Taiwan AI server manufacturers. Sells to Quanta/Wistron; covers 25-40% of global AI server liquid cooling. Ticker 8996.TW.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "LEU",
+      "companyName": "Centrus Energy Corp.",
+      "score": 9.0,
+      "tier": "Tier 2",
+      "industryFolder": "ENERGY",
+      "keySummary": "Monopoly U.S. licensed HALEU enricher using proprietary American centrifuge technology. Selected for $900M DOE task order in January 2026. Fails 5x return hurdle due to current valuation, and remains exposed to short-term shipment friction of Russian feed material.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "OUST",
+      "companyName": "Ouster, Inc.",
+      "score": 9.0,
+      "tier": "Tier 2",
+      "industryFolder": "robotics",
+      "keySummary": "Digital flash lidar (SPAD/VCSEL architecture). Expanding gross margins; benefits from US defence compliance mandates.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "POET",
+      "companyName": "POET Technologies Inc.",
+      "score": 8.5,
+      "tier": "Tier 2",
+      "industryFolder": "photonics",
+      "keySummary": "Proprietary silicon Optical Interposer platform. OSINT indicates partner Lumilens is supplying a Top-3 hyperscaler using Sivers' CW DFB laser arrays. Classified as \"DO NOT INVEST\" due to auditor going concern opinion and CFO confidentiality breach causing Celestial AI cancellation.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "MXL",
+      "companyName": "MaxLinear, Inc.",
+      "score": 8.5,
+      "tier": "Tier 2",
+      "industryFolder": "photonics",
+      "keySummary": "Merchant PAM4 DSP supplier for 800G/1.6T transceivers. Keystone (800G) holds 20\u201330% market share; Rushmore (1.6T) sampling for H2 2026 ramp. Failed $5B market cap hard gate ($7.56B as of June 2026), meaning re-rating has occurred (implied return <5x). Net debt of $61.3M post-trough.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ALMU",
+      "companyName": "Aeluma, Inc.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "photonics",
+      "keySummary": "Heterogeneous integration platform growing III-V devices on 300mm silicon substrates. Manufacturing partnerships with Tower Semiconductor and Sumitomo Chemical. Narrowed FY26 guidance to $4.2M\u2013$4.6M in Q3 FY26 due to contract execution delays. ATM offering launched to scale fabrication. Pre-commercial candidate with clean integrity audit.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "HLIT",
+      "companyName": "Harmonic Inc.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "broadband",
+      "keySummary": "Duopoly in vCMTS cable software. Backlog grew to $573.8M (+73% YoY). Customer concentration risk is easing.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "KEEL",
+      "companyName": "Keel Infrastructure Corp.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "Pivoting from Bitcoin mining to AI data centre colocation. Controls a 2.2 GW development pipeline with 478 MW near-term capacity across Panther Creek, Sharon, and Moses Lake, offering an $850M\u2013$1.1B ARR leasing pathway. Backed by $533M total liquidity and $573M in debt. Class action litigation is ongoing.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "P4O",
+      "companyName": "Planoptik AG",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "TGV",
+      "keySummary": "Glass TGV packaging substrates. Strong technology, but the stock's run-up to \u20ac13.45 has absorbed the asymmetric upside (fails 5x hurdle).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "PDC",
+      "companyName": "Prosperity Dielectrics Co.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "MLCC",
+      "keySummary": "Dielectric powders & MLCCs for AI server power supply units. Replaced film capacitors in 3kW-8kW PSUs. Trailing P/E of 37.5x limits returns. Ticker 6173.TW.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "RBRK",
+      "companyName": "Rubrik, Inc.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "cyber-security",
+      "keySummary": "SaaS data security and cyber resilience provider (Layer S). Launched Rubrik Agent Cloud in early 2026 for autonomous AI agent governance and \"Agent Rewind\" remediation. Deep co-sell partnership with Microsoft Azure. Holds FedRAMP Moderate Authorization (NNSA sponsored) and $1.75B in cash. Capex intensity is low, resulting in positive and growing free cash flow.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "FLNC",
+      "companyName": "Fluence Energy, Inc.",
+      "score": 7.0,
+      "tier": "Tier 3",
+      "industryFolder": "ENERGY",
+      "keySummary": "Grid BESS storage. NVIDIA reference architecture template for NVL72. DISQUALIFIED due to active formal SEC investigation (revenue recognition) and parent share unlock overhang.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SHMD",
+      "companyName": "SCHMID Group",
+      "score": 7.0,
+      "tier": "Tier 3",
+      "industryFolder": "advanced-packaging-equip",
+      "keySummary": "Back-end organic substrate manufacturing equipment. DISQUALIFIED due to material weaknesses in internal controls and ongoing dilution.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ENAFF",
+      "companyName": "Enablence Technologies",
+      "score": 7.0,
+      "tier": "Tier 3",
+      "industryFolder": "photonics",
+      "keySummary": "PLC star couplers. Low capacity, heavily unprofitable, and fails the Strait of Hormuz chokepoint test.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "4078.T",
+      "companyName": "Sakai Chemical Industry",
+      "score": 7.0,
+      "tier": "Tier 3",
+      "industryFolder": "MLCC",
+      "keySummary": "Low growth profile relative to specialty MLCC powder competitors. Ticker 4078.T.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "DLO",
+      "companyName": "dLocal Limited",
+      "score": 7.0,
+      "tier": "Tier 3",
+      "industryFolder": "fintech",
+      "keySummary": "Cross-border payments processor for tech giants (Google, Microsoft, Meta, Amazon) in emerging markets. Fails the Strait of Hormuz test (commodity supplier of payments rather than physical AI infra). Net take rate compressed to 0.84% in Q1 2026. Dismissal of New York civil class-action affirmed (April 2026). PwC audits clean with no material weaknesses.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "GCTS",
+      "companyName": "GCT Semiconductor",
+      "score": 6.0,
+      "tier": "Tier 3",
+      "industryFolder": "Semis",
+      "keySummary": "5G and satellite NTN chipsets. Pre-revenue, highly speculative, and fails the 5x return hurdle.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "VRT",
+      "companyName": "Vertiv Holdings Co.",
+      "score": 11.5,
+      "tier": "Pass",
+      "industryFolder": "thermal",
+      "keySummary": "DISQUALIFIED due to active SEC investigation and DOJ subpoena (November 2023) regarding 2021 supply chain and inflation disclosures. Co-designs 7MW reference architectures for NVIDIA's Blackwell platform. Record $15.0B backlog and 30% organic growth in Q1 2026, but regulatory overhang blocks primary positions.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "LTBR",
+      "companyName": "Lightbridge Corporation",
+      "score": 4.0,
+      "tier": "Pass",
+      "industryFolder": "ENERGY",
+      "keySummary": "Pre-revenue nuclear fuel design house developing helical metallic fuel. Robust cash balance of $215.7M with zero debt (Q1 2026) and active irradiation testing at Idaho National Laboratory. Fails due to extremely long commercialisation timeline (5-10+ years) and lack of a physical supply chain chokepoint today.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "NRGV",
+      "companyName": "Energy Vault Holdings, Inc.",
+      "score": 1.0,
+      "tier": "Pass",
+      "industryFolder": "ENERGY",
+      "keySummary": "Commodity supplier in highly competitive utility BESS market. Disqualified due to lack of a chokepoint and severe financial strains, including a missed debt service coverage ratio covenant for the Cross Trails Senior Note as of March 31, 2026. High working capital risk with unbilled contract assets comprising 78.5% of total receivables.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "FCEL",
+      "companyName": "FuelCell Energy, Inc.",
+      "score": 1.0,
+      "tier": "Pass",
+      "industryFolder": "ENERGY",
+      "keySummary": "Subscale carbonate fuel cell provider. Partnered with ExxonMobil on a pre-commercial carbon capture pilot in Rotterdam. Fails due to lack of a physical supply chain chokepoint, zero commercial data centre contracts, negative gross margins (-19.2% in Q1 FY26), and extreme equity dilution (151% increase in shares outstanding over 13 months).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "KOPN",
+      "companyName": "Kopin Corporation",
+      "score": 0.0,
+      "tier": "Pass",
+      "industryFolder": "photonics",
+      "keySummary": "DISQUALIFIED due to BDO USA, P.C. going concern explanatory paragraph in its annual report and ongoing material weaknesses in internal controls. Faces significant litigation liabilities ($19.7M post-trial judgment, $25.3M restricted cash bonded for appeal) and negative product gross margins (-3.7% in Q1 2026). Sells its \"Neural I/O\" MicroLED platform to Fabric.AI, a highly speculative former cryptocurrency shell.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "LASE",
+      "companyName": "Laser Photonics Corp.",
+      "score": 0.0,
+      "tier": "Pass",
+      "industryFolder": "directed-energy",
+      "keySummary": "DISQUALIFIED due to Weinberg & Company going concern opinion (20 April 2026) and delinquent Q1 2026 Form 10-Q. Controlling shareholder Dmitri Nikitin maintains related-party links to affiliate Fonon Technologies.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "NNE",
+      "companyName": "NANO Nuclear Energy Inc.",
+      "score": 1.0,
+      "tier": "Pass",
+      "industryFolder": "ENERGY",
+      "keySummary": "DISQUALIFIED due to an active, formal SEC investigation and subpoena (16 January 2026). Pre-commercial microreactor developer trading at a speculative $1.59B valuation with no reactor deployments expected until 2030.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "TE",
+      "companyName": "T1 Energy Inc.",
+      "score": 0.0,
+      "tier": "Pass",
+      "industryFolder": "ENERGY",
+      "keySummary": "DISQUALIFIED due to active DOJ grand jury and SEC investigations (subpoenas received in November 2025). Low-margin U.S. solar module commodity assembler (G1 Dallas) under construction for cell production (G2 Austin). Pending acquisition of KORE Power BESS division. Fails 5x return hurdle, showing negative asymmetric return math.",
+      "framework": "sc"
+    }
+  ]
+}

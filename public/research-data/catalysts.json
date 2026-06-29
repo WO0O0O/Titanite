@@ -1,0 +1,257 @@
+{
+  "exportedAt": "2026-06-29T19:49:31.353519Z",
+  "activeCount": 23,
+  "totalCount": 25,
+  "catalysts": [
+    {
+      "ticker": "IQE",
+      "description": "MACOM LTSA capacity ramp to \u00a325M+ quarterly revenue",
+      "expectedDate": "Q3 2026 (Sept)",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "ASPI",
+      "description": "Silicon-28 Pretoria facility first commercial shipments",
+      "expectedDate": "Q3 2026 (July-Sept)",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "AL2SI",
+      "description": "Sacramento Blackwell cluster (God\u00ec 1.8) Phase 1 deployment",
+      "expectedDate": "H2 2026 (Aug-Dec)",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "FOCI",
+      "description": "CPO FAU commercial shipments begin (TSMC COUPE platform)",
+      "expectedDate": "Q3 2026 (July-Sept)",
+      "confidence": "Medium-High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "SHUNSIN",
+      "description": "Broadcom CPO switch platform trial production (Vietnam)",
+      "expectedDate": "Mid-2026 (June-July)",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "OKLO",
+      "description": "NRC Combined License Application (COLA) submission",
+      "expectedDate": "H2 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "AAOI",
+      "description": "800G transceiver volume shipment ramp (post-Q1 2026 delay)",
+      "expectedDate": "Q2-Q3 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "SEE",
+      "description": "Magna convertible note refinancing (due Oct 2026)",
+      "expectedDate": "Q3 2026 (before Oct)",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "KEEL",
+      "description": "Panther Creek 62 MW AI data centre lease-up (first tenant)",
+      "expectedDate": "Q3-Q4 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "BRUN",
+      "description": "5,000 NVIDIA B300 GPU server cluster activation (Thinking Machines)",
+      "expectedDate": "H2 2026 (Aug-Dec)",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "DGXX",
+      "description": "Phase 1 Columbiana (15 MW) ready-for-service / online date",
+      "expectedDate": "15 December 2026",
+      "confidence": "Medium-High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "SKM",
+      "description": "KKR 49% acquisition of the AIDC unit transaction close (\u20a92.0\u20132.5T valuation)",
+      "expectedDate": "30 June 2026",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "PENG",
+      "description": "Q3 FY2026 earnings release showing guided revenue step-up to $375M",
+      "expectedDate": "7 July 2026",
+      "confidence": "High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "MXL",
+      "description": "Rushmore 1.6T PAM4 DSP qualification confirmation at major hyperscaler",
+      "expectedDate": "H2 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "LPK",
+      "description": "First publicly named glass substrate production system LIDE order (TGV)",
+      "expectedDate": "Q4 2026 / H1 2027",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "ACCON",
+      "description": "Commercial launch and volume shipments of the A212 sensor on automotive platform",
+      "expectedDate": "Late 2026",
+      "confidence": "Medium-High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "XFAB",
+      "description": "Confirmed volume production contract for silicon photonics or GaN with Tier 1",
+      "expectedDate": "H2 2026 / H1 2027",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "TRT",
+      "description": "Penang facility operational commencement and gross margin recovery to >20%",
+      "expectedDate": "Q4 2026",
+      "confidence": "Medium-High",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "AIRJ",
+      "description": "UL/NSF certification of the AirJoule Core (A250) unit",
+      "expectedDate": "Q4 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "_Pending_",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "TLN",
+      "description": "AWS Susquehanna PPA restructure approval",
+      "expectedDate": "Q1 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "~0 days",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "IQE",
+      "description": "\u00a381M strategic fundraise close (MACOM anchor)",
+      "expectedDate": "May 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "~0 days",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "SOITEC",
+      "description": "Laurent R\u00e9mont CEO appointment",
+      "expectedDate": "April 2026",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "~0 days",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "AL2SI",
+      "description": "Yih-Shyan Liaw indictment (risk event)",
+      "expectedDate": "_Not predicted_",
+      "confidence": "Medium",
+      "status": "active",
+      "thesisImpact": "N/A",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "TLN",
+      "description": "Cornerstone 2.6 GW gas acquisition final close",
+      "expectedDate": "1 June 2026",
+      "confidence": "High",
+      "status": "hit",
+      "thesisImpact": "\u2705 1 June 2026",
+      "actualDate": null,
+      "deltaDays": null
+    },
+    {
+      "ticker": "BE",
+      "description": "Oracle 1.2 GW contracted segment of 2.8 GW agreement signing",
+      "expectedDate": "Q1 2026",
+      "confidence": "High",
+      "status": "hit",
+      "thesisImpact": "\u2705 Confirmed Q1 2026",
+      "actualDate": null,
+      "deltaDays": null
+    }
+  ]
+}
