@@ -6,15 +6,28 @@ This document tracks all modifications to the research frameworks to prevent sco
 
 ## [v2.2.0] - 29 June 2026
 
-### CUSTOM WATCHLIST INTEGRATION & GITHUB PAGES EXPORT SETUP (T212 DEPRECATION)
-**Rationale:** Refactored Titanite Technologies to support serverless static hosting on GitHub Pages by completely deprecating the Trading 212 API integration and replacing the personal portfolio interface with a client-side Custom Watchlist (backed by `localStorage`).
+### CUSTOM WATCHLIST INTEGRATION & VERCEL/HYBRID DEPLOYMENT READINESS (T212 DEPRECATION)
+**Rationale:** Refactored Titanite Technologies to support serverless deployment on Vercel and graceful client-side fallbacks on static hosts. This was achieved by completely deprecating the Trading 212 API integration, removing all personal portfolio parameters (buy prices, quantities, cash balance, P&L metrics), and implementing a client-side Custom Watchlist (backed by `localStorage`).
 
-- **Deprecating Trading 212 Services:** Overwrote [trading212.service.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/lib/services/trading212.service.ts) and `/api/portfolio` route handler with stubs to remove personal buy prices, quantities, and P&L allocations.
-- **Custom Watchlist Store:** Created client-side Zustand store [watchlistStore.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/store/watchlistStore.ts) using `localStorage` for client-side persistence and [watchlist.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/types/watchlist.ts) type schemas.
-- **Watchlist Query API:** Created [/api/watchlist/route.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/app/api/watchlist/route.ts) to query Yahoo Finance for watched tickers.
-- **Fallback refactoring:** Refactored `useMarketData`, `useIntelFeed`, and `useCongressTrades` query hooks to swallow route errors and fallback to static mock assets when deployed on serverless hosting.
-- **Dashboard UI Redesign:** Replaced holdings table with the newly created [WatchlistTable.tsx](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/components/dashboard/WatchlistTable.tsx) incorporating custom add/remove tickers input controls on the dashboard.
-- **Static Export Configuration:** Configured [next.config.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/next.config.ts) with `output: 'export'` and unoptimized image support to prepare for static page compilation.
+#### Watchlist Architecture & Logic
+- **State Management:** A client-side Zustand store tracks a list of watched stock tickers. It is safely hydrated on mount from browser `localStorage` (with a default fallback to `['SIVE', 'IQE', 'MU', 'POET', 'AXTI', 'NVDA']`), removing the need for a server-side database.
+- **Quote Resolution:** 
+  - *Server-Side:* A dedicated API route `/api/watchlist?tickers=...` queries Yahoo Finance in parallel to fetch live stock prices, names, and market caps.
+  - *Client-Side Fallback:* If hosted on a pure static serverless environment where API endpoints are unavailable, the `useWatchlist` React hook catches network errors and gracefully resolves quotes using client-side mock assets, preventing page-blocking crashes.
+- **UI & Controls:** 
+  - Integrated an inline text input form inside the watchlist terminal header to add any stock ticker.
+  - Embedded a red `[DEL]` button in each watchlist row to remove tickers from the store.
+  - Created a Watchlist Summary bar displaying metadata counts (Watched Tickers, Researched Coverage, Tier 1/Tier 2 Coverage) instead of invested capital.
+
+#### Key Files Modified/Added
+- **[watchlist.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/types/watchlist.ts) [NEW]:** Declares `WatchlistItem` type schemas.
+- **[watchlistStore.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/store/watchlistStore.ts) [NEW]:** Zustand store syncing watched stock tickers with `localStorage`.
+- **[route.ts (watchlist)](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/app/api/watchlist/route.ts) [NEW]:** Server-side route handler querying Yahoo Finance dynamically.
+- **[WatchlistTable.tsx](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/components/dashboard/WatchlistTable.tsx) [NEW]:** Replaces holdings table with a dense watchlist rendering (Ticker, Name, Cap, Price, Conviction Tier, Score, Actions).
+- **[useHoldings.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/hooks/useHoldings.ts):** Refactored to fetch watchlist tickers from the new API route with robust try/catch mock fallbacks.
+- **[DashboardContent.tsx](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/components/dashboard/DashboardContent.tsx):** Refactored to integrate the new watchlist store, summary metrics, and text input controls.
+- **[trading212.service.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/lib/services/trading212.service.ts) / [route.ts (portfolio)](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/app/api/portfolio/route.ts):** Deprecated and replaced with empty stubs to clean out personal data dependencies.
+- **[next.config.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/next.config.ts):** Configured unoptimized image loading for Vercel/Static flexibility. Bypassed static export boundaries to allow live Next.js serverless functions.
 
 ## [v2.1.0] - 29 June 2026
 

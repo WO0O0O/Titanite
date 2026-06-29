@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 research/titanite-app/.venv/
 research/titanite-app/.cache/
-public/research-data/
+# public/research-data/
