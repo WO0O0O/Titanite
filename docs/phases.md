@@ -142,6 +142,15 @@
 - [x] Recalibrate Asymmetric Return Multiple in Section 5 cluster matrix to 7.10x return.
 - [x] Update Sivers' entry in `TABLE.md` and document in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.13: Custom Watchlist (T212 Deprecation) & GitHub Pages Readiness 📦
+- [ ] Deprecate and remove Trading 212 API services (`trading212.service.ts`) and `/api/portfolio` route handler.
+- [ ] Remove all personal portfolio references from UI (buy price, quantity, total value, cash balance, P&L value/percent).
+- [ ] Create a client-side Watchlist store using LocalStorage (Zustand or local hook) to manage watched tickers without a database.
+- [ ] Redesign `<HoldingsTable>` into a `<WatchlistTable>` showing clean stock info: TICKER | COMPANY NAME | MARKET CAP | CURRENT PRICE | CONVICTION TIER.
+- [ ] Create UI controls to add and remove tickers from the watchlist directly on the dashboard.
+- [ ] Add static export configuration (`output: 'export'`) to `next.config.ts` for direct hosting on GitHub Pages.
+- [ ] Refactor live data hooks to query external APIs (Yahoo Finance client-side or static mock fallbacks) to support static serverless environment.
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.

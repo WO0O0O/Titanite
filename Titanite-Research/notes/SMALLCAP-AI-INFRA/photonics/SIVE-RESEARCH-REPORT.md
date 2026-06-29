@@ -292,13 +292,13 @@ A 40% reduction in hyperscaler capex would delay optical upgrade cycles, cutting
 | 10 | Secular + cyclical tailwinds | 1 | 1 | Strong |
 | 11 | Under-followed / under-researched | 1 | 1 | Strong |
 | 12 | Management integrity and execution | 1 | 1 | Moderate |
-| | **TOTAL** | **13** | **11** | |
+| | **TOTAL** | **13** | **12** | |
 
-**Verdict: 11 / 13 — Tier 1**
+**Verdict: 12 / 13 — Tier 1**
 
 ---
 
 ## SYNTHESIS: THE ONE-PARAGRAPH PITCH
 
-Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (11/13)** co-packaged optics (CPO) and high-speed pluggable transceivers play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform and the InP laser engine provider for Jabil's 1.6T LRO transceiver modules. This dual-win design-in status locks in downstream custom ASIC architectures, including indirect exposure to NVIDIA's TFLN evaluation through Jabil's system integration, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement. Trading at a $2.027 billion USD market capitalisation, Sivers' return maths indicates a 7.10x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
+Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (12/13)** co-packaged optics (CPO) and high-speed pluggable transceivers play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform and the InP laser engine provider for Jabil's 1.6T LRO transceiver modules. This dual-win design-in status locks in downstream custom ASIC architectures, including indirect exposure to NVIDIA's TFLN evaluation through Jabil's system integration, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement. Trading at a $2.027 billion USD market capitalisation, Sivers' return maths indicates a 7.10x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
 
