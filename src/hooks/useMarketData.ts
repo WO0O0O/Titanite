@@ -29,6 +29,10 @@ export function useMarketData() {
       }
       try {
         const res = await fetch('/api/market');
+        if (res.status === 429) {
+          console.warn('Market API rate limit exceeded (429) — falling back to mock data');
+          return { context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS };
+        }
         if (!res.ok) throw new Error(`Market data fetch failed: ${res.status}`);
         return await res.json() as MarketDataResult;
       } catch (err) {

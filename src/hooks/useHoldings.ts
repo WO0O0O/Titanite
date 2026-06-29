@@ -51,6 +51,14 @@ export function useWatchlist(tickers: string[]) {
 
       try {
         const res = await fetch(`/api/watchlist?tickers=${encodeURIComponent(tickersString)}`);
+        if (res.status === 429) {
+          console.warn('Watchlist API rate limit exceeded (429) — falling back to mock data');
+          const quotes = tickers.map((t) => {
+            const detail = MOCK_COMPANY_DETAILS[t] ?? { name: t, price: 100.0, marketCap: 1000000000 };
+            return { ticker: t, ...detail };
+          });
+          return { quotes };
+        }
         if (!res.ok) throw new Error(`Watchlist fetch failed: ${res.status}`);
         return await res.json() as WatchlistResult;
       } catch (err) {

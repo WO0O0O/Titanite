@@ -20,6 +20,10 @@ export function useCongressTrades() {
       }
       try {
         const res = await fetch('/api/congress');
+        if (res.status === 429) {
+          console.warn('Congress API rate limit exceeded (429) — falling back to mock data');
+          return MOCK_CONGRESS_TRADES;
+        }
         if (!res.ok) throw new Error(`Congress fetch failed: ${res.status}`);
         return await res.json() as CongressTrade[];
       } catch (err) {

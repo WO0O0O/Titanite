@@ -20,6 +20,10 @@ export function useIntelFeed() {
       }
       try {
         const res = await fetch('/api/intel');
+        if (res.status === 429) {
+          console.warn('Intel API rate limit exceeded (429) — falling back to mock data');
+          return MOCK_INTEL_ITEMS;
+        }
         if (!res.ok) throw new Error(`Intel feed fetch failed: ${res.status}`);
         return await res.json() as IntelItem[];
       } catch (err) {

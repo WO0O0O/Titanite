@@ -4,6 +4,16 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.1] - 29 June 2026
+
+### SECURITY HARDENING & AI CRAWLER MITIGATION
+**Rationale:** Hardened the application for public serverless deployment on Vercel by blocking aggressive AI scraper bots, configuring secure HTTP headers, whitelisting API client access via CORS, and implementing IP-based request rate limiting in Next.js middleware.
+
+- **AI Bot Exclusion:** Created [robots.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/app/robots.ts) in the App Router to explicitly disallow indexing and scraping by `GPTBot`, `ClaudeBot`, `Google-Extended`, `CCBot`, `PerplexityBot`, and others.
+- **HTTP Security Headers:** Configured Content Security Policy (CSP), Strict-Transport-Security (HSTS), X-Frame-Options (clickjacking block), and X-Content-Type-Options in [next.config.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/next.config.ts).
+- **CORS & Rate Limiting Middleware:** Added [middleware.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/middleware.ts) running on all `/api/` paths to enforce Origin checks (restricted to `titanite.wo0.dev` and `localhost`) and implement a sliding window IP rate limiter (60 req/min).
+- **Graceful Throttling Fallbacks:** Upgraded `useMarketData`, `useWatchlist`, `useIntelFeed`, and `useCongressTrades` client hooks to catch `429 Too Many Requests` API status codes and fall back gracefully to local caches/mock databases with console warnings.
+
 ## [v2.2.0] - 29 June 2026
 
 ### CUSTOM WATCHLIST INTEGRATION & VERCEL/HYBRID DEPLOYMENT READINESS (T212 DEPRECATION)
