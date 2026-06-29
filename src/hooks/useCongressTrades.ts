@@ -18,9 +18,14 @@ export function useCongressTrades() {
       if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
         return MOCK_CONGRESS_TRADES;
       }
-      const res = await fetch('/api/congress');
-      if (!res.ok) throw new Error(`Congress fetch failed: ${res.status}`);
-      return res.json() as Promise<CongressTrade[]>;
+      try {
+        const res = await fetch('/api/congress');
+        if (!res.ok) throw new Error(`Congress fetch failed: ${res.status}`);
+        return await res.json() as CongressTrade[];
+      } catch (err) {
+        console.warn('Congress API /api/congress is unavailable, falling back to mock data:', err);
+        return MOCK_CONGRESS_TRADES;
+      }
     },
     refetchInterval: 60000, // Background poll every 60s
   });

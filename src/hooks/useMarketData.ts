@@ -27,9 +27,14 @@ export function useMarketData() {
       if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
         return { context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS };
       }
-      const res = await fetch('/api/market');
-      if (!res.ok) throw new Error(`Market data fetch failed: ${res.status}`);
-      return res.json() as Promise<MarketDataResult>;
+      try {
+        const res = await fetch('/api/market');
+        if (!res.ok) throw new Error(`Market data fetch failed: ${res.status}`);
+        return await res.json() as MarketDataResult;
+      } catch (err) {
+        console.warn('Market API /api/market is unavailable, falling back to mock data:', err);
+        return { context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS };
+      }
     },
     refetchInterval: 60000, // Background poll every 60s
   });

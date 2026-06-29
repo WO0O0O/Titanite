@@ -18,9 +18,14 @@ export function useIntelFeed() {
       if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
         return MOCK_INTEL_ITEMS;
       }
-      const res = await fetch('/api/intel');
-      if (!res.ok) throw new Error(`Intel feed fetch failed: ${res.status}`);
-      return res.json() as Promise<IntelItem[]>;
+      try {
+        const res = await fetch('/api/intel');
+        if (!res.ok) throw new Error(`Intel feed fetch failed: ${res.status}`);
+        return await res.json() as IntelItem[];
+      } catch (err) {
+        console.warn('Intel API /api/intel is unavailable, falling back to mock data:', err);
+        return MOCK_INTEL_ITEMS;
+      }
     },
     refetchInterval: 60000, // Background poll every 60s
   });

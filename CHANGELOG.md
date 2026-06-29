@@ -4,6 +4,18 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.0] - 29 June 2026
+
+### CUSTOM WATCHLIST INTEGRATION & GITHUB PAGES EXPORT SETUP (T212 DEPRECATION)
+**Rationale:** Refactored Titanite Technologies to support serverless static hosting on GitHub Pages by completely deprecating the Trading 212 API integration and replacing the personal portfolio interface with a client-side Custom Watchlist (backed by `localStorage`).
+
+- **Deprecating Trading 212 Services:** Overwrote [trading212.service.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/lib/services/trading212.service.ts) and `/api/portfolio` route handler with stubs to remove personal buy prices, quantities, and P&L allocations.
+- **Custom Watchlist Store:** Created client-side Zustand store [watchlistStore.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/store/watchlistStore.ts) using `localStorage` for client-side persistence and [watchlist.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/types/watchlist.ts) type schemas.
+- **Watchlist Query API:** Created [/api/watchlist/route.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/app/api/watchlist/route.ts) to query Yahoo Finance for watched tickers.
+- **Fallback refactoring:** Refactored `useMarketData`, `useIntelFeed`, and `useCongressTrades` query hooks to swallow route errors and fallback to static mock assets when deployed on serverless hosting.
+- **Dashboard UI Redesign:** Replaced holdings table with the newly created [WatchlistTable.tsx](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/components/dashboard/WatchlistTable.tsx) incorporating custom add/remove tickers input controls on the dashboard.
+- **Static Export Configuration:** Configured [next.config.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/next.config.ts) with `output: 'export'` and unoptimized image support to prepare for static page compilation.
+
 ## [v2.1.0] - 29 June 2026
 
 ### SIVERS SEMICONDUCTORS AB (SIVE) OSINT, VALUATION & SCORE RE-CALIBRATION

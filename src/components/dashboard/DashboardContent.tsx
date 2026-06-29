@@ -3,31 +3,23 @@
 /**
  * DashboardContent — the interactive content of the /dashboard page.
  *
- * Now wired to real data via TanStack Query hooks:
+ * Wired to:
  *   useMarketData() → feeds MacroPillarsBar + triggers evaluateAll()
- *   useHoldings()   → feeds HoldingsTable + PortfolioSummary
- *
- * When NEXT_PUBLIC_USE_MOCK_DATA=true, hooks return mock data instantly.
- * When false, they fetch from /api/market and /api/portfolio.
+ *   useWatchlist()  → client-side custom watchlist backed by LocalStorage.
  */
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSignalStore } from '@/store/signalStore';
 import { useUIStore } from '@/store/uiStore';
 import { useMarketData } from '@/hooks/useMarketData';
-import { useHoldings } from '@/hooks/useHoldings';
+import { useWatchlist } from '@/hooks/useHoldings';
+import { useWatchlistStore } from '@/store/watchlistStore';
 import { useResearchCompanies } from '@/hooks/useResearchCompanies';
 import MacroPillarsBar from './MacroPillarsBar';
 import MasterSignalCard from './MasterSignalCard';
-import HoldingsTable from './HoldingsTable';
+import WatchlistTable from './WatchlistTable';
 import TerminalWindow from '@/components/layout/TerminalWindow';
 import { ArrowLeftRight } from 'lucide-react';
-
-const fmt = {
-  // GBP — user is UK-based; T212 account is denominated in £
-  value: (v: number) => `£${v.toLocaleString('en-GB', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
-  pct: (v: number) => `${v >= 0 ? '+' : ''}${v.toFixed(2)}%`,
-};
 
 export default function DashboardContent() {
   const masterSignals = useSignalStore((s) => s.masterSignals);
@@ -35,9 +27,20 @@ export default function DashboardContent() {
   const { dashboardLayout, setDashboardLayout } = useUIStore();
   const triggeredCount = masterSignals.filter((ms) => ms.isTriggered).length;
 
+  const [newTicker, setNewTicker] = useState('');
+
   const { data: marketData } = useMarketData();
-  const { data: portfolioData } = useHoldings();
   const { data: researchPayload } = useResearchCompanies();
+  
+  const tickers = useWatchlistStore((s) => s.tickers);
+  const { addTicker, removeTicker, initWatchlist } = useWatchlistStore();
+
+  const { data: watchlistData } = useWatchlist(tickers);
+
+  // Initialize watchlist from LocalStorage on mount
+  useEffect(() => {
+    initWatchlist();
+  }, [initWatchlist]);
 
   const researchLookup = researchPayload
     ? new Map(researchPayload.companies.map((c) => [c.ticker.toUpperCase(), c]))
@@ -50,8 +53,29 @@ export default function DashboardContent() {
     }
   }, [marketData, evaluateAll]);
 
-  const holdings  = portfolioData?.holdings  ?? [];
-  const portfolio = portfolioData?.summary   ?? { totalInvested: 0, totalValue: 0, totalPnlValue: 0, totalPnlPercent: 0, cashBalance: 0 };
+  // Compute watchlist stats for the summary bar
+  const totalWatched = tickers.length;
+  let researchedCount = 0;
+  let tier1Count = 0;
+  let tier2Count = 0;
+
+  tickers.forEach((t) => {
+    const research = researchLookup?.get(t.toUpperCase());
+    if (research) {
+      researchedCount++;
+      if (research.tier === 'Tier 1') tier1Count++;
+      if (research.tier === 'Tier 2') tier2Count++;
+    }
+  });
+
+  const handleAddStock = (e: React.FormEvent) => {
+    e.preventDefault();
+    const clean = newTicker.trim().toUpperCase();
+    if (clean) {
+      addTicker(clean);
+      setNewTicker('');
+    }
+  };
 
   const LayoutToggleButton = () => (
     <button
@@ -91,9 +115,9 @@ export default function DashboardContent() {
     </div>
   );
 
-  const holdingsContent = (
+  const watchlistContent = (
     <div className={`${dashboardLayout === 'SIGNALS_PRIMARY' ? "w-[520px] shrink-0" : "flex-1 min-w-0"} flex flex-col gap-3 min-h-0`}>
-      {/* Portfolio summary strip */}
+      {/* Watchlist summary strip */}
       <div
         className="shrink-0 grid grid-cols-4 text-center"
         style={{
@@ -103,17 +127,17 @@ export default function DashboardContent() {
         }}
       >
         {[
-          { label: 'INVESTED', value: fmt.value(portfolio.totalInvested) },
-          { label: 'VALUE', value: fmt.value(portfolio.totalValue) },
+          { label: 'WATCHED STOCKS', value: totalWatched.toString() },
+          { label: 'RESEARCHED', value: researchedCount.toString() },
           {
-            label: 'P&L',
-            value: fmt.value(portfolio.totalPnlValue),
-            color: portfolio.totalPnlValue >= 0 ? 'var(--color-signal-ok)' : 'var(--color-signal-alert)',
+            label: 'TIER 1 COVERAGE',
+            value: tier1Count.toString(),
+            color: 'var(--color-accent)',
           },
           {
-            label: 'RETURN',
-            value: fmt.pct(portfolio.totalPnlPercent),
-            color: portfolio.totalPnlPercent >= 0 ? 'var(--color-signal-ok)' : 'var(--color-signal-alert)',
+            label: 'TIER 2 COVERAGE',
+            value: tier2Count.toString(),
+            color: 'var(--color-text-secondary)',
           },
         ].map(({ label, value, color }, i) => (
           <div key={label} className="py-2 px-2"
@@ -124,18 +148,31 @@ export default function DashboardContent() {
         ))}
       </div>
 
-      {/* Holdings table */}
+      {/* Watchlist table */}
       <div className="flex-1 overflow-hidden">
-        <TerminalWindow title="Holdings" code="DSH-2" rightSlot={
-          <div className="flex items-center">
-            <span style={{ color: 'var(--color-accent)' }}>
-              {process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true' ? 'T212 — MOCK DATA' : 'T212 — LIVE'}
-            </span>
+        <TerminalWindow title="Custom Watchlist" code="DSH-2" rightSlot={
+          <div className="flex items-center gap-4">
+            <form onSubmit={handleAddStock} className="flex items-center gap-1">
+              <input
+                type="text"
+                placeholder="ADD TICKER (E.G. PLTR)"
+                value={newTicker}
+                onChange={(e) => setNewTicker(e.target.value)}
+                className="bg-neutral-950 border border-neutral-800 text-[10px] px-1.5 py-0.5 rounded text-white focus:outline-none focus:border-[var(--color-accent)] placeholder:text-neutral-700 font-mono w-[140px]"
+              />
+              <button type="submit" className="border border-[var(--color-accent)] text-[var(--color-accent)] hover:bg-[var(--color-accent)] hover:text-black text-[9px] px-1.5 py-0.5 rounded font-mono transition-all">
+                ADD
+              </button>
+            </form>
             {dashboardLayout === 'SIGNALS_PRIMARY' && <LayoutToggleButton />}
           </div>
         }>
           <div className="-m-4 overflow-y-auto h-full">
-            <HoldingsTable holdings={holdings} researchLookup={researchLookup} />
+            <WatchlistTable 
+              watchlist={watchlistData?.quotes ?? []} 
+              researchLookup={researchLookup} 
+              onRemoveTicker={removeTicker} 
+            />
           </div>
         </TerminalWindow>
       </div>
@@ -155,11 +192,11 @@ export default function DashboardContent() {
         {dashboardLayout === 'SIGNALS_PRIMARY' ? (
           <>
             {signalsContent}
-            {holdingsContent}
+            {watchlistContent}
           </>
         ) : (
           <>
-            {holdingsContent}
+            {watchlistContent}
             {signalsContent}
           </>
         )}
@@ -167,3 +204,4 @@ export default function DashboardContent() {
     </div>
   );
 }
+
