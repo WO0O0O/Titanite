@@ -6,20 +6,21 @@
 
 ## GATE CHECK — MARKET CAP FILTER
 
-* **Current Share Price:** SEK 78.80
+* **Current Share Price:** SEK 63.35
 * **Shares Outstanding:** 311,333,572
-* **Current Market Capitalisation:** SEK 24.533 billion (calculated as 311,333,572 shares × SEK 78.80)
-* **Exchange Rate Used:** 10.527 SEK/USD
-* **Market Capitalisation (USD):** $2.33 billion USD (calculated as SEK 24.533 billion / 10.527 SEK/USD)
-* **Enterprise Value (USD):** $2.35 billion USD (calculated with USD 17.0 million loan facility debt and SEK 26.6 million cash)
+* **Current Market Capitalisation:** SEK 19.723 billion (calculated as 311,333,572 shares × SEK 63.35)
+* **Exchange Rate Used:** 9.73 SEK/USD
+* **Market Capitalisation (USD):** $2.027 billion USD (calculated as SEK 19.723 billion / 9.73 SEK/USD)
+* **Enterprise Value (USD):** $2.044 billion USD (calculated with USD 17.0 million loan facility debt [equivalent to SEK 165.4 million] and SEK 26.6 million cash)
 
 Sivers Semiconductors qualifies for evaluation under the $5.0 billion USD threshold.
 
 * **Bull-Case Market Capitalisation (24–36 months):** $14.40 billion USD
-* **Current Trailing Sales Multiple:** 99.1x sales (calculated as $2.33 billion USD market capitalisation / $23.52 million USD annualised revenue based on Q1 2026 revenue of SEK 61.9 million)
+* **Current Trailing Sales Multiple:** 86.2x sales (calculated as $2.027 billion USD market capitalisation / $23.52 million USD annualised revenue based on Q1 2026 revenue of SEK 61.9 million)
 * **Future Target Multiple:** 20.0x sales (EV/Sales multiple applied to target revenue)
-* **Valuation Shift Label:** **Multiple Contraction offset by Volumetric Revenue Scale-Up** (compressing from 99.1x sales down to 20.0x sales)
-* **Implied Return Multiple:** 6.18x return from today's price (exceeds the 5.0x hardware hurdle).
+* **Valuation Shift Label:** **Multiple Contraction offset by Volumetric Revenue Scale-Up** (compressing from 86.2x sales down to 20.0x sales)
+* **Implied Return Multiple:** 7.10x return from today's price (exceeds the 5.0x hardware hurdle).
+
 
 ---
 
@@ -61,11 +62,12 @@ The `qualification_cycle_modifier_applies` flag is set to **true**.
 ## SECTION 2 — HYPERSCALER LINKAGE
 
 * **Direct Customers:** GlobalFoundries, Jabil, and O-Net Technologies.
-* **Hyperscaler Dependency:** Downstream optical module assemblers supply ELS modules to Tier 1 optical switch manufacturers, who directly supply hyperscalers (Meta, Google, Amazon).
-* **Confirmed Design-Ins:** Collaboration with GlobalFoundries (announced 2 June 2026) to integrate Sivers' DFB laser arrays into reference designs for the SCALE platform.
-* **AI Capex Percentage:** Over 90% of Sivers' forward opportunity pipeline ($799 million USD) is driven by AI data centre optics and satellite communications networks, with legacy telecommunication segments declining.
+* **Hyperscaler Dependency:** Downstream optical module assemblers supply ELS modules to Tier 1 optical switch manufacturers, who directly supply hyperscalers (NVIDIA, Meta, Google, Amazon).
+* **Confirmed Design-Ins:** Collaboration with GlobalFoundries (announced 2 June 2026) to integrate Sivers' DFB laser arrays into reference designs for the SCALE platform. In addition, Sivers partnered with Jabil (announced April 2026) to supply InP DFB lasers (InP100 platform) for Jabil's 1.6T Linear Receive Optical (LRO) transceiver modules.
+* **AI Capex Percentage:** Over 90% of Sivers' forward opportunity pipeline ($799 million USD) is driven by AI data centre optics and satellite communications networks, with legacy telecommunication segments declining. The indirect linkage to NVIDIA is verified: Jabil acts as the systems packager for HyperLight's TFLN modulators which are being tested by NVIDIA, and Jabil utilizes Sivers' lasers as the complementary InP light engine in its transceiver platform.
 
 **Score: 1 / 1**
+
 
 ---
 
@@ -124,12 +126,13 @@ Sivers' market capitalisation is $2.33 billion USD, passing the $5.0 billion USD
 | **Step D** | Total Layer TAM | $2.40 billion USD | 160 MW × $15.0 million/MW |
 | **Step E** | Implied Ticker Revenue | $720.0 million USD | $2.40 billion TAM × 30% estimated market share |
 | **Step F** | Bull Case Valuation Target | $14.40 billion USD | $720.0 million Revenue × 20x target EV/Sales |
-| **Step G** | Asymmetric Return Multiple | 6.18x | $14.40 billion Valuation / $2.33 billion Market Cap |
+| **Step G** | Asymmetric Return Multiple | 7.10x | $14.40 billion Valuation / $2.027 billion Market Cap |
 
 ### Revenue Expansion Sanity Check
 Current annualised corporate revenue baseline is $23.52 million USD (based on Q1 2026 SEK 61.9 million). The calculated Implied Ticker Revenue ($720.0 million USD) is substantially higher, indicating a highly expansionary growth vector.
 
-**Score: 1 / 1** (6.18x return exceeds the 5.0x hardware hurdle).
+**Score: 1 / 1** (7.10x return exceeds the 5.0x hardware hurdle).
+
 
 ---
 
@@ -158,10 +161,11 @@ Current annualised corporate revenue baseline is $23.52 million USD (based on Q1
 ## SECTION 8 — TECHNOLOGY LEADERSHIP / FIRST-MOVER ADVANTAGE
 
 * **Technology Lead:** 12-18 months lead in multi-wavelength DFB laser array design and process integration.
-* **Displacement Barriers:** Hard-coded design-in on GlobalFoundries' SCALE PDKs, cleanroom process know-how for InP epitaxial regrowth, and lengthy customer qualification timelines.
-* **Competitors:** Lumentum, Coherent, POET Technologies, Aeluma. No competitor can easily displace Sivers from the SCALE reference platform due to PDK integration.
+* **Displacement Barriers:** Hard-coded design-in on GlobalFoundries' SCALE PDKs, cleanroom process know-how for InP epitaxial regrowth, and lengthy customer qualification timelines. Sivers' selection as the InP laser provider for Jabil's 1.6T LRO transceiver modules validates its technology moat.
+* **Competitors:** Lumentum, Coherent, POET Technologies, Aeluma. No competitor can easily displace Sivers from the SCALE reference platform due to PDK integration, and Jabil's integration further raises the qualification barriers.
 
 **Score: 1 / 1**
+
 
 ---
 
@@ -231,6 +235,10 @@ If hyperscalers extend the viability of pluggable optics (e.g., via LPO) beyond 
 ### Balance Sheet Risk
 Cash of SEK 26.6 million in Q1 2026 is low, and the high working capital drag (59.0% contract assets) limits liquidity. Dilution remains a recurring threat, mitigated in the near term by the May 2026 SEK 125 million share issue and the USD 17.0 million credit facility.
 
+### Valuation Correction and Governance Volatility
+The stock has pulled back to SEK 63.35 in late June 2026 after peaking near SEK 101.90. This correction reflects broader industry profit-taking and governance noise, including the Board's decision at the June 15, 2026 AGM to withdraw employee incentive plans for further review by the newly elected Board. While this pullback improves the asymmetric entry point, it highlights the speculative nature and retail-driven volatility of the Stockholm listing.
+
+
 ### Regulatory and ITAR Export Control Risk
 Sivers' SATCOM and mmWave components are dual-use (military/civilian satellite ground terminals). Strict U.S. export controls (ITAR and EAR) represent an operational bottleneck. Shipping raw wafers from the Glasgow cleanroom to Asian sites for final assembly introduces regulatory compliance risks that could disrupt high-priority U.S. defence programmes if export licences are delayed or restricted.
 
@@ -262,8 +270,9 @@ A 40% reduction in hyperscaler capex would delay optical upgrade cycles, cutting
 ## SECTION 15 — INSTITUTIONAL ROTATION TIMING
 
 * **Rotation Phase:** Maps to **Phase 3** (Silicon photonics, external light sources, co-packaged optics), which is in the early stages.
-* **Discovery Catalyst:** NASDAQ New York dual-listing or first commercial volume orders on the GlobalFoundries SCALE platform.
+* **Discovery Catalyst:** NASDAQ New York dual-listing, first commercial volume orders on the GlobalFoundries SCALE platform, or Jabil's volume production of 1.6T LRO transceivers integrating Sivers' lasers.
 * **Time to Consensus:** Estimated at 6–12 months.
+
 
 ---
 
@@ -291,4 +300,5 @@ A 40% reduction in hyperscaler capex would delay optical upgrade cycles, cutting
 
 ## SYNTHESIS: THE ONE-PARAGRAPH PITCH
 
-Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (11/13)** co-packaged optics (CPO) play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform. This design-in status locks in downstream hyperscaler custom ASIC architectures, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement, setting `working_capital_divergence_detected` to false. The bull thesis survives because Sivers' PDK-level reference design lock-in with GlobalFoundries bypasses historical collection issues by guaranteeing sole-source status for the upcoming volume inflection. Trading at a $2.33 billion USD market capitalisation, Sivers' return maths indicates a 6.18x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
+Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (11/13)** co-packaged optics (CPO) and high-speed pluggable transceivers play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform and the InP laser engine provider for Jabil's 1.6T LRO transceiver modules. This dual-win design-in status locks in downstream custom ASIC architectures, including indirect exposure to NVIDIA's TFLN evaluation through Jabil's system integration, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement. Trading at a $2.027 billion USD market capitalisation, Sivers' return maths indicates a 7.10x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
+

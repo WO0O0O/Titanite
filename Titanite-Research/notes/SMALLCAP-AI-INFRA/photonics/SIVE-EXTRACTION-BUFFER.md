@@ -10,13 +10,16 @@
 | **Step B:** National Innovation Agency Checks | `Vinnova "Sivers Semiconductors" OR "Sivers Photonics"` | 4 | Participates in Vinnova-funded advanced packaging consortiums (E2PackMan) and mmWave/6G connectivity research programmes with Chalmers University of Technology. |
 | **Step B:** Executive / Leadership Background | `Sivers Semiconductors CEO "Anders Storm" OR "Vikas Choudhary"` | 3 | Anders Storm departed Sivers in 2024 to join Dirac. Dr. Vickram Vathulya appointed President and CEO of Sivers Semiconductors on 19 August 2024. |
 | **Step B:** CEO Investigation Check | `"Vickram Vathulya" "Sivers Semiconductors" SEC OR bankruptcy OR SPAC OR fraud` | 3 | No negative governance history, SEC sanctions, SPAC involvement, or prior bankruptcy filings associated with the current CEO, Vickram Vathulya. |
+| **Step B:** Tier-1 Integration Audit | `"Sivers" "Jabil" OR "Hyperlight" OR "UMC" "TFLN" OR "1.6T"` | 5 | Confirmed Sivers is partnering with Jabil to supply InP lasers for Jabil's 1.6T LRO transceiver modules, which integrate complementary TFLN modulators. |
+
 
 ## RAW DATA EXTRACTION BUFFER
 
 ```json
 {
   "ticker": "SIVE",
-  "audit_completed_at": "2026-06-06",
+  "audit_completed_at": "2026-06-29",
+
   "transcript_extracts": {
     "pass_1_opportunities": [
       {
@@ -116,8 +119,9 @@
     "qualification_cycle_modifier_applies": true,
     "potential_channel_stuffing_signals": false,
     "confirmed_foundry_reference_design_status": "GlobalFoundries",
-    "confirmed_tier1_cm_sole_source_integration": "None",
+    "confirmed_tier1_cm_sole_source_integration": "Jabil",
     "direct_hyperscaler_custom_asic_design_win": false
+
   }
 }
 ```

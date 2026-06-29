@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.1.0] - 29 June 2026
+
+### SIVERS SEMICONDUCTORS AB (SIVE) OSINT & VALUATION RE-CALIBRATION
+**Rationale:** Updated Sivers Semiconductors ($SIVE) to reflect its share price decline (from SEK 78.80 to SEK 63.35) and corresponding USD/SEK exchange rate shift (9.73). Integrated newly surfaced OSINT detailing the indirect supply chain exposure to NVIDIA's TFLN evaluation through Jabil's high-volume module packaging.
+
+- **Data Ingestion Buffer Update:** Updated [SIVE-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-EXTRACTION-BUFFER.md) with Jabil search audit trail and set `confirmed_tier1_cm_sole_source_integration` to `"Jabil"`.
+- **Scorer Report Refinement:** Updated [SIVE-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-RESEARCH-REPORT.md) Gate Check metrics (USD market cap down to $2.027 billion, sales multiple down to 86.2x) and Section 5 Cluster Scaling Return Matrix (asymmetric return multiple increased to 7.10x return). Integrated Jabil 1.6T LRO transceiver module and NVIDIA TFLN supply chain connections in Section 2, Section 8, and Section 15. Added recent AGM and price pullback details in Section 13.
+- **Central Index Integration:** Updated Sivers' description in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md).
+
 ## [v2.0.9] - 25 June 2026
 
 ### MICRON TECHNOLOGY INC. (MU) INITIAL AUDIT AND SCORING

@@ -135,6 +135,13 @@
 - [x] Integrate Q3 FY26 earnings results and $100B Strategic Customer Agreements (SCAs) contract backlog.
 - [x] Register MU in consolidated index `TABLE.md`.
 
+## Phase 7.12: Sivers Semiconductors (SIVE) OSINT & Price Update ✅ COMPLETE
+- [x] Recalibrate data extraction buffer `SIVE-EXTRACTION-BUFFER.md` to update Jabil integration flag and audit timestamps.
+- [x] Recalibrate research report `SIVE-RESEARCH-REPORT.md` Gate Check (SEK 63.35 share price, 9.73 exchange rate, recalculated market cap/EV/sales multiples).
+- [x] Integrate supply chain findings linking Sivers' lasers to Jabil's 1.6T LRO transceiver modules and NVIDIA's TFLN evaluation in Sections 2, 8, and 15 of `SIVE-RESEARCH-REPORT.md`.
+- [x] Recalibrate Asymmetric Return Multiple in Section 5 cluster matrix to 7.10x return.
+- [x] Update Sivers' entry in `TABLE.md` and document in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 See `docs/roadmap.md` for full detail.
 - [ ] New metrics: RSI, MACD, Bollinger Bands, DXY, yield curve spread.
