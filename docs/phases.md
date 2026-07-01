@@ -177,6 +177,10 @@
 - [x] Configure CORS restrictions to ensure `/api/` routes only respond to requests originating from `titanite.wo0.dev` and local development.
 - [x] Add rate-limit failure fallbacks to hooks to cleanly display throttling errors instead of crashing pages.
 
+## phase 7.15: lil tweaks
+
+- news feed for all companies that I have done research on - scan through TABLE.md [Titanite-Research/docs/TABLE.md] so the intel feed pulls news coverage from the companies we have researched as well as overall news stories.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.
