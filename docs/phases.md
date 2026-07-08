@@ -189,6 +189,15 @@
 - [x] Update Central Index summary in `TABLE.md` and database scores in `companies.json`.
 - [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.17: SharonAI (SHAZ) Research & Audit ✅ COMPLETE
+
+- [x] Gather and ingest financial data and transcripts for Q3 2025, Q4 2025, and Q1 2026.
+- [x] Populate the data extraction buffer `SHAZ-EXTRACTION-BUFFER.md` under `SMALLCAP-AI-INFRA/AI-CLOUD-INFRA/`.
+- [x] Perform analytical scoring and research report generation `SHAZ-RESEARCH-REPORT.md` (5/13 disqualified verdict).
+- [x] Integrate ESDS Software Solutions contract details, Bleecker Street short report, and CEO history.
+- [x] Update Central Index summary in `TABLE.md` and database scores in `companies.json`.
+- [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.

@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.3] - 8 July 2026
+
+### SHARONAI HOLDINGS, INC. (SHAZ) RESEARCH AUDIT & DISQUALIFICATION
+**Rationale:** Audited SharonAI ($SHAZ) under the SC-AI-INFRA framework. SharonAI was classified as a Commodity Supplier (Equipment Lessor) rather than a high-conviction chokepoint. The audit revealed a severe working capital divergence (receivables growth outstripping revenue growth sequentially by +596%, driving DSO to 1,543.8 days) and material governance and credit risks stemming from the April 2026 Bleecker Street Research short report on its $1.25B ESDS anchor contract.
+
+- **Data Ingestion Buffer:** Created [SHAZ-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/AI-CLOUD-INFRA/SHAZ-EXTRACTION-BUFFER.md) in the `AI-CLOUD-INFRA` directory with Q1 2026 balance sheet variables, ratios, and search verification logs.
+- **Scorer Implementation:** Created [SHAZ-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/AI-CLOUD-INFRA/SHAZ-RESEARCH-REPORT.md) scoring the company a 5/13 (Pass/Disqualified) due to commodity supplier status, ESDS credit risk, and CEO history.
+- **Central Index Integration:** Registered SHAZ in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md) under the disqualified Pass section and updated [companies.json](file:///Users/danwooster/1.%20DEV/titanite-technologies/public/research-data/companies.json) and [companies-to-research.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/companies-to-research.md).
+
 ## [v2.2.2] - 8 July 2026
 
 ### SIVERS SEMICONDUCTORS AB (SIVE) CAPITAL RE-STRUCTURE & PRICE UPDATE

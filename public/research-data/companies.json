@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-07-08T08:17:23.949869Z",
-  "count": 68,
+  "exportedAt": "2026-07-08T08:29:53.377906Z",
+  "count": 69,
   "companies": [
     {
       "ticker": "PENG",
@@ -549,6 +549,15 @@
       "tier": "Pass",
       "industryFolder": "thermal",
       "keySummary": "DISQUALIFIED due to active SEC investigation and DOJ subpoena (November 2023) regarding 2021 supply chain and inflation disclosures. Co-designs 7MW reference architectures for NVIDIA's Blackwell platform. Record $15.0B backlog and 30% organic growth in Q1 2026, but regulatory overhang blocks primary positions.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SHAZ",
+      "companyName": "SharonAI Holdings, Inc.",
+      "score": 5.0,
+      "tier": "Pass",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "DISQUALIFIED due to failing the chokepoint criteria under Section 0 (classified as a Commodity Supplier) and showing severe working capital divergence (Q1 2026 DSO ballooning to 1,543.8 days). Exposed to significant governance and credit risk stemming from a Bleecker Street Research short report questioning a $1.25B contract with ESDS Software Solutions, an under-capitalised Indian regional provider, alongside CEO self-dealing history and filing retractions.",
       "framework": "sc"
     },
     {

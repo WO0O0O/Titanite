@@ -23,6 +23,7 @@ PDFS
 
 MXL
 DGXX
+$SHAZ (SharonAI)
 
 AIRJ
 
