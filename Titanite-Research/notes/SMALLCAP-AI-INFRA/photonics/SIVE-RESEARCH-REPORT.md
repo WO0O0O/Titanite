@@ -6,20 +6,20 @@
 
 ## GATE CHECK — MARKET CAP FILTER
 
-* **Current Share Price:** SEK 63.35
-* **Shares Outstanding:** 311,333,572
-* **Current Market Capitalisation:** SEK 19.723 billion (calculated as 311,333,572 shares × SEK 63.35)
+* **Current Share Price:** SEK 40.00 (as of 8 July 2026)
+* **Shares Outstanding:** 346,414,274
+* **Current Market Capitalisation:** SEK 13.857 billion (calculated as 346,414,274 shares × SEK 40.00)
 * **Exchange Rate Used:** 9.73 SEK/USD
-* **Market Capitalisation (USD):** $2.027 billion USD (calculated as SEK 19.723 billion / 9.73 SEK/USD)
-* **Enterprise Value (USD):** $2.044 billion USD (calculated with USD 17.0 million loan facility debt [equivalent to SEK 165.4 million] and SEK 26.6 million cash)
+* **Market Capitalisation (USD):** $1.424 billion USD (calculated as SEK 13.857 billion / 9.73 SEK/USD)
+* **Enterprise Value (USD):** $1.366 billion USD (calculated with USD 17.0 million loan facility debt and SEK 726.6 million cash [reflecting SEK 700 million directed issue proceeds])
 
 Sivers Semiconductors qualifies for evaluation under the $5.0 billion USD threshold.
 
 * **Bull-Case Market Capitalisation (24–36 months):** $14.40 billion USD
-* **Current Trailing Sales Multiple:** 86.2x sales (calculated as $2.027 billion USD market capitalisation / $23.52 million USD annualised revenue based on Q1 2026 revenue of SEK 61.9 million)
+* **Current Trailing Sales Multiple:** 60.5x sales (calculated as $1.424 billion USD market capitalisation / $23.52 million USD annualised revenue based on Q1 2026 revenue of SEK 61.9 million)
 * **Future Target Multiple:** 20.0x sales (EV/Sales multiple applied to target revenue)
-* **Valuation Shift Label:** **Multiple Contraction offset by Volumetric Revenue Scale-Up** (compressing from 86.2x sales down to 20.0x sales)
-* **Implied Return Multiple:** 7.10x return from today's price (exceeds the 5.0x hardware hurdle).
+* **Valuation Shift Label:** **Multiple Contraction offset by Volumetric Revenue Scale-Up** (compressing from 60.5x sales down to 20.0x sales)
+* **Implied Return Multiple:** 10.11x return from today's price (exceeds the 5.0x hardware hurdle).
 
 
 ---
@@ -29,7 +29,7 @@ Sivers Semiconductors qualifies for evaluation under the $5.0 billion USD thresh
 The `qualification_cycle_modifier_applies` flag is set to **true**.
 * **Section 3 (Demand > Supply):** Decline in trailing gross margins (to 30% in Q1 2026) is not penalised. Evaluation focuses on the $799 million USD opportunity pipeline, customer qualifications, and Glasgow cleanroom capacity expansion.
 * **Section 4 (Revenue Inflection):** Pre-production revenue declines (to SEK 61.9 million in Q1 2026) are not penalised. Score is determined by progress in customer qualifications and reference design integrations.
-* **Section 9 (Recent Capital Raise):** Continuous capital access (SEK 125 million directed share issue in May 2026 and USD 17.0 million loan facility) is weighted over cash runway metrics.
+* **Section 9 (Recent Capital Raise):** Continuous capital access (SEK 700 million directed share issue in June 2026, SEK 125 million directed share issue in May 2026, and Bootstrap Europe $12 million convertible loan conversion in July 2026) is weighted over cash runway metrics.
 * **Section 12 (Management Integrity and Execution):** Working capital anomalies are evaluated under the Non-Recurring Engineering (NRE) development partnership exemption. However, forensic collection risk remains subject to analytical scoring adjustments.
 
 ---
@@ -114,7 +114,7 @@ Management remains confident in the late 2026 / 2027 volume ramp timeline. The G
 
 ## SECTION 5 — SMALL CAP / ASYMMETRIC UPSIDE
 
-Sivers' market capitalisation is $2.33 billion USD, passing the $5.0 billion USD hard gate.
+Sivers' market capitalisation is $1.424 billion USD, passing the $5.0 billion USD hard gate.
 
 ### Cluster Scaling Return Matrix
 
@@ -126,12 +126,12 @@ Sivers' market capitalisation is $2.33 billion USD, passing the $5.0 billion USD
 | **Step D** | Total Layer TAM | $2.40 billion USD | 160 MW × $15.0 million/MW |
 | **Step E** | Implied Ticker Revenue | $720.0 million USD | $2.40 billion TAM × 30% estimated market share |
 | **Step F** | Bull Case Valuation Target | $14.40 billion USD | $720.0 million Revenue × 20x target EV/Sales |
-| **Step G** | Asymmetric Return Multiple | 7.10x | $14.40 billion Valuation / $2.027 billion Market Cap |
+| **Step G** | Asymmetric Return Multiple | 10.11x | $14.40 billion Valuation / $1.424 billion Market Cap |
 
 ### Revenue Expansion Sanity Check
 Current annualised corporate revenue baseline is $23.52 million USD (based on Q1 2026 SEK 61.9 million). The calculated Implied Ticker Revenue ($720.0 million USD) is substantially higher, indicating a highly expansionary growth vector.
 
-**Score: 1 / 1** (7.10x return exceeds the 5.0x hardware hurdle).
+**Score: 1 / 1** (10.11x return exceeds the 5.0x hardware hurdle).
 
 
 ---
@@ -171,8 +171,8 @@ Current annualised corporate revenue baseline is $23.52 million USD (based on Q1
 
 ## SECTION 9 — RECENT CAPITAL RAISE
 
-* **Offerings:** Completed a SEK 125 million directed share issue in May 2026, and secured a USD 17.0 million loan facility in February 2026.
-* **Use of Proceeds:** Funding cleanroom expansions in Glasgow and supporting US listing readiness.
+* **Offerings:** Completed a SEK 700 million directed share issue in June 2026 (at SEK 57/share), completed a SEK 125 million directed share issue in May 2026, and converted a USD 12.0 million Bootstrap Europe convertible loan into ordinary shares in July 2026. The company also maintains a USD 17.0 million credit facility (secured in February 2026).
+* **Use of Proceeds:** Expanding manufacturing capacity for InP lasers and optical amplifiers at the Glasgow cleanroom, strengthening the balance sheet, and supporting US dual-listing readiness.
 * **Exemption:** Under the Qualification-Cycle Player modifier, Sivers' continuous capital access bridges the gap to the volume ramp.
 * **Bridge Debt Audit:** Clean.
 
@@ -233,10 +233,10 @@ Loss of the top customer would eliminate 45% of Photonics revenue and likely com
 If hyperscalers extend the viability of pluggable optics (e.g., via LPO) beyond current expectations, CPO adoption timelines could slip, delaying Sivers' volume ramp.
 
 ### Balance Sheet Risk
-Cash of SEK 26.6 million in Q1 2026 is low, and the high working capital drag (59.0% contract assets) limits liquidity. Dilution remains a recurring threat, mitigated in the near term by the May 2026 SEK 125 million share issue and the USD 17.0 million credit facility.
+Prior to mid-2026, cash of SEK 26.6 million in Q1 2026 was low, and high working capital drag (59.0% contract assets) restricted liquidity. This risk has been resolved in the near term by the June 30, 2026 SEK 700 million directed share issue and the conversion of the $12 million Bootstrap Europe loan. While dilution has occurred (~11% increase in shares outstanding), Sivers is now fully funded for its Glasgow cleanroom buildout and qualification-to-volume pipeline.
 
 ### Valuation Correction and Governance Volatility
-The stock has pulled back to SEK 63.35 in late June 2026 after peaking near SEK 101.90. This correction reflects broader industry profit-taking and governance noise, including the Board's decision at the June 15, 2026 AGM to withdraw employee incentive plans for further review by the newly elected Board. While this pullback improves the asymmetric entry point, it highlights the speculative nature and retail-driven volatility of the Stockholm listing.
+The stock has pulled back to SEK 40.00 in early July 2026 after peaking near SEK 101.90. This correction reflects broader macro-market profit-taking, dilution from the SEK 700 million capital raise, and governance noise (the Board's decision at the June 15, 2026 AGM to withdraw employee incentive plans for further review). While this pullback improves the asymmetric entry point significantly (increasing implied return to 10.11x), it highlights the speculative nature and volatility of the Stockholm listing.
 
 
 ### Regulatory and ITAR Export Control Risk
@@ -300,5 +300,5 @@ A 40% reduction in hyperscaler capex would delay optical upgrade cycles, cutting
 
 ## SYNTHESIS: THE ONE-PARAGRAPH PITCH
 
-Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (12/13)** co-packaged optics (CPO) and high-speed pluggable transceivers play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform and the InP laser engine provider for Jabil's 1.6T LRO transceiver modules. This dual-win design-in status locks in downstream custom ASIC architectures, including indirect exposure to NVIDIA's TFLN evaluation through Jabil's system integration, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement. Trading at a $2.027 billion USD market capitalisation, Sivers' return maths indicates a 7.10x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
+Sivers Semiconductors AB ($SIVE) represents a high-conviction **Tier 1 (12/13)** co-packaged optics (CPO) and high-speed pluggable transceivers play, acting as the hard-coded reference design for GlobalFoundries' SCALE™ silicon photonics platform and the InP laser engine provider for Jabil's 1.6T LRO transceiver modules. This dual-win design-in status locks in downstream custom ASIC architectures, including indirect exposure to NVIDIA's TFLN evaluation through Jabil's system integration, overriding its current low trailing market share of under 2% of global industry flow. Sivers is a qualification-cycle player whose trailing revenue decline to SEK 61.9 million in Q1 2026 is secondary to its $799 million USD opportunity pipeline, targeting a volume ramp in late 2026 / 2027. Under the updated pre-volume working capital calibration, the company's 59.0% contract assets ratio is exempt from penalties as it is fundamentally driven by NRE milestones under the GlobalFoundries SCALE platform agreement. Trading at a $1.424 billion USD market capitalisation (SEK 40.00/share), Sivers' return maths indicates a 10.11x return to a $14.40 billion USD target valuation on qualification conversion, mapping directly to Phase 3 of the institutional rotation cycle with discovery expected in 6–12 months.
 

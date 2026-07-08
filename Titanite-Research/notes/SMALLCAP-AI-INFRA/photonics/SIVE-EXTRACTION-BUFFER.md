@@ -18,7 +18,7 @@
 ```json
 {
   "ticker": "SIVE",
-  "audit_completed_at": "2026-06-29",
+  "audit_completed_at": "2026-07-08",
 
   "transcript_extracts": {
     "pass_1_opportunities": [

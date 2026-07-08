@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-29T19:49:31.353519Z",
+  "exportedAt": "2026-07-08T08:17:23.949869Z",
   "count": 11,
   "holdings": [
     {
@@ -12,12 +12,12 @@
       "framework": "sc"
     },
     {
-      "ticker": "SEYE",
-      "companyName": "Smart Eye AB",
+      "ticker": "SIVE",
+      "companyName": "Sivers Semiconductors AB",
       "score": 12.0,
       "tier": "Tier 1",
-      "industryFolder": "computer-vision",
-      "keySummary": "Edge AI driver monitoring system (DMS) software. Driven by the 7 July 2026 EU General Safety Regulation mandate. Royalty inflection underway; EBITDA positive. Traded via German ticker S9E.",
+      "industryFolder": "photonics",
+      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules. Opportunity pipeline grew 77% YTD to $799M. Secured SEK 700M directed issue and $12M loan conversion in July 2026, resolving balance sheet risk. Trading at SEK 40.00 (10.11x return to $14.40B target).",
       "framework": "sc"
     },
     {
@@ -30,33 +30,6 @@
       "framework": "sc"
     },
     {
-      "ticker": "ACCON",
-      "companyName": "Acconeer AB",
-      "score": 13.0,
-      "tier": "Tier 1",
-      "industryFolder": "robotics",
-      "keySummary": "Proprietary low-power Pulsed Coherent Radar (PCR) chips. Volume commercial production ramp underway in 2026. Traded via German ticker 4AC.",
-      "framework": "sc"
-    },
-    {
-      "ticker": "TRT",
-      "companyName": "Trio-Tech International",
-      "score": 11.5,
-      "tier": "Tier 1",
-      "industryFolder": "Semis",
-      "keySummary": "High-performance burn-in boards and reliability testing for next-generation AI GPUs. Secured $7.8M in orders. Completed $10M capital raise in April 2026 to fund Penang, Malaysia facility expansion (adjusted for -0.5 geopolitical penalty).",
-      "framework": "sc"
-    },
-    {
-      "ticker": "SIVE",
-      "companyName": "Sivers Semiconductors AB",
-      "score": 11.0,
-      "tier": "Tier 1",
-      "industryFolder": "photonics",
-      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules, offering exposure to NVIDIA. Opportunity pipeline grew 77% YTD to $799M. Under the updated pre-volume working capital calibration, the 59.0% contract assets ratio is exempt from penalties.",
-      "framework": "sc"
-    },
-    {
       "ticker": "MRVL",
       "companyName": "Marvell Technology, Inc.",
       "score": 12.0,
@@ -66,12 +39,12 @@
       "framework": "sc"
     },
     {
-      "ticker": "NBIS",
-      "companyName": "Nebius Group N.V.",
-      "score": 11.5,
+      "ticker": "LPK",
+      "companyName": "LPKF Laser & Electronics SE",
+      "score": 11.0,
       "tier": "Tier 1",
-      "industryFolder": "AI-CLOUD-INFRA",
-      "keySummary": "GPU-as-a-service cloud operator (Layer O) with owned physical fabric (Layer F). Disclosed contracted backlog exceeds $46B, including a $27B contract with Meta and $19.4B with Microsoft. Strategic $2B equity investment from NVIDIA. Monitor flag active due to historical fixed-asset accounting material weaknesses.",
+      "industryFolder": "TGV",
+      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
       "framework": "sc"
     },
     {
@@ -84,6 +57,24 @@
       "framework": "sc"
     },
     {
+      "ticker": "SEYE",
+      "companyName": "Smart Eye AB",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "computer-vision",
+      "keySummary": "Edge AI driver monitoring system (DMS) software. Driven by the 7 July 2026 EU General Safety Regulation mandate. Royalty inflection underway; EBITDA positive. Traded via German ticker S9E.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "NBIS",
+      "companyName": "Nebius Group N.V.",
+      "score": 11.5,
+      "tier": "Tier 1",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "GPU-as-a-service cloud operator (Layer O) with owned physical fabric (Layer F). Disclosed contracted backlog exceeds $46B, including a $27B contract with Meta and $19.4B with Microsoft. Strategic $2B equity investment from NVIDIA. Monitor flag active due to historical fixed-asset accounting material weaknesses.",
+      "framework": "sc"
+    },
+    {
       "ticker": "AL2SI",
       "companyName": "2CRSi S.A.",
       "score": 12.0,
@@ -93,12 +84,21 @@
       "framework": "sc"
     },
     {
-      "ticker": "LPK",
-      "companyName": "LPKF Laser & Electronics SE",
-      "score": 11.0,
+      "ticker": "TRT",
+      "companyName": "Trio-Tech International",
+      "score": 11.5,
       "tier": "Tier 1",
-      "industryFolder": "TGV",
-      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
+      "industryFolder": "Semis",
+      "keySummary": "High-performance burn-in boards and reliability testing for next-generation AI GPUs. Secured $7.8M in orders. Completed $10M capital raise in April 2026 to fund Penang, Malaysia facility expansion (adjusted for -0.5 geopolitical penalty).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "ACCON",
+      "companyName": "Acconeer AB",
+      "score": 13.0,
+      "tier": "Tier 1",
+      "industryFolder": "robotics",
+      "keySummary": "Proprietary low-power Pulsed Coherent Radar (PCR) chips. Volume commercial production ramp underway in 2026. Traded via German ticker 4AC.",
       "framework": "sc"
     }
   ]

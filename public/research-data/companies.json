@@ -1,5 +1,5 @@
 {
-  "exportedAt": "2026-06-29T19:49:31.353519Z",
+  "exportedAt": "2026-07-08T08:17:23.949869Z",
   "count": 68,
   "companies": [
     {
@@ -338,10 +338,10 @@
     {
       "ticker": "SIVE",
       "companyName": "Sivers Semiconductors AB",
-      "score": 11.0,
+      "score": 12.0,
       "tier": "Tier 1",
       "industryFolder": "photonics",
-      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules, offering exposure to NVIDIA. Opportunity pipeline grew 77% YTD to $799M. Under the updated pre-volume working capital calibration, the 59.0% contract assets ratio is exempt from penalties.",
+      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules. Opportunity pipeline grew 77% YTD to $799M. Secured SEK 700M directed issue and $12M loan conversion in July 2026, resolving balance sheet risk. Trading at SEK 40.00 (10.11x return to $14.40B target).",
       "framework": "sc"
     },
     {

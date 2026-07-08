@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.2] - 8 July 2026
+
+### SIVERS SEMICONDUCTORS AB (SIVE) CAPITAL RE-STRUCTURE & PRICE UPDATE
+**Rationale:** Updated Sivers Semiconductors ($SIVE) to reflect its share price decline to SEK 40.00 and corresponding USD market cap shift ($1.424B USD at 9.73 exchange rate). Integrated the material balance sheet restructuring from the SEK 700 million directed share issue and the $12 million convertible loan conversion.
+
+- **Data Ingestion Buffer Update:** Updated [SIVE-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-EXTRACTION-BUFFER.md) audit completion date to July 8, 2026. Corrected Sivers' score to 12.0 in the compiled [companies.json](file:///Users/danwooster/1.%20DEV/titanite-technologies/public/research-data/companies.json) index.
+- **Scorer Report Refinement:** Updated [SIVE-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-RESEARCH-REPORT.md) Gate Check metrics (USD market cap down to $1.424 billion, trailing sales multiple down to 60.5x, EV to $1.366 billion) and Section 5 Cluster Scaling Return Matrix (asymmetric return multiple increased to 10.11x return). Integrated the SEK 700M directed issue and the $12M Bootstrap Europe convertible loan conversion details in the Framework Modifier, Section 9 (Recent Capital Raise), Section 13 (Bear Case / Balance Sheet Risk), and Section 15 (Rotation Timing).
+- **Central Index Integration:** Updated Sivers' entry summary in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md) to log the July 2026 financing and the revised 10.11x asymmetric return multiple.
+
 ## [v2.2.1] - 29 June 2026
 
 ### SECURITY HARDENING & AI CRAWLER MITIGATION

@@ -181,6 +181,14 @@
 
 - news feed for all companies that I have done research on - scan through TABLE.md [Titanite-Research/docs/TABLE.md] so the intel feed pulls news coverage from the companies we have researched as well as overall news stories.
 
+## Phase 7.16: Sivers Semiconductors (SIVE) Capital Restructure & Price Update ✅ COMPLETE
+
+- [x] Recalibrate Sivers' share price to SEK 40.00 and shares outstanding to 346,414,274.
+- [x] Integrate SEK 700 million directed share issue and $12 million loan conversion into research report and extraction buffer.
+- [x] Recalibrate return multiple to 10.11x to reflect the improved risk-reward entry price.
+- [x] Update Central Index summary in `TABLE.md` and database scores in `companies.json`.
+- [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.
