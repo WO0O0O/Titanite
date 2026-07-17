@@ -4,6 +4,15 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.4] - 17 July 2026
+
+### SIVERS SEMICONDUCTORS AB (SIVE) GETTEX PRICE CORRECTION & MODEL RECALIBRATION
+**Rationale:** Updated Sivers Semiconductors ($SIVE) to reflect its share price decline to SEK 32.50 (corresponding to EUR 2.95 on gettex as of 17 July 2026). Recalibrated all valuation and return multiple models to capture the improved entry price risk-reward profile (USD market cap down to $1.157B, return multiple up to 12.45x).
+
+- **Scorer Report Refinement:** Updated [SIVE-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-RESEARCH-REPORT.md) Gate Check metrics (USD market cap down to $1.157 billion, trailing sales multiple down to 49.2x, EV to $1.099 billion) and Section 5 Cluster Scaling Return Matrix (asymmetric return multiple increased to 12.45x return). Integrated the updated price point in Section 13 (Adversarial Testing) and Synthesis.
+- **Central Index Integration:** Updated Sivers' entry summary in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md) to log the revised price and the 12.45x asymmetric return multiple.
+- **Frontend Syncing:** Synchronised mock details in [useHoldings.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/hooks/useHoldings.ts) to update mock stock pricing parameters.
+
 ## [v2.2.3] - 8 July 2026
 
 ### SHARONAI HOLDINGS, INC. (SHAZ) RESEARCH AUDIT & DISQUALIFICATION

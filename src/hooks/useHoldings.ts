@@ -14,7 +14,7 @@ import type { WatchlistItem } from '@/types/watchlist';
 
 // Basic mock data resolver for default/fallback tickers
 const MOCK_COMPANY_DETAILS: Record<string, { name: string; price: number; marketCap: number }> = {
-  SIVE: { name: 'Sivers Semiconductors AB', price: 63.35, marketCap: 2027000000 },
+  SIVE: { name: 'Sivers Semiconductors AB', price: 32.50, marketCap: 1157000000 },
   IQE:  { name: 'IQE plc', price: 0.65, marketCap: 450000000 },
   MU:   { name: 'Micron Technology Inc.', price: 138.50, marketCap: 153000000000 },
   POET: { name: 'POET Technologies Inc.', price: 2.10, marketCap: 95000000 },

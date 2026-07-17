@@ -198,6 +198,14 @@
 - [x] Update Central Index summary in `TABLE.md` and database scores in `companies.json`.
 - [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.18: Sivers Semiconductors (SIVE) Price Update & Recalibration ✅ COMPLETE
+
+- [x] Recalibrate research report `SIVE-RESEARCH-REPORT.md` Gate Check (SEK 32.50 share price, 9.73 exchange rate, recalculated market cap/EV/sales multiples).
+- [x] Recalibrate return multiple to 12.45x to reflect the gettex correction (just under 3 EUR).
+- [x] Update central index entry in `TABLE.md` and mock price details in `useHoldings.ts`.
+- [x] Regenerate research database scores via `titanite export` CLI tool.
+- [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.
