@@ -1,7 +1,43 @@
 {
-  "exportedAt": "2026-07-17T07:47:23.004763Z",
+  "exportedAt": "2026-07-17T08:02:32.175339Z",
   "count": 11,
   "holdings": [
+    {
+      "ticker": "MRVL",
+      "companyName": "Marvell Technology, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "photonics",
+      "keySummary": "Optical DSP market monopoly (>80% share) and custom ASIC partner for Google, Amazon, and Meta. Strategic $2.0B partnership with Nvidia integrates custom XPUs directly into the NVLink Fusion platform. Secured advanced wafer/packaging capacity with $1.0B in prepayments. Tracked for intelligence value (market cap >$150B).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "AMPG",
+      "companyName": "AmpliTech Group, Inc.",
+      "score": 12.0,
+      "tier": "Tier 1",
+      "industryFolder": "quantum",
+      "keySummary": "Specialised RF and microwave components chokepoint controlling 15-20% of premium cryogenic 4K pHEMT LNA supply for quantum computing readout. Validated by successful Spring 2026 O-RAN PlugFest participation and a GPU-accelerated Massive MIMO AI-RAN demonstration with NVIDIA/Northeastern. Reaffirmed FY26 revenue guidance of at least $50.0M (representing ~100% YoY growth), backed by $118M in active telecom MNO LOIs. Net proceeds of $16.4M from Q1 2026 rights offering leave the balance sheet debt-free with $18.4M in cash/securities.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "TRT",
+      "companyName": "Trio-Tech International",
+      "score": 11.5,
+      "tier": "Tier 1",
+      "industryFolder": "Semis",
+      "keySummary": "High-performance burn-in boards and reliability testing for next-generation AI GPUs. Secured $7.8M in orders. Completed $10M capital raise in April 2026 to fund Penang, Malaysia facility expansion (adjusted for -0.5 geopolitical penalty).",
+      "framework": "sc"
+    },
+    {
+      "ticker": "LPK",
+      "companyName": "LPKF Laser & Electronics SE",
+      "score": 11.0,
+      "tier": "Tier 1",
+      "industryFolder": "TGV",
+      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
+      "framework": "sc"
+    },
     {
       "ticker": "NBIS",
       "companyName": "Nebius Group N.V.",
@@ -12,12 +48,12 @@
       "framework": "sc"
     },
     {
-      "ticker": "SIVE",
-      "companyName": "Sivers Semiconductors AB",
-      "score": 12.0,
+      "ticker": "ACCON",
+      "companyName": "Acconeer AB",
+      "score": 13.0,
       "tier": "Tier 1",
-      "industryFolder": "photonics",
-      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules. Opportunity pipeline grew 77% YTD to $799M. Secured SEK 700M directed issue and $12M loan conversion in July 2026, resolving balance sheet risk. Trading at SEK 32.50 (12.45x return to $14.40B target).",
+      "industryFolder": "robotics",
+      "keySummary": "Proprietary low-power Pulsed Coherent Radar (PCR) chips. Volume commercial production ramp underway in 2026. Traded via German ticker 4AC.",
       "framework": "sc"
     },
     {
@@ -39,30 +75,12 @@
       "framework": "sc"
     },
     {
-      "ticker": "LPK",
-      "companyName": "LPKF Laser & Electronics SE",
-      "score": 11.0,
-      "tier": "Tier 1",
-      "industryFolder": "TGV",
-      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
-      "framework": "sc"
-    },
-    {
-      "ticker": "ACCON",
-      "companyName": "Acconeer AB",
-      "score": 13.0,
-      "tier": "Tier 1",
-      "industryFolder": "robotics",
-      "keySummary": "Proprietary low-power Pulsed Coherent Radar (PCR) chips. Volume commercial production ramp underway in 2026. Traded via German ticker 4AC.",
-      "framework": "sc"
-    },
-    {
-      "ticker": "AMPG",
-      "companyName": "AmpliTech Group, Inc.",
+      "ticker": "SIVE",
+      "companyName": "Sivers Semiconductors AB",
       "score": 12.0,
       "tier": "Tier 1",
-      "industryFolder": "quantum",
-      "keySummary": "Specialised RF and microwave components chokepoint controlling 15-20% of premium cryogenic 4K pHEMT LNA supply for quantum computing readout. Validated by successful Spring 2026 O-RAN PlugFest participation and a GPU-accelerated Massive MIMO AI-RAN demonstration with NVIDIA/Northeastern. Reaffirmed FY26 revenue guidance of at least $50.0M (representing ~100% YoY growth), backed by $118M in active telecom MNO LOIs. Net proceeds of $16.4M from Q1 2026 rights offering leave the balance sheet debt-free with $18.4M in cash/securities.",
+      "industryFolder": "photonics",
+      "keySummary": "Reference design for GlobalFoundries' SCALE\u2122 platform and InP laser engine provider for Jabil's 1.6T LRO transceiver modules. Opportunity pipeline grew 77% YTD to $799M. Secured SEK 700M directed issue and $12M loan conversion in July 2026, resolving balance sheet risk. Trading at SEK 32.50 (12.45x return to $14.40B target).",
       "framework": "sc"
     },
     {
@@ -75,30 +93,12 @@
       "framework": "sc"
     },
     {
-      "ticker": "MRVL",
-      "companyName": "Marvell Technology, Inc.",
-      "score": 12.0,
-      "tier": "Tier 1",
-      "industryFolder": "photonics",
-      "keySummary": "Optical DSP market monopoly (>80% share) and custom ASIC partner for Google, Amazon, and Meta. Strategic $2.0B partnership with Nvidia integrates custom XPUs directly into the NVLink Fusion platform. Secured advanced wafer/packaging capacity with $1.0B in prepayments. Tracked for intelligence value (market cap >$150B).",
-      "framework": "sc"
-    },
-    {
       "ticker": "AL2SI",
       "companyName": "2CRSi S.A.",
       "score": 12.0,
       "tier": "Tier 1",
       "industryFolder": "server-systems",
       "keySummary": "High-performance direct liquid-cooled AI server builder and NVIDIA Elite Partner. Ramping Blackwell Ultra-powered God\u00ec 1.8 platforms under a $610M master contract (Sacramento H2 2026) and a \u20ac140M Canadian-Japanese deployment. H1 25/26 revenue surged 9.8x to \u20ac204.7M; FY25/26 revenue guided to >\u20ac400M with a \u20ac1.00B FY26/27 target. Backed by proprietary cooling patents and February 2026 Chemours/Valeo partnerships. Yih-Shyan (Wally) Liaw (former President of 2CRSi Corp, departed April 2021) was indicted in March 2026 on unrelated export violations.",
-      "framework": "sc"
-    },
-    {
-      "ticker": "TRT",
-      "companyName": "Trio-Tech International",
-      "score": 11.5,
-      "tier": "Tier 1",
-      "industryFolder": "Semis",
-      "keySummary": "High-performance burn-in boards and reliability testing for next-generation AI GPUs. Secured $7.8M in orders. Completed $10M capital raise in April 2026 to fund Penang, Malaysia facility expansion (adjusted for -0.5 geopolitical penalty).",
       "framework": "sc"
     }
   ]

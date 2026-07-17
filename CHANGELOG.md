@@ -4,6 +4,13 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.2.5] - 17 July 2026
+
+### TRIO-TECH INTERNATIONAL (TRT) PRICE UPDATE & MODEL RECALIBRATION
+**Rationale:** Updated Trio-Tech International ($TRT) to reflect its share price decline to $10.00 (as of 17 July 2026). Recalibrated all valuation and return multiple models to capture the improved entry price risk-reward profile (market cap down to $101.10M, trailing EV/Sales multiple to 1.27x, target return multiple up to 6.92x).
+
+- **Scorer Report Refinement:** Updated [TRT-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/Semis/TRT-RESEARCH-REPORT.md) Gate Check metrics (market cap down to $101.10 million, EV to $73.80 million, trailing EV/Sales down to 1.27x) and Section 5 Cluster Scaling Return Matrix (asymmetric return multiple increased to 6.92x return). Integrated the updated price point in Synthesis.
+
 ## [v2.2.4] - 17 July 2026
 
 ### SIVERS SEMICONDUCTORS AB (SIVE) GETTEX PRICE CORRECTION & MODEL RECALIBRATION

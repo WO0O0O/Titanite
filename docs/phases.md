@@ -206,6 +206,13 @@
 - [x] Regenerate research database scores via `titanite export` CLI tool.
 - [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.19: Trio-Tech International (TRT) Price Update & Recalibration ✅ COMPLETE
+
+- [x] Recalibrate research report `TRT-RESEARCH-REPORT.md` Gate Check (stock price updated to $10.00, pro-forma market cap to $101.10M, EV to $73.80M).
+- [x] Recalibrate return multiple to 6.92x to reflect the current market correction.
+- [x] Regenerate research database scores via `titanite export` CLI tool.
+- [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.

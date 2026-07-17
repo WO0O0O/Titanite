@@ -14,19 +14,19 @@ Disclosed a ransomware cybersecurity incident in March 2026 affecting a Singapor
 
 ## GATE CHECK — MARKET CAP FILTER
 
-* **Current Stock Price:** $12.71 (As of 31 May 2026)
+* **Current Stock Price:** $10.00 (As of 17 July 2026)
 * **Common Shares Outstanding:** 10,110,000 (From official records post-April 2026 offering)
-* **Market Capitalisation:** $128.50 million (Stock Price x Shares Outstanding)
+* **Market Capitalisation:** $101.10 million (Stock Price x Shares Outstanding)
 * **Cash and Short-Term Investments:** $27.80 million (Pro-forma: $18.3M cash as of 31 March 2026 plus ~$9.5M net proceeds from the April offering)
 * **Total Debt & Convertible Notes Payable:** $0.50 million (Long-term debt)
 * **Net Debt Position:** -$27.30 million (Calculated as Total Debt minus Cash)
-* **Enterprise Value (EV):** $101.20 million (Calculated as Market Capitalisation plus Net Debt)
+* **Enterprise Value (EV):** $73.80 million (Calculated as Market Capitalisation plus Net Debt)
 
 **PASSES the $5.0 billion hard gate.** Trio-Tech is a micro-cap company.
 
 * **Realistic bull-case market cap in 24–36 months if thesis plays out:** $700.00 million
-* **Multiple expansion embedded in that target:** Current trailing EV/Sales (TTM Revenue of $58.30 million) is 1.74x. If revenue expands to $190.00 million (3.26x expansion) and EV/Sales re-rates to 3.5x (multiple expansion of 2.01x), the implied valuation expansion is 6.55x.
-* **Implied return from today's price to that target:** 5.5x return (exceeds the 5.0x minimum acceptable return hurdle for hardware-dominant businesses).
+* **Multiple expansion embedded in that target:** Current trailing EV/Sales (TTM Revenue of $58.30 million) is 1.27x. If revenue expands to $190.00 million (3.26x expansion) and EV/Sales re-rates to 3.5x (multiple expansion of 2.76x), the implied valuation expansion is 9.01x.
+* **Implied return from today's price to that target:** 6.92x return (exceeds the 5.0x minimum acceptable return hurdle for hardware-dominant businesses).
 
 ---
 
@@ -131,7 +131,7 @@ Trio-Tech has established a clear trailing trough in Q3 FY2025 and has delivered
 | **Step D**      | Total Layer TAM ($USD$)                                      | $120,000,000  | 100 MW x $1,200,000/MW |
 | **Step E**      | Implied Ticker Revenue ($USD$)                               | $48,000,000   | $120M TAM x 40% estimated market share |
 | **Step F**      | Bull Case Valuation Target                                   | $700,000,000  | Target EV using 3.5x multiple on future $190M revenue |
-| **Step G**      | Asymmetric Return Multiple                                   | **5.5x**      | $700M Target Market Cap / $128.5M current Market Cap |
+| **Step G**      | Asymmetric Return Multiple                                   | **6.92x**      | $700M Target Market Cap / $101.1M current Market Cap |
 
 **REVENUE EXPANSION SANITY CHECK:** The calculated Implied Ticker Revenue from the AI testing segment is $48.00 million, which is lower than the company's trailing annualised corporate revenue of $58.30 million. The investment thesis relies on the recovery of the core automotive/industrial business to $90.00 million, combined with the new $100.00 million AI-driven testing services revenue at full Penang facility utilisation, to achieve the target future revenue of $190.00 million.
 
@@ -296,7 +296,7 @@ Trio-Tech qualifies under **Branch Beta (Pre-Consensus/Segment-Pivot)**. The com
 
 ## SYNTHESIS: THE ONE-PARAGRAPH PITCH
 
-Trio-Tech International (TRT) controls an estimated 30% to 40% of the outsourced package-level reliability testing and burn-in services market in the Malaysia-Singapore corridor, acting as a critical thermal screening chokepoint to resolve infant mortality bottlenecks in high-power AI GPUs. The thesis was validated by $7.80 million in recent orders for custom burn-in boards supporting a next-generation AI GPU platform, prompting a $10.00 million registered direct growth capital raise and the lease of a new 104,000-square-foot facility in Penang, Malaysia, to support the upcoming late-2026 volume qualification ramp. While trailing gross margins compressed to 16.0% in Q3 FY2026 due to front-loaded tooling setups, consolidated revenue inflected 123% YoY to $16.50 million, marking the fourth consecutive quarter of sequential recovery from the Q3 FY2025 trough. At a $128.50 million market cap and 1.74x EV/Revenue, the company has zero Wall Street analyst coverage and offers a de-risked 5.5x return target, positioning TRT as a prime Phase 4 institutional discovery candidate as the market rotates to physical verification layers.
+Trio-Tech International (TRT) controls an estimated 30% to 40% of the outsourced package-level reliability testing and burn-in services market in the Malaysia-Singapore corridor, acting as a critical thermal screening chokepoint to resolve infant mortality bottlenecks in high-power AI GPUs. The thesis was validated by $7.80 million in recent orders for custom burn-in boards supporting a next-generation AI GPU platform, prompting a $10.00 million registered direct growth capital raise and the lease of a new 104,000-square-foot facility in Penang, Malaysia, to support the upcoming late-2026 volume qualification ramp. While trailing gross margins compressed to 16.0% in Q3 FY2026 due to front-loaded tooling setups, consolidated revenue inflected 123% YoY to $16.50 million, marking the fourth consecutive quarter of sequential recovery from the Q3 FY2025 trough. At a $101.10 million market cap and 1.27x EV/Revenue, the company has zero Wall Street analyst coverage and offers a de-risked 6.92x return target, positioning TRT as a prime Phase 4 institutional discovery candidate as the market rotates to physical verification layers.
 
 ---
 _Framework based on Serenity (@aleabitoreddit) Chokepoint Theory. Research use only — not financial advice. DYOR._
