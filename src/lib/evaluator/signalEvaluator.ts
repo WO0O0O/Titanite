@@ -113,6 +113,13 @@ export function evaluateSubSignal(
     return false;
   }
 
+  // ── Metric-vs-metric comparison ──────────────────────────────────────────
+  if (signal.targetMetric) {
+    const targetPoint = context.values[signal.targetMetric];
+    if (!targetPoint) return false;
+    return evaluateStatic(current, signal.operator, targetPoint.current);
+  }
+
   // ── Static threshold comparison ──────────────────────────────────────────
   if (signal.targetValue !== undefined) {
     return evaluateStatic(current, signal.operator, signal.targetValue);

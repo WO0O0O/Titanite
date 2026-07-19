@@ -21,6 +21,8 @@ import ConditionRow from './ConditionRow';
 import Badge from '@/components/ui/Badge';
 import { Plus, Save, Trash2 } from 'lucide-react';
 import type { SubSignal } from '@/types/signals';
+import { INSTRUMENT_REGISTRY } from '@/lib/metrics/instruments';
+import InstrumentChart from './InstrumentChart';
 
 // Default condition shape used when adding a new row
 const BLANK_CONDITION = (): SubSignal => ({
@@ -122,6 +124,12 @@ export default function SignalEditor({ isCreating, onCreatingDone }: SignalEdito
   // ── Form (creating or editing) ────────────────────────────────────────────
   const isValid = name.trim().length > 0 && conditions.length > 0;
 
+  // Resolve referenced instrument from current signal conditions
+  const activeInstrument = INSTRUMENT_REGISTRY.find((inst) =>
+    conditions.some((c) => c.metric.startsWith(`${inst.id}_`) || c.targetMetric?.startsWith(`${inst.id}_`))
+  );
+  const chartSymbol = activeInstrument?.tradingViewSymbol ?? 'NASDAQ:NDX';
+
   return (
     <div className="flex flex-col h-full gap-0">
 
@@ -151,6 +159,9 @@ export default function SignalEditor({ isCreating, onCreatingDone }: SignalEdito
           </button>
         )}
       </div>
+
+      {/* ── Live Chart context panel ───────────────────────────────────────── */}
+      <InstrumentChart symbol={chartSymbol} />
 
       {/* ── Signal name input ─────────────────────────────────────────────── */}
       <div className="px-4 py-3 shrink-0" style={{ borderBottom: '1px solid var(--color-border-subtle)' }}>

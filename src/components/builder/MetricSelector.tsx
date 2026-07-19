@@ -19,6 +19,8 @@ const CATEGORY_LABELS: Record<MetricCategory, string> = {
   TECHNICAL:  '── TECHNICAL',
   COMMODITY:  '── COMMODITY',
   SENTIMENT:  '── SENTIMENT',
+  INDEX:      '── INDEX',
+  ETF:        '── ETF',
 };
 
 interface MetricSelectorProps {

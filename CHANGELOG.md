@@ -4,7 +4,31 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.3.1] - 19 July 2026
+
+### PHASE 8B — SIGNAL BUILDER: LIVE CHARTS & METRIC COMPARISONS
+**Rationale:** The initial version of technical indicators was difficult to parse: comparing to EMAs required manually entering exact price values, and indicators like RSI or Bollinger Bands had no context without an active chart visualization. Phase 8b resolves this by providing standard metric-vs-metric comparisons and embedding a collapsible TradingView interactive widget next to the signals list.
+
+- **[NEW] `src/components/builder/InstrumentChart.tsx`:** Renders a collapsible TradingView widget loaded with RSI, MACD, and Bollinger Bands by default. It resolves the active instrument dynamically based on the current signal conditions (e.g. if NDX_PRICE is in a condition, it loads NASDAQ:NDX).
+- **[MODIFY] `src/components/builder/SignalEditor.tsx`:** Embedded the `InstrumentChart` dynamically between the editor header and the signal configurations, defaulting to `NASDAQ:NDX` if no specific instrument is detected in the current conditions.
+- **[MODIFY] `src/components/builder/ConditionRow.tsx`:** Added a `VALUE` vs `METRIC` toggle button for numeric parameters. When switched to `METRIC` mode, the static value input is replaced with a `MetricSelector` dropdown, allowing conditions like `NDX Price > NDX EMA 50`.
+- **[MODIFY] `src/lib/evaluator/signalEvaluator.ts`:** Extended the `evaluateSubSignal` routine to support standard comparison operators (`>`, `<`, `>=`, `<=`, `EQUALS`) for metric-to-metric inputs.
+- **[MODIFY] `next.config.ts`:** Configured Content-Security-Policy rules to permit frame connections, script executing, and resource loading from TradingView domains (`*.tradingview.com`).
+
+## [v2.3.0] - 19 July 2026
+
+### PHASE 8A — SIGNAL BUILDER: EXTENSIBLE INSTRUMENT REGISTRY & NASDAQ 100 INDICATORS
+**Rationale:** The Signal Builder previously had only 7 hardcoded metrics (TNX, VIX, SPX, Gold EMAs, Warsh Sentiment). Any new instrument or indicator required changes across multiple files. Phase 8a introduces an `INSTRUMENT_REGISTRY` pattern: a single config file defines which instruments to fetch and what indicators to compute — all metric definitions, data fetching, and evaluation wiring auto-generate from that config. NDX (Nasdaq 100) is the first instrument registered, adding 13 new metrics immediately. Adding QQQ, DRAM, VOO, SMH, or SOXX in future requires only uncommenting one entry in `instruments.ts`.
+
+- **[NEW] `src/lib/utils/indicators.ts`:** Pure RSI, MACD, and Bollinger Band calculation functions. RSI uses Wilder's smoothing method (industry standard, matches TradingView/Bloomberg output). MACD uses a full EMA series internally to compute the signal line correctly. Bollinger Bands use SMA (not EMA) per John Bollinger's original specification. All functions return `{ current, previous }` for direct integration with the signal evaluator's crossover detection.
+- **[NEW] `src/lib/metrics/instruments.ts`:** `INSTRUMENT_REGISTRY` — single source of truth for all instruments. Each entry declares the Yahoo Finance symbol, indicator config (`ema`, `rsi`, `macd`, `bollinger`), and unit. Future ETFs (QQQ, DRAM, VOO, SMH, SOXX) are pre-stubbed as commented entries. Adding a new instrument = uncomment + restart dev server.
+- **[MODIFY] `src/lib/metrics/registry.ts`:** Added `INDEX` and `ETF` `MetricCategory` types. Added `generateInstrumentMetrics()` which auto-generates `MetricDefinition[]` from an `InstrumentConfig`. `METRIC_REGISTRY` now exports `[...BASE_METRICS, ...INSTRUMENT_METRICS]` — base metrics (the existing 7 macro pillars) are unchanged for backwards compatibility. NDX adds 13 new metrics: `NDX_PRICE`, `NDX_EMA_9/21/50/200`, `NDX_RSI_14`, `NDX_MACD_LINE/SIGNAL/HIST`, `NDX_BB_UPPER/MIDDLE/LOWER/PCT`.
+- **[MODIFY] `src/components/builder/MetricSelector.tsx`:** Added `INDEX` and `ETF` optgroup labels so auto-generated metrics appear correctly grouped in the builder dropdown.
+- **[MODIFY] `src/lib/services/yahooFinance.service.ts`:** Refactored `fetchMarketData()` to run all INSTRUMENT_REGISTRY fetches (quote + 400-day history) in the same `Promise.all` as the macro pillar fetches — zero additional latency. A post-fetch loop computes all configured indicators and injects them into `MarketContext.values` under their auto-generated IDs.
+- **[MODIFY] `src/lib/mock/marketData.mock.ts`:** Added 13 realistic NDX mock values covering all new metrics. Mock state represents a neutral-bullish NDX: price above all EMAs, RSI at 58, MACD positive with histogram expanding, price in the upper half of Bollinger bands (%B 0.63).
+
 ## [v2.2.6] - 19 July 2026
+
 
 ### VERCEL CACHING & EUROPEAN TICKER PRICE DISPLAY FIXES
 **Rationale:** Two production bugs were identified on the live dashboard (`titanite.wo0.dev`). First, all three live API routes (`/api/market`, `/api/intel`, `/api/watchlist`) were performing fresh upstream calls (Yahoo Finance, Finnhub, Google News RSS) on every client-side poll at 60-second intervals, meaning 10 concurrent users would generate 30 external API requests per minute — unsustainable on Vercel's free tier and risking IP soft-bans from Yahoo/Google. Second, European-listed stocks (SIVE, IQE, LPK/LPKF, etc.) were displaying incorrect prices because: (a) the Yahoo Finance ticker symbols were wrong (e.g. `LPKF` instead of `LPK.F`), causing fallback to a hardcoded `$100.00` placeholder; and (b) prices in SEK/EUR/GBp were being displayed as if they were USD values.

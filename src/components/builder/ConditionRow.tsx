@@ -50,12 +50,9 @@ export default function ConditionRow({ condition, index, onChange, onDelete }: C
   };
 
   const handleOperatorChange = (op: Operator) => {
-    // Clear targetMetric when switching away from metric-vs-metric operators
-    const isComparative = op === 'CROSS_ABOVE' || op === 'CROSS_BELOW';
     onChange({
       ...condition,
       operator: op,
-      targetMetric: isComparative ? condition.targetMetric : undefined,
     });
   };
 
@@ -91,9 +88,50 @@ export default function ConditionRow({ condition, index, onChange, onDelete }: C
         ))}
       </select>
 
-      {/* Value input — adapts to metric type */}
+      {/* Target Type Toggle — only show if selected metric is numeric (not CATEGORICAL) */}
+      {metricDef?.valueType === 'NUMBER' && (
+        <button
+          type="button"
+          onClick={() => {
+            const isMetricTarget = !!condition.targetMetric;
+            if (isMetricTarget) {
+              // Switch to VALUE target
+              onChange({
+                ...condition,
+                targetMetric: undefined,
+                targetValue: 0,
+              });
+            } else {
+              // Switch to METRIC target
+              onChange({
+                ...condition,
+                targetMetric: 'TNX', // Fallback default metric
+                targetValue: undefined,
+              });
+            }
+          }}
+          className="text-[9px] px-1.5 py-1 rounded-sm shrink-0 transition-colors border"
+          style={{
+            color: condition.targetMetric ? 'var(--color-accent)' : 'var(--color-text-muted)',
+            borderColor: condition.targetMetric ? 'var(--color-accent)' : 'var(--color-border)',
+            backgroundColor: condition.targetMetric ? 'rgba(0, 212, 170, 0.04)' : 'transparent',
+            fontFamily: 'var(--font-mono)',
+          }}
+          title={condition.targetMetric ? "Comparing to another metric. Click to input a static value." : "Comparing to a static value. Click to compare to another metric."}
+        >
+          {condition.targetMetric ? 'METRIC' : 'VALUE'}
+        </button>
+      )}
+
+      {/* Value input / Metric selector — adapts to target type */}
       <div className="flex-1">
-        {metricDef?.valueType === 'CATEGORICAL' ? (
+        {condition.targetMetric ? (
+          // Metric selector for target comparison
+          <MetricSelector
+            value={condition.targetMetric}
+            onChange={(metricId) => onChange({ ...condition, targetMetric: metricId, targetValue: undefined })}
+          />
+        ) : metricDef?.valueType === 'CATEGORICAL' ? (
           // Categorical dropdown (e.g. WARSH_SENTIMENT)
           <select
             value={condition.targetValue ?? ''}
