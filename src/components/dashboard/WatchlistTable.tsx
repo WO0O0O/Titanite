@@ -19,16 +19,27 @@ interface WatchlistTableProps {
   onRemoveTicker: (ticker: string) => void;
 }
 
-const COL_HEADERS = ['TICKER', 'COMPANY NAME', 'MKT CAP $', 'PRICE', 'TIER', 'SCORE', 'ACTIONS'];
+const COL_HEADERS = ['TICKER', 'COMPANY NAME', 'MKT CAP (USD)', 'PRICE (NATIVE)', 'TIER', 'SCORE', 'ACTIONS'];
 
 export default function WatchlistTable({ watchlist, researchLookup, onRemoveTicker }: WatchlistTableProps) {
   const fmt = {
-    price: (v: number) => `$${v.toFixed(2)}`,
+    /**
+     * Format a price in its native currency.
+     * GBp (pence) is divided by 100 and shown as GBP for readability.
+     * Zero price means the fetch failed — show a dash instead of a misleading 0.00.
+     */
+    price: (price: number, currency?: string) => {
+      if (!price || price === 0) return '\u2014';
+      // London Stock Exchange returns pence (GBp) — convert to pounds for display
+      if (currency === 'GBp') return `GBP ${(price / 100).toFixed(2)}`;
+      const label = currency ?? 'USD';
+      return `${label} ${price.toFixed(2)}`;
+    },
     mcap: (v?: number) => {
-      if (v === undefined || v === null || v === 0) return '—';
+      if (v === undefined || v === null || v === 0) return '\u2014';
       if (v >= 1_000_000_000_000) return `$${(v / 1_000_000_000_000).toFixed(2)}T`;
-      if (v >= 1_000_000_000) return `$${(v / 1_000_000_000).toFixed(2)}B`;
-      if (v >= 1_000_000) return `$${(v / 1_000_000).toFixed(1)}M`;
+      if (v >= 1_000_000_000)     return `$${(v / 1_000_000_000).toFixed(2)}B`;
+      if (v >= 1_000_000)          return `$${(v / 1_000_000).toFixed(1)}M`;
       return `$${v.toLocaleString()}`;
     }
   };
@@ -84,9 +95,9 @@ export default function WatchlistTable({ watchlist, researchLookup, onRemoveTick
                     {fmt.mcap(item.marketCap)}
                   </td>
                   
-                  {/* Current Price */}
-                  <td className="px-2 py-1.5 tabular-nums text-left font-semibold text-white">
-                    {fmt.price(item.price)}
+                  {/* Current Price — shown in native currency (SEK, EUR, GBP, USD) */}
+                  <td className="px-2 py-1.5 tabular-nums text-left font-semibold text-white min-w-[110px]">
+                    {fmt.price(item.price, item.currency)}
                   </td>
                   
                   {/* Tier Badge */}

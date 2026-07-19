@@ -9,6 +9,8 @@
  * (catches the same story from different sources) and sorted newest-first.
  *
  * Respects NEXT_PUBLIC_USE_MOCK_DATA master switch.
+ * Cached for 15 minutes on Vercel's edge so all concurrent users share one
+ * batch of Finnhub + RSS calls rather than each triggering their own.
  */
 
 import { NextResponse } from 'next/server';
@@ -16,6 +18,9 @@ import { fetchIntelFeed } from '@/lib/services/finnhub.service';
 import { fetchRssIntel } from '@/lib/services/rss.service';
 import { MOCK_INTEL_ITEMS } from '@/lib/mock/intelFeed.mock';
 import type { IntelItem } from '@/types/intel';
+
+/** 15-minute Vercel edge cache — aligns with the RSS/Finnhub refresh cadence. */
+export const revalidate = 900;
 
 /** Normalise a headline for deduplication — lowercase, strip punctuation, collapse spaces. */
 function normaliseTitle(title: string): string {

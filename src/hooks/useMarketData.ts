@@ -40,6 +40,6 @@ export function useMarketData() {
         return { context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS };
       }
     },
-    refetchInterval: 60000, // Background poll every 60s
+    refetchInterval: 900_000, // Poll every 15 minutes — matches server-side revalidate window
   });
 }
