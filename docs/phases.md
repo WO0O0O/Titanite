@@ -213,6 +213,15 @@
 - [x] Regenerate research database scores via `titanite export` CLI tool.
 - [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.20: LPKF Laser & Electronics SE (LPK) H1 2026 Financials & Recalibration ✅ COMPLETE
+
+- [x] Recalibrate data extraction buffer `LPKF-LPK-EXTRACTION-BUFFER.md` with July 23, 2026 audit completion date and H1 2026 transcript extracts.
+- [x] Recalibrate research report `LPKF-LPK-RESEARCH-REPORT.md` Gate Check (EUR 14.50 share price, 1.10 exchange rate, recalculated market cap $390.62M USD / EV $368.62M USD).
+- [x] Integrate H1 2026 Advanced Packaging LIDE TAM upgrade (€1.7 billion by 2030) and confirmed FY2026 guidance in research report and extraction buffer.
+- [x] Recalibrate return multiple in Section 5 matrix and synthesis to **10.2x return** to reflect the improved entry price risk-reward profile.
+- [x] Update central index entry in `TABLE.md` and mock price details in `useHoldings.ts`.
+- [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.

@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-07-17T08:02:32.175339Z",
-  "count": 69,
+  "exportedAt": "2026-07-23T21:35:17.596417Z",
+  "count": 70,
   "companies": [
     {
       "ticker": "PENG",
@@ -314,7 +314,7 @@
       "score": 11.0,
       "tier": "Tier 1",
       "industryFolder": "TGV",
-      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. Core holding (20% of capital); waiting on downstream foundry adoption.",
+      "keySummary": "Laser Induced Deep Etching (LIDE) technology for glass core packaging substrates. 80%+ qualification market share; H1 2026 TAM upgraded to \u20ac1.7B by 2030. Trading at EUR 14.50 following stock pullback (10.2x return to $3.75B target).",
       "framework": "sc"
     },
     {
@@ -486,6 +486,15 @@
       "tier": "Tier 2",
       "industryFolder": "cyber-security",
       "keySummary": "SaaS data security and cyber resilience provider (Layer S). Launched Rubrik Agent Cloud in early 2026 for autonomous AI agent governance and \"Agent Rewind\" remediation. Deep co-sell partnership with Microsoft Azure. Holds FedRAMP Moderate Authorization (NNSA sponsored) and $1.75B in cash. Capex intensity is low, resulting in positive and growing free cash flow.",
+      "framework": "sc"
+    },
+    {
+      "ticker": "SNOW",
+      "companyName": "Snowflake Inc.",
+      "score": 8.0,
+      "tier": "Tier 2",
+      "industryFolder": "AI-CLOUD-INFRA",
+      "keySummary": "Enterprise Data Cloud & serverless AI context retrieval layer (Cortex AI, Snowpark). AWS/Azure co-sell linkage with FedRAMP High and DoD IL5 authorizations. Cluster math reveals a 2.03x consensus revenue model gap ($13.2B FY28 cluster-math revenue vs $6.5B consensus). Pristine balance sheet ($4.5B net cash, zero debt). Capped at Tier 2 due to Apache Iceberg storage disintermediation and lack of physical infrastructure moat.",
       "framework": "sc"
     },
     {

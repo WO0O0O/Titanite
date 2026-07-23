@@ -4,6 +4,27 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.3.3] - 23 July 2026
+
+### SNOWFLAKE INC. ($SNOW) RESEARCH REPORT & CONSENSUS GAP AUDIT
+**Rationale:** Audited Snowflake Inc. ($SNOW) under the `SITUATIONAL-AWARENESS` (`leopold.md`) framework to evaluate its position as an enterprise AI context retrieval layer (Cortex AI, Snowpark) at 1M+ GPU cluster scale.
+
+- **Data Ingestion Buffer & Gate Check:** Constructed Step 0 extraction buffer and validated the $25B–$75B market cap gate arithmetic ($53.5B current market cap requires a 3x return target of $160.5B / ~$480 per share).
+- **Consensus Gap Audit:** Quantified a **2.03x consensus model gap** ($13.2B cluster-math revenue opportunity by FY28 vs $6.5B Wall Street consensus).
+- **Scorer Implementation:** Completed [SNOW.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SITUATIONAL-AWARENESS/AI-CLOUD-INFRA/SNOW.md) scoring Snowflake an **8/13 (Tier 2)**. Assigned Section 0 verdict of **Scaled Beneficiary**.
+- **Central Index Integration:** Registered SNOW in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md).
+
+## [v2.3.2] - 23 July 2026
+
+### LPKF LASER & ELECTRONICS SE ($LPK) H1 2026 FINANCIALS & MODEL RECALIBRATION
+**Rationale:** Updated LPKF Laser & Electronics SE ($LPK) following today's (23 July 2026) H1 2026 financial report and corresponding 12-13% stock price pullback to EUR 14.50. Recalibrated valuation and return multiple models to reflect the improved entry price risk-reward profile (market cap down to $390.62M USD, trailing EV/Sales multiple down to ~4.2x, target asymmetric return multiple expanding from 6.2x to **10.2x**). Incorporated management's H1 2026 upgrade of the LIDE Advanced Packaging addressable market (TAM) to **€1.7 billion by 2030** (up from €500M).
+
+- **Data Ingestion Buffer Update:** Updated [LPKF-LPK-EXTRACTION-BUFFER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/TGV/LPKF-LPK-EXTRACTION-BUFFER.md) with July 23, 2026 audit completion date, H1 2026 transcript quotes (€1.7B TAM upgrade, EUR 34.7M backlog, confirmed FY26 guidance), and H1 financial metrics.
+- **Scorer Report Refinement:** Updated [LPKF-LPK-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/TGV/LPKF-LPK-RESEARCH-REPORT.md) Gate Check metrics (stock price down to EUR 14.50 / $15.95 USD, USD market cap down to $390.62 million, EV to $368.62 million, trailing EV/Sales down to 4.2x) and Section 5 Return Mathematics (asymmetric return multiple increased to 10.2x return). Integrated H1 2026 financials, Solar segment drag, and €1.7B TAM upgrade in Section 3, Section 4, Section 6, Section 10, Section 12, and Synthesis.
+- **Detailed Analysis File:** Updated [LPKF-LPK-Analysis.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/TGV/LPKF-LPK-Analysis.md) with H1 2026 trailing documented figures and updated return multiple workings.
+- **Central Index Integration:** Updated LPK's entry summary in [TABLE.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/docs/TABLE.md) to log the July 23, 2026 financial release, €1.7B TAM upgrade, and revised 10.2x return multiple.
+- **Frontend Syncing:** Synchronised mock details in [useHoldings.ts](file:///Users/danwooster/1.%20DEV/titanite-technologies/src/hooks/useHoldings.ts) to update mock stock pricing parameters for LPK/LPKF to EUR 14.50 and market cap to €355M.
+
 ## [v2.3.1] - 19 July 2026
 
 ### PHASE 8B — SIGNAL BUILDER: LIVE CHARTS & METRIC COMPARISONS
