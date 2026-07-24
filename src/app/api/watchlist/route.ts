@@ -3,12 +3,7 @@ import YahooFinance from 'yahoo-finance2';
 
 const yahooFinance = new YahooFinance({ suppressNotices: ['yahooSurvey', 'ripHistorical'] });
 
-/**
- * Cache this route for 15 minutes on Vercel's edge.
- * All concurrent users share a single upstream Yahoo Finance call per window,
- * rather than each user independently hammering the external API.
- */
-export const revalidate = 900;
+export const dynamic = 'force-dynamic';
 
 /**
  * Maps display tickers (as stored in watchlist) to their Yahoo Finance

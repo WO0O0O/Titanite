@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
+export const dynamic = 'force-dynamic';
+
 // Mirror of the INDUSTRY_MAP in config.py
 const INDUSTRY_MAP: Record<string, string> = {
   "PENG": "AI-CLOUD-INFRA",

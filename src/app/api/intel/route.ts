@@ -19,8 +19,7 @@ import { fetchRssIntel } from '@/lib/services/rss.service';
 import { MOCK_INTEL_ITEMS } from '@/lib/mock/intelFeed.mock';
 import type { IntelItem } from '@/types/intel';
 
-/** 15-minute Vercel edge cache — aligns with the RSS/Finnhub refresh cadence. */
-export const revalidate = 900;
+export const dynamic = 'force-dynamic';
 
 /** Normalise a headline for deduplication — lowercase, strip punctuation, collapse spaces. */
 function normaliseTitle(title: string): string {

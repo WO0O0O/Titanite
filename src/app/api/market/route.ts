@@ -10,11 +10,10 @@
  */
 
 import { NextResponse } from 'next/server';
-
-/** 15-minute Vercel edge cache — matches Yahoo Finance's 15-min data delay. */
-export const revalidate = 900;
 import { fetchMarketData } from '@/lib/services/yahooFinance.service';
 import { MOCK_MARKET_CONTEXT, MOCK_MARKET_SNAPSHOTS } from '@/lib/mock/marketData.mock';
+
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   // Short-circuit to mock when the master switch is on
@@ -22,6 +21,11 @@ export async function GET() {
     return NextResponse.json({ context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS });
   }
 
-  const data = await fetchMarketData();
-  return NextResponse.json(data);
+  try {
+    const data = await fetchMarketData();
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error('[API/Market] Upstream market data fetch failed, returning mock fallback:', err);
+    return NextResponse.json({ context: MOCK_MARKET_CONTEXT, snapshots: MOCK_MARKET_SNAPSHOTS });
+  }
 }
