@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync, existsSync, readdirSync, statSync } from 'fs';
 import { join } from 'path';
 
 // Mirror of the INDUSTRY_MAP in config.py
@@ -10,6 +10,7 @@ const INDUSTRY_MAP: Record<string, string> = {
   "DGXX": "AI-CLOUD-INFRA",
   "NBIS": "AI-CLOUD-INFRA",
   "KEEL": "AI-CLOUD-INFRA",
+  "SNOW": "AI-CLOUD-INFRA",
   "TLN": "ENERGY",
   "NRGV": "ENERGY",
   "BE": "ENERGY", 
@@ -81,44 +82,79 @@ export async function GET(request: Request) {
   }
 
   const folder = INDUSTRY_MAP[ticker];
-  if (!folder) {
-    return NextResponse.json({ error: `No industry folder mapped for ticker ${ticker}` }, { status: 404 });
-  }
-
-  // Resolve path: We check multiple directories (SPACE, SMALLCAP-AI-INFRA, and SITUATIONAL-AWARENESS)
-  // because reports can be generated using different frameworks (SC-AI-INFRA, leopold, or space-infra)
-  // and we want the routing to be resilient to varying naming conventions and folder allocations.
   let filePath = '';
   let found = false;
 
-  if (folder === 'SPACE') {
-    filePath = join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`);
-    if (existsSync(filePath)) {
-      found = true;
+  if (folder) {
+    if (folder === 'SPACE') {
+      filePath = join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`);
+      if (existsSync(filePath)) {
+        found = true;
+      }
+    }
+
+    if (!found) {
+      const candidates = [
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}-RESEARCH-REPORT.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-Analysis.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-Analysis.md`),
+        join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-RESEARCH-REPORT.md`),
+      ];
+
+      for (const c of candidates) {
+        if (existsSync(c)) {
+          filePath = c;
+          found = true;
+          break;
+        }
+      }
     }
   }
 
+  // Dynamic Fallback: If unmapped or not found via INDUSTRY_MAP, scan framework directories dynamically
   if (!found) {
-    const candidates = [
-      // Space fallback
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}.md`),
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SPACE', `${ticker}-RESEARCH-REPORT.md`),
-      // Small-Cap AI Infra
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-RESEARCH-REPORT.md`),
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}-Analysis.md`),
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SMALLCAP-AI-INFRA', folder, `${ticker}.md`),
-      // Situational Awareness / Leopold
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}.md`),
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-Analysis.md`),
-      join(process.cwd(), 'Titanite-Research', 'notes', 'SITUATIONAL-AWARENESS', folder, `${ticker}-RESEARCH-REPORT.md`),
-    ];
+    const rootNotes = join(process.cwd(), 'Titanite-Research', 'notes');
+    const frameworks = ['SITUATIONAL-AWARENESS', 'SMALLCAP-AI-INFRA', 'SPACE'];
 
-    for (const c of candidates) {
-      if (existsSync(c)) {
-        filePath = c;
-        found = true;
-        break;
+    for (const fw of frameworks) {
+      const fwPath = join(rootNotes, fw);
+      if (!existsSync(fwPath)) continue;
+
+      const items = readdirSync(fwPath);
+      for (const item of items) {
+        const itemPath = join(fwPath, item);
+        const isDir = statSync(itemPath).isDirectory();
+
+        if (!isDir) {
+          const upperItem = item.toUpperCase();
+          if (upperItem === `${ticker}.MD` || upperItem === `${ticker}-RESEARCH-REPORT.MD`) {
+            filePath = itemPath;
+            found = true;
+            break;
+          }
+          continue;
+        }
+
+        const candidateFiles = [
+          join(itemPath, `${ticker}.md`),
+          join(itemPath, `${ticker}-RESEARCH-REPORT.md`),
+          join(itemPath, `${ticker}-Analysis.md`),
+        ];
+
+        for (const c of candidateFiles) {
+          if (existsSync(c)) {
+            filePath = c;
+            found = true;
+            break;
+          }
+        }
+        if (found) break;
       }
+      if (found) break;
     }
   }
 
@@ -129,7 +165,8 @@ export async function GET(request: Request) {
   try {
     const content = readFileSync(filePath, 'utf-8');
     return NextResponse.json({ content });
-  } catch (err: any) {
-    return NextResponse.json({ error: `Failed to read report: ${err.message}` }, { status: 500 });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: `Failed to read report: ${message}` }, { status: 500 });
   }
 }
