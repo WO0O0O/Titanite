@@ -4,6 +4,36 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.1.2] - 15 August 2026
+
+### SIVE RESEARCH REPORT RE-CALIBRATION & COMPLIANCE OVERHAUL
+**Rationale:** Updated [SIVE-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/photonics/SIVE-RESEARCH-REPORT.md) to achieve 100% compliance with [SC-AI-INFRA.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-INFRA.md) and [SC-AI-SCORER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-SCORER.md).
+
+- **Section 00 Critical Material Overhang Audit:** Added warning alert block covering active auditor/litigation/short seller headwinds (Deloitte FY25 going concern disclosure, Ningi Research short report from 1 June 2026, and historical PCAOB restatements).
+- **Data Validation Rule (Sections 3, 4, 6):** Explicitly reconciled zero firm binding backlog ($0.0), $799M non-binding LOIs, 59.0% contract assets ratio, and 271.3 days DSO in Q1 2026 to reflect pre-revenue PDK reference design qualification dependency over physical inventory drawdown.
+- **Section 12 Integrity & Governance:** Added initial boolean output `working_capital_divergence_detected: false`, mandatory `### Working Capital Override Log` justifying NRE milestone exemption, and Counterparty Registry Check.
+- **Section 13 Adversarial Testing:** Restructured bear case into the mandatory 8 explicit `###` sub-section headers (Thesis Killer, Short Report Reconciliation with Forensic Conflation Check refuting Ningi Research claims, Substitute Threat, Concentration Stress Test, Technology Skip Risk, Balance Sheet Risk, Structural vs. Temporary, Capex Cut Scenario).
+- **Section 14 & 14.5 Geopolitical Audit:** Added `### Sovereign Supply Chain Decoupling Audit` sub-section and standalone `## SECTION 14.5 — GEOPOLITICAL RISK PENALTY (MANDATORY)` matrix table (0 point penalty assigned).
+- **Commercial Agreements (Section 2, 3, 6):** Integrated the **$3.4 million USD SemiNex Corporation joint development program (August 2026)** for next-gen InP high-power external laser sources (ELS) / SOAs in AI data centre CPO, alongside the **$3.0 million USD Tachyon Networks mass-production order** (expanded by $1.5M in May 2026) for 28 GHz mmWave FWA modules.
+- **Synthesis & Scorecard:** Synchronised pitch paragraph and scorecard schema. Total score maintained at **12 / 13 (Tier 1)**.
+
+---
+
+## [v2.1.1] - 15 August 2026
+
+### KEEL RESEARCH REPORT RE-CALIBRATION & COMPLIANCE OVERHAUL
+**Rationale:** Updated [KEEL-RESEARCH-REPORT.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/SMALLCAP-AI-INFRA/AI-CLOUD-INFRA/KEEL-RESEARCH-REPORT.md) to achieve 100% compliance with [SC-AI-INFRA.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-INFRA.md) and [SC-AI-SCORER.md](file:///Users/danwooster/1.%20DEV/titanite-technologies/Titanite-Research/notes/prompts/SC/SC-AI-SCORER.md).
+
+- **Data Validation Rule (Sections 3, 4, 6):** Explicitly reconciled zero binding backlog ($0.0) and inventory-to-backlog ratio (0.0) to reflect pre-revenue site qualification dependency over physical inventory accumulation.
+- **Utility Grid Queue Check (Section 6):** Added explicit verification of regional grid queue status across PPL (PJM), Hydro-Québec, and Grant County PUD within the <36-month framework limit.
+- **Section 8 PUE Feasibility Limit:** Integrated mandatory PUE feasibility audit clause (<1.05 limit).
+- **Section 12 Integrity & Execution:** Added boolean `working_capital_divergence_detected: false`, mandatory `### Working Capital Override Log`, and Counterparty Registry Check.
+- **Section 13 Adversarial Testing:** Expanded bullet points into 8 mandatory explicit sub-section headers (Thesis Killer, Short Report Reconciliation with Forensic Conflation Check, Substitute Threat, Concentration Stress Test, Technology Skip Risk, Balance Sheet Risk, Structural vs. Temporary, Capex Cut Scenario).
+- **Section 14 & 14.5 Geopolitical Audit:** Added `### Sovereign Supply Chain Decoupling Audit` sub-section and standalone `## SECTION 14.5 — GEOPOLITICAL RISK PENALTY (MANDATORY)` matrix table (0 point penalty assigned).
+- **Synthesis & Scorecard:** Synchronised pitch paragraph and scorecard schema. Total score maintained at **8 / 13 (Tier 2)**.
+
+---
+
 ## [v2.1.0] - 15 August 2026
 
 ### AUTOMATED BI-WEEKLY RESEARCH BATCH UPDATER

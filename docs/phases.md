@@ -222,6 +222,14 @@
 - [x] Update central index entry in `TABLE.md` and mock price details in `useHoldings.ts`.
 - [x] Log updates in `CHANGELOG.md` and `docs/phases.md`.
 
+## Phase 7.21: Automated Bi-Weekly Company Research Batch Updater ✅ COMPLETE
+
+- [x] Create active watchlist configuration `Titanite-Research/notes/active_batch.json` defining 12 active company tickers (`PENG`, `SKM`, `SIVE`, `SHT`, `IQE`, `LPK`, `NBIS`, `AAOI`, `POET`, `KEEL`, `TRT`, `BRUN`).
+- [x] Implement Python batch updater engine `Titanite-Research/titanite-app/src/titanite/extractors/batch_updater.py` to pull SEC EDGAR XBRL data, calculate working capital ratios (DSO, AR vs Revenue Growth %, Contract Assets %), format bi-weekly markdown blocks, and update target notes.
+- [x] Register `titanite batch-update` CLI command in `cli.py` with `--dry-run`, `--config`, and automatic `--export` to Next.js JSON payloads.
+- [x] Create shell entry point `scripts/run_biweekly_research_update.sh` for local crontab / launchd bi-weekly scheduling and logging.
+- [x] Update project changelogs in `CHANGELOG.md` and `research-CHANGELOG.md`.
+
 ## Phase 8: Signal Builder v2 📊
 
 See `docs/roadmap.md` for full detail.
