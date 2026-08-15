@@ -4,6 +4,16 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.1.0] - 15 August 2026
+
+### AUTOMATED BI-WEEKLY RESEARCH BATCH UPDATER
+**Rationale:** Automated SEC EDGAR XBRL metric extraction, extraction buffer markdown updating, and JSON web export for active research batch tickers.
+
+- **`active_batch.json`**: Config file supporting a rotating 12-ticker watchlist for bi-weekly pipeline updates.
+- **`batch_updater.py`**: Automated SEC data puller & markdown buffer formatter.
+- **`titanite batch-update`**: New Python CLI command with dry-run support and auto-export to web app.
+- **`run_biweekly_research_update.sh`**: Shell entry point for recurring cron execution.
+
 ---
 
 ## [v2.0.0] - 14 June 2026

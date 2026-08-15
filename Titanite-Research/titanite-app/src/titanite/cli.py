@@ -299,10 +299,12 @@ def _print_buffer_summary(buffer: ExtractionBuffer) -> None:
     table.add_column("Q-1", justify="right")
     table.add_column("Current", justify="right", style="bold")
 
-    def _fmt(v: float) -> str:
-        if v >= 1_000_000:
+    def _fmt(v: float | None) -> str:
+        if v is None:
+            return "N/A"
+        if abs(v) >= 1_000_000:
             return f"${v/1_000_000:.1f}M"
-        if v >= 1_000:
+        if abs(v) >= 1_000:
             return f"${v/1_000:.0f}K"
         return f"${v:.0f}"
 
@@ -327,11 +329,17 @@ def _print_buffer_summary(buffer: ExtractionBuffer) -> None:
     )
 
     dso = cr.days_sales_outstanding_dso
-    dso_colour = "red" if dso[-1] > 90 else "green" if dso[-1] < 45 else "yellow"
+    last_dso = dso[-1] if dso else None
+    if last_dso is not None:
+        dso_colour = "red" if last_dso > 90 else "green" if last_dso < 45 else "yellow"
+        last_dso_str = f"[{dso_colour}]{last_dso:.1f}[/{dso_colour}]"
+    else:
+        last_dso_str = "N/A"
+
     table.add_row(
         "DSO (days)",
-        *[f"{d:.1f}" for d in dso[:-1]],
-        f"[{dso_colour}]{dso[-1]:.1f}[/{dso_colour}]",
+        *[f"{d:.1f}" if d is not None else "N/A" for d in (dso[:-1] if dso else [])],
+        last_dso_str,
     )
 
     console.print(table)
@@ -455,6 +463,57 @@ def export(
     if verbose:
         t1 = [c for c in companies if c.tier.value == "Tier 1"]
         console.print(f"\n[dim]Tier 1 companies: {', '.join(c.ticker for c in t1[:10])}{'…' if len(t1) > 10 else ''}[/dim]")
+
+
+# ---------------------------------------------------------------------------
+# batch-update
+# ---------------------------------------------------------------------------
+@app.command(name="batch-update")
+def batch_update(
+    config_file: Annotated[
+        Optional[str],
+        typer.Option("--config", "-c", help="Path to active_batch.json file"),
+    ] = None,
+    dry_run: Annotated[
+        bool,
+        typer.Option("--dry-run", help="Simulate batch update without writing files"),
+    ] = False,
+    auto_export: Annotated[
+        bool,
+        typer.Option("--export/--no-export", help="Automatically trigger titanite export after update"),
+    ] = True,
+) -> None:
+    """
+    [bold]Batch update bi-weekly SEC financial data for active batch tickers.[/bold]
+    """
+    from titanite.extractors.batch_updater import run_batch_update
+
+    console.print(
+        Panel.fit(
+            f"[bold cyan]Titanite Batch Update[/bold cyan] "
+            f"({'[yellow]DRY RUN[/yellow]' if dry_run else '[green]LIVE[/green]'})",
+            border_style="cyan",
+        )
+    )
+
+    cfg_path = Path(config_file).resolve() if config_file else None
+    results = run_batch_update(config_path=cfg_path, dry_run=dry_run)
+
+    processed_items: list[dict[str, str]] = results.get("processed", [])
+    failed_items: list[dict[str, str]] = results.get("failed", [])
+
+    console.print(f"\n[green]✓[/green] Processed {len(processed_items)} tickers:")
+    for item in processed_items:
+        console.print(f"  - [bold]{item['ticker']}[/bold] → [dim]{item['path']}[/dim]")
+
+    if failed_items:
+        console.print(f"\n[yellow]⚠[/yellow] Skipped/Failed {len(failed_items)} tickers:")
+        for item_err in failed_items:
+            console.print(f"  - [bold]{item_err['ticker']}[/bold]: {item_err['error']}")
+
+    if auto_export and not dry_run:
+        console.print("\n[cyan]Triggering JSON export…[/cyan]")
+        export(output=None, verbose=False)
 
 
 def main() -> None:

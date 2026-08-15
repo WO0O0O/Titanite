@@ -4,6 +4,16 @@
 
 This document tracks all modifications to the research frameworks to prevent scoring calibration drift and ensure consistency across historical analyses.
 
+## [v2.4.0] - 15 August 2026
+
+### AUTOMATED BI-WEEKLY COMPANY RESEARCH BATCH UPDATER
+**Rationale:** Standardised and automated bi-weekly financial metric extraction (SEC EDGAR XBRL) and research note updating across a rotating/active 12-company batch.
+
+- **[NEW] `Titanite-Research/notes/active_batch.json`:** Watchlist configuration defining the 12 active target tickers for bi-weekly processing.
+- **[NEW] `Titanite-Research/titanite-app/src/titanite/extractors/batch_updater.py`:** Batch research update engine querying SEC EDGAR XBRL metrics and formatting bi-weekly markdown update sections.
+- **[MODIFY] `Titanite-Research/titanite-app/src/titanite/cli.py`:** Registered `titanite batch-update` CLI command with `--dry-run`, `--config`, and automated `--export` flags.
+- **[NEW] `scripts/run_biweekly_research_update.sh`:** Shell script entry point for cron/launchd bi-weekly scheduling and logging.
+
 ## [v2.3.3] - 23 July 2026
 
 ### SNOWFLAKE INC. ($SNOW) RESEARCH REPORT & CONSENSUS GAP AUDIT
